@@ -1,0 +1,17 @@
+{
+  "extends": "airbnb",
+  "installedESLint": true,
+  "globals": {
+    "window": true,
+    "$": true,
+    "FHIR": true,
+    "document": true,
+    "Canadarm": true,
+    "canadarmConfig": true
+  },
+  "rules": {
+    "class-methods-use-this": ["error", {"exceptMethods": ["handleSubmit", "handleKeyPress", "shouldComponentUpdate", "render"]}],
+    "no-console": 0,
+    "jsx-a11y/no-static-element-interactions": 0
+  }
+}
