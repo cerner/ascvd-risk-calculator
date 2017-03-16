@@ -1,0 +1,55 @@
+.container {
+  width: 350px;
+  text-align: left;
+}
+
+.prompt {
+  color: #2D3539;
+  font-size: 16px;
+  font-family: Helvetica;
+  line-height: 19px;
+}
+
+.hidden {
+  display: none;
+}
+
+.option {
+  padding-top: 15px;
+  display: block;
+  color: #2D3539;
+  font-size: 14px;
+  font-family: Helvetica;
+}
+
+input[type=checkbox] {
+  margin-right: 7px;
+}
+
+input[type=checkbox]::-ms-check {
+  color: #3B99FC;
+}
+
+.input-area {
+  padding-left: 10px;
+}
+
+@media only screen and (max-width: 860px) {
+  .container {
+    width: 292px;
+  }
+
+  .input-area {
+    padding-left: 0;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .container {
+    width: 160px;
+  }
+
+  .input-area {
+    padding-left: 5px;
+  }
+}

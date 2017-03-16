@@ -1,0 +1,86 @@
+{
+  "name": "ascvd-risk-app",
+  "version": "1.0.0",
+  "author": "Cerner Corporation, SMART on FHIR",
+  "description": "SMART ASCVD Risk App",
+  "license": "Apache-2.0",
+  "keywords": [
+    "Cerner",
+    "SMART",
+    "ASCVD",
+    "SMART ASCVD risk app"
+  ],
+  "scripts": {
+    "start": "webpack-dev-server --inline",
+    "clean": "rimraf build",
+    "test": "jest; mocha --require tests/helpers/browser.js tests/app/*.js",
+    "test:nightwatch": "WEBPACK_CONFIG_PATH=../../../tests/features/config.js node ./node_modules/terra-toolkit/lib/scripts/nightwatch-process.js --config tests/nightwatch.conf.js --env default-tiny,default-small,default-medium,default-large,default-huge,default-enormous",
+    "lint": "eslint app/*.js components/**/**/*.jsx views/**/index.jsx components/**/*.jsx --config .eslintrc --fix",
+    "build": "npm run clean && webpack --progress --colors ---display-error-details"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "canadarm": "^1.0.2",
+    "classnames": "^2.2.5",
+    "fhirclient": "^0.1.10",
+    "jquery": "^3.1.1",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-jest": "^17.0.2",
+    "babel-loader": "^6.2.8",
+    "babel-preset-airbnb": "^2.1.1",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "chai": "^3.5.0",
+    "chai-enzyme": "^0.6.1",
+    "css-loader": "^0.26.1",
+    "enzyme": "^2.6.0",
+    "eslint": "^3.11.1",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.7.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-webpack-plugin": "^2.28.0",
+    "identity-obj-proxy": "^3.0.0",
+    "inject-loader": "^3.0.0-beta2",
+    "jest": "^17.0.3",
+    "jsdom": "^9.8.3",
+    "mocha": "^3.2.0",
+    "nightwatch": "^0.9.12",
+    "react-addons-test-utils": "^15.4.1",
+    "react-test-renderer": "^15.4.1",
+    "rimraf": "^2.6.1",
+    "selenium-server-standalone-jar": "^3.2.0",
+    "sinon": "^1.17.6",
+    "style-loader": "^0.13.1",
+    "terra-toolkit": "^0.1.0",
+    "uglify-js": "^2.8.11",
+    "webpack": "^1.13.3",
+    "webpack-combine-loaders": "^2.0.3",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.cerner.com/Igneous/ascvd-risk-app.git"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleNameMapper": {
+      "\\.(css)$": "identity-obj-proxy"
+    },
+    "testPathIgnorePatterns": [
+      "tests/nightwatch"
+    ]
+  }
+}

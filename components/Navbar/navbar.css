@@ -1,0 +1,72 @@
+.hidden {
+  display: none;
+}
+
+.container {
+  width: 100%;
+  height: 43px;
+  border-bottom:solid #DEDFE0 1px;
+}
+
+.tab {
+  height: 41px;
+  font-family: "Helvetica";
+  font-size: 14px;
+  text-align: center;
+  line-height: 41px;
+}
+
+.tab.active {
+  color: #0065A3;
+  border-bottom: solid #007CC3 2px;
+  cursor: pointer;
+}
+
+.tab.default {
+  color: #000000;
+  cursor: pointer;
+}
+
+.tab.disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.tab.one {
+  width: 67px;
+  display: inline-block;
+  margin-left: 7px;
+}
+
+.tab.two {
+  width: 98px;
+  display: inline-block;
+}
+
+.tab.three {
+  width: 137px;
+  display: inline-block;
+}
+
+input[name="nav_tabs"] {
+  background:none;
+  border:none;
+  outline: 0;
+  cursor: pointer;
+}
+
+input[name="nav_tabs"] {
+  text-decoration: none;
+}
+
+input[name="nav_tabs"]:hover {
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 860px) {
+  .container {
+    display: block;
+    margin: auto;
+    text-align: center;
+  }
+}

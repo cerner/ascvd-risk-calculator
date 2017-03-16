@@ -1,0 +1,49 @@
+.container {
+  width: 100px;
+  display: inline-block;
+  height: 100px;
+}
+
+.percent {
+  color: #2D3539;
+  font-size: 16px;
+  font-family: Helvetica;
+  text-align: center;
+  padding-bottom: 6px;
+  height: 16px;
+  width: 100px;
+  position: absolute;
+}
+
+.bar {
+  width: 100px;
+  position: absolute;
+  bottom: 0;
+  border: none;
+}
+
+@media only screen and (max-width: 860px) {
+  .container {
+    width: 80px;
+  }
+  .percent {
+    width: 80px;
+  }
+  .bar {
+    width: 80px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .container {
+    width: 20px;
+  }
+
+  .percent {
+    width: 30px;
+  }
+
+  .bar {
+    width: 20px;
+  }
+}

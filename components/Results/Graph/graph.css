@@ -1,0 +1,199 @@
+.container {
+  padding-top: 45px;
+  width: 100%;
+}
+
+.graph-border {
+  height: 250px;
+  width: 600px;
+  border-left: solid #C1C1C1 1px;
+  border-bottom: solid #C1C1C1 1px;
+  display: inline-block;
+  position: relative;
+  float: left;
+}
+
+.ten-year-group {
+  padding-left: 64px;
+  width: 200px;
+  display: inline-block;
+}
+
+.lifetime-group {
+  padding-left: 68px;
+  width: 200px;
+  display: inline-block;
+}
+
+.bar-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.zero-increment {
+  height: 12px;
+}
+
+.last-increment {
+  height: 12px;
+  padding-bottom: 35px;
+}
+
+.middle-increments {
+  height: 12px;
+  padding-bottom: 38px;
+}
+
+.first-increment {
+  height: 12px;
+  padding-bottom: 32px;
+}
+
+.yaxis {
+  padding-right: 10px;
+  color: #868A8C;
+  font-size: 12px;
+  font-family: Helvetica;
+  height: 250px;
+  position: relative;
+  float: left;
+  text-align: right;
+}
+
+.label {
+  color: #2D3539;
+  font-size: 12px;
+  font-family: Helvetica;
+  height: 12px;
+  padding-bottom: 160px;
+  padding-right: 70px;
+  text-align: left;
+  float:left;
+  white-space: nowrap;
+  position: absolute;
+  margin: 0;
+
+  transform: rotate(270deg);
+  transform-origin: right, top;
+  -ms-transform: rotate(-90deg);
+  -ms-transform-origin:right, top;
+  -webkit-transform: rotate(-90deg);
+  -webkit-transform-origin:right, top;
+}
+
+.inner {
+  margin: 0 auto;
+  display: inline-block;
+  margin-right: 10%;
+}
+
+.bar-label {
+  width: 200px;
+  color: #2D3539;
+  font-size: 16px;
+  font-family: Helvetica;
+  text-align: center;
+  position: absolute;
+  padding-top: 12px;
+}
+
+.graph-title {
+  width: 100%;
+  text-align: center;
+  color: #2D3539;
+  font-size: 16px;
+  font-family: Helvetica;
+  font-weight: bold;
+  margin-left: 10%;
+  padding-bottom: 44px;
+}
+
+.legend-container {
+  display: inline-block;
+  padding-left: 30px;
+  padding-top: 75px;
+  position: absolute;
+  text-align: left;
+}
+
+.legend-bar {
+  width: 80px;
+  height: 10px;
+}
+
+.legend-label {
+  width: 90px;
+  height: 16px;
+  padding-top: 5px;
+  padding-bottom: 20px;
+  font-size: 12px;
+  font-family: Helvetica;
+}
+
+.hidden {
+  display: none;
+  height: 0;
+}
+
+@media only screen and (max-width: 860px) {
+  .graph-border {
+    height: 250px;
+    width: 520px;
+  }
+  .ten-year-group {
+    width: 160px;
+    padding-left: 44px;
+  }
+  .lifetime-group {
+    width: 160px;
+    padding-left: 70px;
+  }
+  .graph-title {
+    width: 580px;
+  }
+  .bar-label {
+    width: 160px;
+  }
+  .legend-bar {
+    width: 50px;
+  }
+  .legend-label {
+    width: 50px;
+  }
+  .bar-container {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .graph-border {
+    height: 250px;
+    width: 155px;
+  }
+  .graph-title {
+    width: 165px;
+    margin-left: 35px;
+  }
+  .bar-label {
+    width: 60px;
+    margin-left: -10px;
+  }
+  .ten-year-group {
+    width: 40px;
+    padding-left: 15px;
+  }
+  .lifetime-group {
+    width: 40px;
+    padding-left: 40px;
+  }
+  .legend-bar {
+    width: 30px;
+  }
+  .legend-label {
+    width: 45px;
+  }
+  .bar-container {
+    width: 100%;
+  }
+}

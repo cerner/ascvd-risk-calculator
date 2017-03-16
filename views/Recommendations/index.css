@@ -1,0 +1,13 @@
+.container {
+  width: 90%;
+  display: block;
+  margin: auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}

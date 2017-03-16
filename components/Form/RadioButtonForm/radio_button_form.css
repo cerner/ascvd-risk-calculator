@@ -1,0 +1,53 @@
+.container {
+  width: 180px;
+  height: 100%;
+  display: inline-block;
+  padding-right: 110px;
+  padding-top: 40px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.prompt {
+  font-size: 14px;
+  font-family: "Helvetica";
+  font-weight: bold;
+  color: #000000;
+  padding-bottom: 5px;
+  width: 110%;
+}
+
+.label {
+  font-size: 14px;
+  font-family: "Helvetica";
+  color: #000000;
+  display: block;
+}
+
+.label.middle {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+input[type=radio] {
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+}
+
+input[type=radio]::-ms-check {
+  color: #3B99FC;
+  background-color: none;
+}
+
+.required:before {
+  color: red;
+  content: '*';
+  padding-right: 3px;
+}
+
+@media only screen and (max-width: 860px) {
+  .container {
+    padding-right: 0;
+  }
+}

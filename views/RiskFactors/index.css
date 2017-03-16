@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+.divide {
+  width: 80%;
+  height: 1px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: #C1C1C1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-clip: content-box;
+}

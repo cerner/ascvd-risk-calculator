@@ -1,0 +1,53 @@
+.container {
+  width: 180px;
+  height: 100%;
+  display: inline-block;
+  padding-top: 40px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.btn {
+  border-radius: 3px;
+  height: 30px;
+  width: 66px;
+  font-family: "Helvetica";
+  font-size: 14px;
+}
+
+.left {
+  float: left;
+  display: inline-block;
+  padding-right: 7px;
+}
+
+.right {
+  display:inline-block;
+}
+
+.btn.active {
+  background-color: #007CC3;
+  border: 1px solid #0065A3;
+  color: #fff;
+}
+
+.btn.default {
+  background-color: #DEDFE0;
+  border: 1px solid #C8CACB;
+  color: #1c1f21;
+}
+
+.prompt {
+  font-size: 14px;
+  font-family: "Helvetica";
+  font-weight: bold;
+  color: #000000;
+  padding-bottom: 5px;
+  width: 110%;
+}
+
+.required:before {
+  color: red;
+  content: '*';
+  padding-right: 3px;
+}

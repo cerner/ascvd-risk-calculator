@@ -1,0 +1,43 @@
+.container {
+  width: 100%;
+  background-color: #0065a3;
+  height: 30px;
+  display: table;
+}
+
+.name {
+  font-size: 18px;
+  display: table-row;
+  font-family: "Helvetica";
+  font-weight: 700;
+  color: #FFF;
+}
+
+.details {
+  display: table-row;
+  text-align: left;
+  font-size: 16px;
+  font-family: "Helvetica";
+  font-weight: 700;
+  color: #FFF;
+}
+
+.age {
+  padding-right: 10px;
+}
+
+.dob {
+  padding-left: 10px;
+  vertical-align: text-bottom;
+  font-size: 16px;
+  color: #FFF;
+  font-weight: 400;
+}
+
+.hidden {
+  display: none;
+}
+
+.patient-container {
+  padding: 5px 10px;
+}
