@@ -36,13 +36,13 @@ window.ASCVDRisk = window.ASCVDRisk || {};
   ASCVDRisk.setDefaultPatient = setDefaultPatient;
 
   /**
-   * Initiate Canadarm logging for the application to output on the console and log specified
-   * Initiates the Canadarm logging tool to output logs to the console and
-   * the URL specified in the config.js file (root directory).
+   * Initializer function for Canadarm Logger.
+   * Initiates the Canadarm logging tool to output logs to the console.
+   * See further functionality for Canadarm at: https://github.com/cerner/canadarm
    */
   const initializeLogger = () => {
     Canadarm.init({
-      onError: false,
+      onError: true,
       wrapEvents: false,
       logLevel: Canadarm.level.INFO,
       appenders: [
