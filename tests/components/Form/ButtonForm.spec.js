@@ -1,7 +1,7 @@
 jest.mock('../../../app/load_fhir_data');
 
 import React from 'react';
-import { shallow, render, mount } from 'enzyme';
+import { shallowWithIntl, mountWithIntl } from '../../helpers/intl-enzyme-test-helper';
 import ButtonForm from '../../../components/Form/ButtonForm/button_form';
 
 describe('<ButtonForm />', () => {
@@ -10,12 +10,12 @@ describe('<ButtonForm />', () => {
   let updateProp = jest.fn();
   let removeOption = jest.fn();
 
-  let wrapper = shallow(<ButtonForm prompt={'Sex'} option_one={'Male'} option_two={'Female'} property={'gender'}
+  let wrapper = shallowWithIntl(<ButtonForm prompt={'Sex'} option_one={'Male'} option_two={'Female'} property={'gender'}
                                     compute={comp} changedProperty={updateProp} options={[]}
                                     removeOption={removeOption} />);
 
   it('should have props', () => {
-    let wrap = mount(<ButtonForm prompt={'Sex'} option_one={'Male'} option_two={'Female'} property={'gender'}
+    let wrap = mountWithIntl(<ButtonForm prompt={'Sex'} option_one={'Male'} option_two={'Female'} property={'gender'}
                                  compute={comp} changedProperty={updateProp} options={[]}
                                  removeOption={removeOption} />);
     expect(wrap.props().prompt).toBeDefined();
@@ -31,22 +31,18 @@ describe('<ButtonForm />', () => {
   describe('Gender Button Group', () => {
     it('should have a prompt and two buttons', () => {
       expect(wrapper.find('.prompt').text()).toContain('Sex');
-      expect(wrapper.find('input')).toHaveLength(2);
+      expect(wrapper.find('button')).toHaveLength(2);
     });
 
     it('renders two buttons', () => {
-      expect(wrapper.find('.left').childAt(0).html()).toEqual('<input type="button" ' +
-        'class="btn active" value="Male"/>');
-      expect(wrapper.find('.right').childAt(0).html()).toEqual('<input type="button" ' +
-        'class="btn default" value="Female"/>');
+      expect(wrapper.find('.left').childAt(0).html()).toEqual('<button class="btn active" value="Male">Male</button>');
+      expect(wrapper.find('.right').childAt(0).html()).toEqual('<button class="btn default" value="Female">Female</button>');
     });
 
     it('can switch between two options', () => {
       wrapper.find('.right').childAt(0).simulate('click', {'target': {'value': 'female'}});
-      expect(wrapper.find('.left').childAt(0).html()).toEqual('<input type="button" ' +
-        'class="btn default" value="Male"/>');
-      expect(wrapper.find('.right').childAt(0).html()).toEqual('<input type="button" ' +
-        'class="btn active" value="Female"/>');
+      expect(wrapper.find('.left').childAt(0).html()).toEqual('<button class="btn default" value="Male">Male</button>');
+      expect(wrapper.find('.right').childAt(0).html()).toEqual('<button class="btn active" value="Female">Female</button>');
     });
 
     it('calls its callback functions', () => {
@@ -56,28 +52,24 @@ describe('<ButtonForm />', () => {
   });
 
   describe('RelatedFactors Button Group', () => {
-    let wrapper = shallow(<ButtonForm prompt={'Diabetes'} option_one={'No'} option_two={'Yes'} property={'diabetic'}
+    let wrapper = shallowWithIntl(<ButtonForm prompt={'Diabetes'} option_one={'No'} option_two={'Yes'} property={'diabetic'}
                                       compute={comp} changedProperty={updateProp} options={[]}
                                       removeOption={removeOption} />);
 
     it('should have a prompt and two buttons', () => {
       expect(wrapper.find('.prompt').text()).toContain('Diabetes');
-      expect(wrapper.find('input[type="button"]')).toHaveLength(2);
+      expect(wrapper.find('button')).toHaveLength(2);
     });
 
     it('renders two buttons', () => {
-      expect(wrapper.find('.left').childAt(0).html()).toEqual('<input type="button" ' +
-        'class="btn active" value="No"/>');
-      expect(wrapper.find('.right').childAt(0).html()).toEqual('<input type="button" ' +
-        'class="btn default" value="Yes"/>');
+      expect(wrapper.find('.left').childAt(0).html()).toEqual('<button class="btn active" value="No">No</button>');
+      expect(wrapper.find('.right').childAt(0).html()).toEqual('<button class="btn default" value="Yes">Yes</button>');
     });
 
     it('can switch between two options', () => {
       wrapper.find('.right').childAt(0).simulate('click', {'target': {'value': 'Yes'}});
-      expect(wrapper.find('.left').childAt(0).html()).toEqual('<input type="button" ' +
-        'class="btn default" value="No"/>');
-      expect(wrapper.find('.right').childAt(0).html()).toEqual('<input type="button" ' +
-        'class="btn active" value="Yes"/>');
+      expect(wrapper.find('.left').childAt(0).html()).toEqual('<button class="btn default" value="No">No</button>');
+      expect(wrapper.find('.right').childAt(0).html()).toEqual('<button class="btn active" value="Yes">Yes</button>');
     });
 
     it('calls its callback functions', () => {
@@ -86,7 +78,7 @@ describe('<ButtonForm />', () => {
     });
 
     it('calls removeOption callback function if quit smoking risk simulation was checked', () => {
-      wrapper = shallow(<ButtonForm prompt={'Current Smoking'} option_one={'No'} option_two={'Yes'}
+      wrapper = shallowWithIntl(<ButtonForm prompt={'Current Smoking'} option_one={'No'} option_two={'Yes'}
                                     property={'smoker'} compute={comp} changedProperty={updateProp}
                                     options={['smoker']} removeOption={removeOption} />);
 

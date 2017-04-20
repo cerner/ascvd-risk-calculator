@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import { intlShape } from 'react-intl';
 import ASCVDRisk from '../../../app/load_fhir_data';
 import styles from './radio_button_form.css';
 
@@ -61,6 +62,8 @@ class RadioButtonForm extends React.Component {
   }
 
   render() {
+    const propIntl = this.props.intl;
+    const messages = propIntl.messages;
     return (
       <div className={styles.container}>
         <div className={cx(styles.prompt, this.missingField())}>{this.props.prompt}</div>
@@ -73,7 +76,7 @@ class RadioButtonForm extends React.Component {
             onChange={this.handleChange}
             checked={this.state.checked === 'white'}
           />
-          {this.props.option_one}
+          {propIntl.formatMessage(messages.formRaceWhite)}
         </label>
         <label className={cx(styles.label, styles.middle)} htmlFor="option_two">
           <input
@@ -84,7 +87,7 @@ class RadioButtonForm extends React.Component {
             onChange={this.handleChange}
             checked={this.state.checked === 'aa'}
           />
-          {this.props.option_two}
+          {propIntl.formatMessage(messages.formRaceAfricanAmerican)}
         </label>
         <label className={styles.label} htmlFor="option_three">
           <input
@@ -95,7 +98,7 @@ class RadioButtonForm extends React.Component {
             onChange={this.handleChange}
             checked={this.state.checked === 'other'}
           />
-          {this.props.option_three}
+          {propIntl.formatMessage(messages.formRaceOther)}
         </label>
       </div>
     );
@@ -109,6 +112,7 @@ RadioButtonForm.propTypes = {
   option_three: React.PropTypes.string.isRequired,
   prompt: React.PropTypes.string.isRequired,
   property: React.PropTypes.string.isRequired,
+  intl: intlShape,
 };
 
 export default RadioButtonForm;

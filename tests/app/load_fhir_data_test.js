@@ -961,48 +961,19 @@ describe ('ASCVDRisk', () => {
       mock = sinonSandbox.mock(ASCVDRisk);
     });
 
-    it ('returns a string for all missing input fields', () => {
+    it ('returns a full array for all missing input fields', () => {
       setPatientInfo(undefined,undefined,undefined,undefined,undefined,undefined,
         undefined,undefined,undefined,ASCVDRisk.patientInfo);
       mock.expects("isValidTotalCholesterol").once().returns(false);
       mock.expects("isValidAge").once().returns(false);
-      const response = 'All fields required to compute ASCVD risk';
 
-      expect(ASCVDRisk.missingFields()).to.be.equal(response);
+      expect(ASCVDRisk.missingFields().length).to.be.equal(9);
       mock.verify();
     });
 
-    it ('returns a string for all but one missing input fields', () => {
-      setPatientInfo('male',undefined,undefined,70,140,false,false,undefined,true,ASCVDRisk.patientInfo);
-      mock.expects("isValidTotalCholesterol").once().returns(false);
-      mock.expects("isValidAge").once().returns(false);
-      const response = 'Total cholesterol, Age, and Race are all required to compute ASCVD risk';
-
-      expect(ASCVDRisk.missingFields()).to.be.equal(response);
-      mock.verify();
-    });
-
-    it ('returns a string for 2 missing input fields', () => {
-      setPatientInfo('male',59,undefined,70,140,false,false,undefined,true,ASCVDRisk.patientInfo);
-      mock.expects("isValidTotalCholesterol").once().returns(false);
-      const response = 'Total cholesterol and Race are both required to compute ASCVD risk';
-
-      expect(ASCVDRisk.missingFields()).to.be.equal(response);
-      mock.verify();
-    });
-
-    it ('returns a string for 1 missing input field', () => {
-      setPatientInfo('male',59,undefined,70,140,false,false,'white',true,ASCVDRisk.patientInfo);
-      mock.expects("isValidTotalCholesterol").once().returns(false);
-      const response = 'Total cholesterol is required to compute ASCVD risk';
-
-      expect(ASCVDRisk.missingFields()).to.be.equal(response);
-      mock.verify();
-    });
-
-    it ('returns an empty string for all fields completed', () => {
+    it ('returns an empty array for all fields completed', () => {
       setPatientInfo('male',59,159,70,140,false,false,'white',true,ASCVDRisk.patientInfo);
-      expect(ASCVDRisk.missingFields()).to.be.equal('');
+      expect(ASCVDRisk.missingFields().length).to.be.equal(0);
       mock.verify();
     });
   });

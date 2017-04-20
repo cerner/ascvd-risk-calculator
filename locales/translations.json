@@ -1,0 +1,788 @@
+{
+  "en": {
+    "appHeader": {
+      "id": "app.header",
+      "defaultMessage": "ASCVD Risk Calculator"
+    },
+    "tabOne": {
+      "id": "app.tab_one",
+      "defaultMessage": "Results"
+    },
+    "tabTwo": {
+      "id": "app.tab_two",
+      "defaultMessage": "Risk Factors"
+    },
+    "tabThree": {
+      "id": "app.tab_three",
+      "defaultMessage": "Recommendations"
+    },
+    "formSex": {
+      "id": "results.sex",
+      "defaultMessage": "Sex"
+    },
+    "formMale": {
+      "id": "results.male",
+      "defaultMessage": "Male"
+    },
+    "formFemale": {
+      "id": "results.female",
+      "defaultMessage": "Female"
+    },
+    "formAge": {
+      "id": "results.age",
+      "defaultMessage": "Age"
+    },
+    "formRace": {
+      "id": "results.race",
+      "defaultMessage": "Race"
+    },
+    "formRaceWhite": {
+      "id": "results.white",
+      "defaultMessage": "White"
+    },
+    "formRaceAfricanAmerican": {
+      "id": "results.african_american",
+      "defaultMessage": "African American"
+    },
+    "formRaceOther": {
+      "id": "results.other",
+      "defaultMessage": "Other"
+    },
+    "formTotalCholesterol": {
+      "id": "results.total_cholesterol",
+      "defaultMessage": "Total Cholesterol (mg/dL)"
+    },
+    "formHdl": {
+      "id": "results.hdl",
+      "defaultMessage": "HDL - Cholesterol (mg/dL)"
+    },
+    "formSysBP": {
+      "id": "results.systolic_blood_pressure",
+      "defaultMessage": "Systolic Blood Pressure"
+    },
+    "formDiabetic": {
+      "id": "results.diabetic",
+      "defaultMessage": "Diabetes"
+    },
+    "formNo": {
+      "id": "results.no",
+      "defaultMessage": "No"
+    },
+    "formYes": {
+      "id": "results.yes",
+      "defaultMessage": "Yes"
+    },
+    "formSmoker": {
+      "id": "results.smoker",
+      "defaultMessage": "Current Smoking"
+    },
+    "formHypertensive": {
+      "id": "results.hypertensive",
+      "defaultMessage": "Treatment for Hypertension"
+    },
+    "formSubmitFirst": {
+      "id": "results.submit_first",
+      "defaultMessage": "See Risk Score"
+    },
+    "formSubmitSecond": {
+      "id": "results.submit_second",
+      "defaultMessage": "Update Risk Score"
+    },
+    "formSBPError": {
+      "id": "form.sbp_error",
+      "defaultMessage": "SBP must be within 90-200 mmHg"
+    },
+    "formTotalCholesterolError": {
+      "id": "form.total_cholesterol_error",
+      "defaultMessage": "Total Cholesterol must be within 130-320 mg/dL"
+    },
+    "formHDLError": {
+      "id": "form.hdl_error",
+      "defaultMessage": "HDL must be within 20-100 mg/dL"
+    },
+    "formRequireSpecifiedFields": {
+      "id": "form.require_specified_fields",
+      "defaultMessage": "The following are required to compute ASCVD risk: "
+    },
+    "formRequireAllFields": {
+      "id": "form.require_all_fields",
+      "defaultMessage": "All fields required to compute ASCVD risk"
+    },
+    "formAgeError": {
+      "id": "form.age_error",
+      "defaultMessage": "Age must be within 20-79"
+    },
+    "graphTitle": {
+      "id": "graph.title",
+      "defaultMessage": "Chance of heart attack or stroke"
+    },
+    "graphPercentLabel": {
+      "id": "graph.percent_label",
+      "defaultMessage": "Percent (%)"
+    },
+    "graphTenYearRiskLabel": {
+      "id": "graph.ten_year_risk_label",
+      "defaultMessage": "10 Year Risk"
+    },
+    "graphLifetimeRiskLabel": {
+      "id": "graph.lifetime_risk_label",
+      "defaultMessage": "Lifetime Risk"
+    },
+    "graphCurrentRiskLabel": {
+      "id": "graph.current_risk_label",
+      "defaultMessage": "Current Risk"
+    },
+    "graphLowestPossibleRiskLabel": {
+      "id": "graph.lowest_possible_risk",
+      "defaultMessage": "Lowest Possible Risk"
+    },
+    "graphPotentialRiskLabel": {
+      "id": "graph.potential_risk",
+      "defaultMessage": "Potential Risk"
+    },
+    "simulatedRiskPrompt": {
+      "id": "simulated.prompt",
+      "defaultMessage": "Explore how different actions could reduce your risk of heart attack or stroke"
+    },
+    "simulatedStatin": {
+      "id": "simulated.statin",
+      "defaultMessage": "Take a statin"
+    },
+    "simulatedSysBP": {
+      "id": "simulated.sys_bp",
+      "defaultMessage": "Control your blood pressure"
+    },
+    "simulatedAspirin": {
+      "id": "simulated.aspirin",
+      "defaultMessage": "Take aspirin every day"
+    },
+    "simulatedSmoking": {
+      "id": "simulated.smoking",
+      "defaultMessage": "Quit smoking"
+    },
+    "riskFactorsSimulatedLifetimeTitle": {
+      "id": "riskFactors.lifetime_title",
+      "defaultMessage": "Simulated Lifetime Risk"
+    },
+    "riskFactorsSimulatedTenYearTitle": {
+      "id": "riskFactors.ten_year_title",
+      "defaultMessage": "Simulated 10 Year Risk"
+    },
+    "recommendationsStatinHeader": {
+      "id": "recommendations.statin_header",
+      "defaultMessage": "Consider a statin"
+    },
+    "recommendationsStatinBody": {
+      "id": "recommendations.statin_body",
+      "defaultMessage": "Statins can reduce your risk of heart attack or stroke by 25%, even if your cholesterol level is in the “normal” range.  The American Heart Association and American College of Cardiology recommend statins for people with diabetes, prior heart disease or stroke, and people at high risk of developing heart disease."
+    },
+    "recommendationsSmokerHeader": {
+      "id": "recommendations.smoker_header",
+      "defaultMessage": "Quit Smoking"
+    },
+    "recommendationsSmokerBody": {
+      "id": "recommendations.smoker_body",
+      "defaultMessage": "Besides causing cancer and lung disease, smoking is a leading cause of stroke and heart attack. Nicotine replacement (patches, gum, lozenges), coaching programs, and medications (Chantix®, bupropion) can increase your chances of success. See www.smokefree.gov for more information."
+    },
+    "recommendationsAspirinHeader": {
+      "id": "recommendations.aspirin_header",
+      "defaultMessage": "Aspirin"
+    },
+    "recommendationsAspirinBody": {
+      "id": "recommendations.aspirin_body",
+      "defaultMessage": "Aspirin can help lower your risk of heart attack or stroke by about 10%. Aspirin may increase your risk of bleeding. Talk to your doctor about whether you may benefit from taking aspirin daily and what dose may be the best."
+    },
+    "recommendationsSysBPHeader": {
+      "id": "recommendations.sys_bp_header",
+      "defaultMessage": "Control your blood pressure"
+    },
+    "recommendationsSysBPBody": {
+      "id": "recommendations.sys_bp_body",
+      "defaultMessage": "Every 10 point lowering of your systolic blood pressure or 5 point lowering of your diastolic blood pressure can lower your risk of heart disease by 21%. High blood pressure can be treated with diet, weight loss, and medications. Lowering your sodium intake to 2,400 mg per day or even as low as 1,000 mg per day can help lower your blood pressure. Different people benefit from different goal blood pressures. Ask your doctor what your goal should be."
+    },
+    "recommendationsExerciseHeader": {
+      "id": "recommendations.exercise_header",
+      "defaultMessage": "Exercise More"
+    },
+    "recommendationsExerciseBody": {
+      "id": "recommendations.exercise_body",
+      "defaultMessage": "The American Heart Association and American College of Cardiology recommend 3-4 sessions per week of at least 40 minutes per session of moderate to vigorous physical activity. But even small increases in your amount of physical activity can improve your heart health."
+    },
+    "recommendationsEatingHeader": {
+      "id": "recommendations.eating_header",
+      "defaultMessage": "Eat more Heart-Healthy Food"
+    },
+    "recommendationsEatingBody": {
+      "id": "recommendations.eating_body",
+      "defaultMessage": "Try to limit your intake of sugar, including sweets and sugar sweetened drinks. Eating more vegetables, fruits, whole grains, low-fat dairy, poultry (chicken), fish, beans, olive oil and nuts can help lower your risk of heart disease. Try to avoid or reduce trans fat and saturated fat, which are high in lard, butter, red meat, and fried foods."
+    },
+    "bannerYears": {
+      "id": "banner.years",
+      "defaultMessage": "{age} yrs"
+    },
+    "bannerMale": {
+      "id": "banner.male",
+      "defaultMessage": "M"
+    },
+    "bannerFemale": {
+      "id": "banner.female",
+      "defaultMessage": "F"
+    },
+    "bannerUnknownGender": {
+      "id": "banner.unknown_gender",
+      "defaultMessage": "U"
+    },
+    "bannerDOB": {
+      "id": "banner.dob",
+      "defaultMessage": "DOB: "
+    },
+    "bannerDate": {
+      "id": "banner.date",
+      "defaultMessage": "{month}/{date}/{year}"
+    },
+    "percentValue": {
+      "id": "percent.value",
+      "defaultMessage": "{wholeVal}.{decVal}%"
+    },
+    "language": {
+      "id": "settings.language",
+      "defaultMessage": "Language"
+    },
+    "enUS": {
+      "id": "settings.en_us",
+      "defaultMessage": "US - English"
+    },
+    "enUK": {
+      "id": "settings.en_uk",
+      "defaultMessage": "UK - English"
+    },
+    "es": {
+      "id": "settings.es",
+      "defaultMessage": "Español"
+    }
+  },
+  "es": {
+    "appHeader": {
+      "id": "app.header",
+      "defaultMessage": "Calculadora de riesgo de ECVA"
+    },
+    "tabOne": {
+      "id": "app.tab_one",
+      "defaultMessage": "Resultados"
+    },
+    "tabTwo": {
+      "id": "app.tab_two",
+      "defaultMessage": "Factores de riesgo"
+    },
+    "tabThree": {
+      "id": "app.tab_three",
+      "defaultMessage": "Recomendaciones"
+    },
+    "formSex": {
+      "id": "results.sex",
+      "defaultMessage": "Sexo"
+    },
+    "formMale": {
+      "id": "results.male",
+      "defaultMessage": "Hombre"
+    },
+    "formFemale": {
+      "id": "results.female",
+      "defaultMessage": "Mujer"
+    },
+    "formAge": {
+      "id": "results.age",
+      "defaultMessage": "Edad"
+    },
+    "formRace": {
+      "id": "results.race",
+      "defaultMessage": "Raza"
+    },
+    "formRaceWhite": {
+      "id": "results.white",
+      "defaultMessage": "Blanca"
+    },
+    "formRaceAfricanAmerican": {
+      "id": "results.african_american",
+      "defaultMessage": "Afroamericana"
+    },
+    "formRaceOther": {
+      "id": "results.other",
+      "defaultMessage": "Otra"
+    },
+    "formTotalCholesterol": {
+      "id": "results.total_cholesterol",
+      "defaultMessage": "Colesterol total (mg/dl)"
+    },
+    "formHdl": {
+      "id": "results.hdl",
+      "defaultMessage": "Colesterol HDL (mg/dl)"
+    },
+    "formSysBP": {
+      "id": "results.systolic_blood_pressure",
+      "defaultMessage": "Presión arterial sistólica"
+    },
+    "formDiabetic": {
+      "id": "results.diabetic",
+      "defaultMessage": "Diabetes"
+    },
+    "formNo": {
+      "id": "results.no",
+      "defaultMessage": "No"
+    },
+    "formYes": {
+      "id": "results.yes",
+      "defaultMessage": "Sí"
+    },
+    "formSmoker": {
+      "id": "results.smoker",
+      "defaultMessage": "Tabaquismo actual"
+    },
+    "formHypertensive": {
+      "id": "results.hypertensive",
+      "defaultMessage": "Tratamiento de la hipertensión"
+    },
+    "formSubmitFirst": {
+      "id": "results.submit_first",
+      "defaultMessage": "Ver puntuación de riesgo"
+    },
+    "formSubmitSecond": {
+      "id": "results.submit_second",
+      "defaultMessage": "Actualizar puntuación de riesgo"
+    },
+    "formSBPError": {
+      "id": "form.sbp_error",
+      "defaultMessage": "Los valores de Presión arterial sistólica deben estar comprendidos entre 90 y 200 mmHg."
+    },
+    "formTotalCholesterolError": {
+      "id": "form.total_cholesterol_error",
+      "defaultMessage": "Los valores de Colesterol total deben estar comprendidos entre 130 y 320 mg/dl."
+    },
+    "formHDLError": {
+      "id": "form.hdl_error",
+      "defaultMessage": "Los valores de Colesterol HDL deben estar comprendidos entre 20 y 100 mg/dl."
+    },
+    "formAgeError": {
+      "id": "form.age_error",
+      "defaultMessage": "Los valores de Edad deben estar comprendidos entre 20 y 79 años."
+    },
+    "formRequireSpecifiedFields": {
+      "id": "form.require_specified_fields",
+      "defaultMessage": "Los siguientes elementos son obligatorios para calcular el riesgo cardiovascular: "
+    },
+    "formRequireAllFields": {
+      "id": "form.require_all_fields",
+      "defaultMessage": "Todos los campos son obligatorios para calcular el riesgo cardiovascular"
+    },
+    "graphTitle": {
+      "id": "graph.title",
+      "defaultMessage": "Probabilidad de infarto de miocardio o apoplejía"
+    },
+    "graphPercentLabel": {
+      "id": "graph.percent_label",
+      "defaultMessage": "Porcentaje (%)"
+    },
+    "graphTenYearRiskLabel": {
+      "id": "graph.ten_year_risk_label",
+      "defaultMessage": "Riesgo en 10 años"
+    },
+    "graphLifetimeRiskLabel": {
+      "id": "graph.lifetime_risk_label",
+      "defaultMessage": "Riesgo vitalicio"
+    },
+    "graphCurrentRiskLabel": {
+      "id": "graph.current_risk_label",
+      "defaultMessage": "Riesgo actual"
+    },
+    "graphLowestPossibleRiskLabel": {
+      "id": "graph.lowest_possible_risk",
+      "defaultMessage": "Riesgo mínimo posible"
+    },
+    "graphPotentialRiskLabel": {
+      "id": "graph.potential_risk",
+      "defaultMessage": "Riesgo potencial"
+    },
+    "simulatedRiskPrompt": {
+      "id": "simulated.prompt",
+      "defaultMessage": "Vea cómo pueden contribuir una serie de acciones a reducir el riesgo de infarto de miocardio o apoplejía:"
+    },
+    "simulatedStatin": {
+      "id": "simulated.statin",
+      "defaultMessage": "Tomar una estatina"
+    },
+    "simulatedSysBP": {
+      "id": "simulated.sys_bp",
+      "defaultMessage": "Controlar la presión arterial"
+    },
+    "simulatedAspirin": {
+      "id": "simulated.aspirin",
+      "defaultMessage": "Tomar ácido acetilsalicílico cada día"
+    },
+    "simulatedSmoking": {
+      "id": "simulated.smoking",
+      "defaultMessage": "Dejar de fumar"
+    },
+    "riskFactorsSimulatedLifetimeTitle": {
+      "id": "riskFactors.lifetime_title",
+      "defaultMessage": "Riesgo vitalicio simulado"
+    },
+    "riskFactorsSimulatedTenYearTitle": {
+      "id": "riskFactors.ten_year_title",
+      "defaultMessage": "Riesgo en 10 años simulado"
+    },
+    "recommendationsStatinHeader": {
+      "id": "recommendations.statin_header",
+      "defaultMessage": "Considerar la posibilidad de tomar una estatina"
+    },
+    "recommendationsStatinBody": {
+      "id": "recommendations.statin_body",
+      "defaultMessage": "Las estatinas pueden reducir el riesgo de infarto de miocardio o apoplejía un 25%, incluso si el nivel de colesterol se encuentra en los límites normales. La Asociación Estadounidense de Cardiología y el Colegio Estadounidense de Cardiología recomiendan las estatinas para los pacientes diabéticos, con antecedentes de cardiopatías o apoplejías o con un riesgo elevado de desarrollar cardiopatías."
+    },
+    "recommendationsSmokerHeader": {
+      "id": "recommendations.smoker_header",
+      "defaultMessage": "Dejar de fumar"
+    },
+    "recommendationsSmokerBody": {
+      "id": "recommendations.smoker_body",
+      "defaultMessage": "Además de provocar cáncer y enfermedades pulmonares, el tabaquismo es la principal causa de apoplejía y de infarto de miocardio. El tratamiento sustitutivo con nicotina (parches, chicles, pastillas para chupar), los programas de orientación y los medicamentos (Chantix®, bupropión) pueden ayudarle a conseguir su objetivo. Para obtener más información, consulte https://espanol.smokefree.gov."
+    },
+    "recommendationsAspirinHeader": {
+      "id": "recommendations.aspirin_header",
+      "defaultMessage": "Ácido acetilsalicílico"
+    },
+    "recommendationsAspirinBody": {
+      "id": "recommendations.aspirin_body",
+      "defaultMessage": "El ácido acetilsalicílico puede reducir el riesgo de infarto de miocardio y de apoplejía aproximadamente un 10%, aunque también puede aumentar el riesgo de sangrado. Consulte a su médico acerca de los posibles beneficios de tomar ácido acetilsalicílico cada día y cuál sería la dosis más indicada."
+    },
+    "recommendationsSysBPHeader": {
+      "id": "recommendations.sys_bp_header",
+      "defaultMessage": "Controlar la presión arterial"
+    },
+    "recommendationsSysBPBody": {
+      "id": "recommendations.sys_bp_body",
+      "defaultMessage": "Bajar 10 puntos la presión arterial sistólica o 5 puntos la presión arterial diastólica puede reducir el riesgo de cardiopatía un 21%. La hipertensión puede tratarse con dieta, adelgazamiento y medicamentos. Reducir la ingesta de sodio a 2400 mg al día, o incluso menos, a 1000 mg al día, puede ayudar a reducir la presión arterial. El objetivo en lo que respecta a la presión arterial varía para cada paciente. Pregúntele a su médico cuál debería ser su objetivo."
+    },
+    "recommendationsExerciseHeader": {
+      "id": "recommendations.exercise_header",
+      "defaultMessage": "Hacer más ejercicio"
+    },
+    "recommendationsExerciseBody": {
+      "id": "recommendations.exercise_body",
+      "defaultMessage": "La Asociación Estadounidense de Cardiología y el Colegio Estadounidense de Cardiología recomiendan entre 3 y 4 sesiones semanales de al menos 40 minutos de actividad física de moderada a intensa. Aumentar aunque sea ligeramente la actividad física puede mejorar su salud cardiovascular."
+    },
+    "recommendationsEatingHeader": {
+      "id": "recommendations.eating_header",
+      "defaultMessage": "Comer más alimentos cardiosaludables"
+    },
+    "recommendationsEatingBody": {
+      "id": "recommendations.eating_body",
+      "defaultMessage": "Intente limitar la ingesta de azúcar, incluidos los dulces y las bebidas azucaradas. Comer más verduras, frutas, cereales integrales, lácteos bajos en grasa, aves de corral (pollo), pescado, legumbres, aceite de oliva y frutos secos puede reducir el riesgo de cardiopatía. Intente evitar las grasas trans y saturadas, ya que tienen un alto contenido graso, así como la mantequilla, las carnes rojas y los fritos."
+    },
+    "bannerYears": {
+      "id": "banner.years",
+      "defaultMessage": "{age} años"
+    },
+    "bannerMale": {
+      "id": "banner.male",
+      "defaultMessage": "H"
+    },
+    "bannerFemale": {
+      "id": "banner.female",
+      "defaultMessage": "M"
+    },
+    "bannerUnknownGender": {
+      "id": "banner.unknown_gender",
+      "defaultMessage": "D"
+    },
+    "bannerDOB": {
+      "id": "banner.dob",
+      "defaultMessage": "Fecha de nacimiento: "
+    },
+    "bannerDate": {
+      "id": "banner.date",
+      "defaultMessage": "{date}/{month}/{year}"
+    },
+    "percentValue": {
+      "id": "percent.value",
+      "defaultMessage": "{wholeVal},{decVal}%"
+    },
+    "language": {
+      "id": "settings.language",
+      "defaultMessage": "Idioma"
+    },
+    "enUS": {
+      "id": "settings.en_us",
+      "defaultMessage": "EE. UU. - Inglés"
+    },
+    "enUK": {
+      "id": "settings.en_uk",
+      "defaultMessage": "Reino Unido - Inglés"
+    },
+    "es": {
+      "id": "settings.es",
+      "defaultMessage": "Español"
+    }
+  },
+  "en-GB": {
+    "appHeader": {
+      "id": "app.header",
+      "defaultMessage": "ASCVD Risk Calculator"
+    },
+    "tabOne": {
+      "id": "app.tab_one",
+      "defaultMessage": "Results"
+    },
+    "tabTwo": {
+      "id": "app.tab_two",
+      "defaultMessage": "Risk Factors"
+    },
+    "tabThree": {
+      "id": "app.tab_three",
+      "defaultMessage": "Recommendations"
+    },
+    "formSex": {
+      "id": "results.sex",
+      "defaultMessage": "Gender"
+    },
+    "formMale": {
+      "id": "results.male",
+      "defaultMessage": "Male"
+    },
+    "formFemale": {
+      "id": "results.female",
+      "defaultMessage": "Female"
+    },
+    "formAge": {
+      "id": "results.age",
+      "defaultMessage": "Age"
+    },
+    "formRace": {
+      "id": "results.race",
+      "defaultMessage": "Race"
+    },
+    "formRaceWhite": {
+      "id": "results.white",
+      "defaultMessage": "White"
+    },
+    "formRaceAfricanAmerican": {
+      "id": "results.african_american",
+      "defaultMessage": "African American"
+    },
+    "formRaceOther": {
+      "id": "results.other",
+      "defaultMessage": "Other"
+    },
+    "formTotalCholesterol": {
+      "id": "results.total_cholesterol",
+      "defaultMessage": "Total Cholesterol (mg/dL)"
+    },
+    "formHdl": {
+      "id": "results.hdl",
+      "defaultMessage": "HDL - Cholesterol (mg/dL)"
+    },
+    "formSysBP": {
+      "id": "results.systolic_blood_pressure",
+      "defaultMessage": "Systolic Blood Pressure"
+    },
+    "formDiabetic": {
+      "id": "results.diabetic",
+      "defaultMessage": "Diabetes"
+    },
+    "formNo": {
+      "id": "results.no",
+      "defaultMessage": "No"
+    },
+    "formYes": {
+      "id": "results.yes",
+      "defaultMessage": "Yes"
+    },
+    "formSmoker": {
+      "id": "results.smoker",
+      "defaultMessage": "Current Smoking"
+    },
+    "formHypertensive": {
+      "id": "results.hypertensive",
+      "defaultMessage": "Treatment for Hypertension"
+    },
+    "formSubmitFirst": {
+      "id": "results.submit_first",
+      "defaultMessage": "See Risk Score"
+    },
+    "formSubmitSecond": {
+      "id": "results.submit_second",
+      "defaultMessage": "Update Risk Score"
+    },
+    "formSBPError": {
+      "id": "form.sbp_error",
+      "defaultMessage": "SBP must be within 90-200 mmHg"
+    },
+    "formTotalCholesterolError": {
+      "id": "form.total_cholesterol_error",
+      "defaultMessage": "Total Cholesterol must be within 130-320 mg/dL"
+    },
+    "formHDLError": {
+      "id": "form.hdl_error",
+      "defaultMessage": "HDL must be within 20-100 mg/dL"
+    },
+    "formAgeError": {
+      "id": "form.age_error",
+      "defaultMessage": "Age must be within 20-79"
+    },
+    "formRequireSpecifiedFields": {
+      "id": "form.require_specified_fields",
+      "defaultMessage": "The following are required to compute ASCVD risk: "
+    },
+    "formRequireAllFields": {
+      "id": "form.require_all_fields",
+      "defaultMessage": "All fields required to compute ASCVD risk"
+    },
+    "graphTitle": {
+      "id": "graph.title",
+      "defaultMessage": "Chance of heart attack or stroke"
+    },
+    "graphPercentLabel": {
+      "id": "graph.percent_label",
+      "defaultMessage": "Percent (%)"
+    },
+    "graphTenYearRiskLabel": {
+      "id": "graph.ten_year_risk_label",
+      "defaultMessage": "10 Year Risk"
+    },
+    "graphLifetimeRiskLabel": {
+      "id": "graph.lifetime_risk_label",
+      "defaultMessage": "Lifetime Risk"
+    },
+    "graphCurrentRiskLabel": {
+      "id": "graph.current_risk_label",
+      "defaultMessage": "Current Risk"
+    },
+    "graphLowestPossibleRiskLabel": {
+      "id": "graph.lowest_possible_risk",
+      "defaultMessage": "Lowest Possible Risk"
+    },
+    "graphPotentialRiskLabel": {
+      "id": "graph.potential_risk",
+      "defaultMessage": "Potential Risk"
+    },
+    "simulatedRiskPrompt": {
+      "id": "simulated.prompt",
+      "defaultMessage": "Explore how different actions could reduce your risk of heart attack or stroke"
+    },
+    "simulatedStatin": {
+      "id": "simulated.statin",
+      "defaultMessage": "Take a statin"
+    },
+    "simulatedSysBP": {
+      "id": "simulated.sys_bp",
+      "defaultMessage": "Control your blood pressure"
+    },
+    "simulatedAspirin": {
+      "id": "simulated.aspirin",
+      "defaultMessage": "Take aspirin every day"
+    },
+    "simulatedSmoking": {
+      "id": "simulated.smoking",
+      "defaultMessage": "Quit smoking"
+    },
+    "riskFactorsSimulatedLifetimeTitle": {
+      "id": "riskFactors.lifetime_title",
+      "defaultMessage": "Simulated Lifetime Risk"
+    },
+    "riskFactorsSimulatedTenYearTitle": {
+      "id": "riskFactors.ten_year_title",
+      "defaultMessage": "Simulated 10 Year Risk"
+    },
+    "recommendationsStatinHeader": {
+      "id": "recommendations.statin_header",
+      "defaultMessage": "Consider a statin"
+    },
+    "recommendationsStatinBody": {
+      "id": "recommendations.statin_body",
+      "defaultMessage": "Statins can reduce your risk of heart attack or stroke by 25%, even if your cholesterol level is in the \"normal\" range.  The American Heart Association and American College of Cardiology recommend statins for people with diabetes, prior heart disease or stroke, and people at high risk of developing heart disease."
+    },
+    "recommendationsSmokerHeader": {
+      "id": "recommendations.smoker_header",
+      "defaultMessage": "Quit Smoking"
+    },
+    "recommendationsSmokerBody": {
+      "id": "recommendations.smoker_body",
+      "defaultMessage": "Besides causing cancer and lung disease, smoking is a leading cause of stroke and heart attack. Nicotine replacement (patches, gum, lozenges), coaching programmes, and medications (Chantix®, bupropion) can increase your chances of success. See www.smokefree.gov for more information."
+    },
+    "recommendationsAspirinHeader": {
+      "id": "recommendations.aspirin_header",
+      "defaultMessage": "Aspirin"
+    },
+    "recommendationsAspirinBody": {
+      "id": "recommendations.aspirin_body",
+      "defaultMessage": "Aspirin can help lower your risk of heart attack or stroke by about 10%. Aspirin may increase your risk of bleeding. Talk to your clinician about whether you may benefit from taking aspirin daily and what dose may be the best."
+    },
+    "recommendationsSysBPHeader": {
+      "id": "recommendations.sys_bp_header",
+      "defaultMessage": "Control your blood pressure"
+    },
+    "recommendationsSysBPBody": {
+      "id": "recommendations.sys_bp_body",
+      "defaultMessage": "Every 10-point lowering of your systolic blood pressure or 5-point lowering of your diastolic blood pressure can lower your risk of heart disease by 21%. High blood pressure can be treated with diet, weight loss, and medications. Lowering your sodium intake to 2,400 mg per day or even as low as 1,000 mg per day can help lower your blood pressure. Different people benefit from different goal blood pressures. Ask your clinician what your goal should be."
+    },
+    "recommendationsExerciseHeader": {
+      "id": "recommendations.exercise_header",
+      "defaultMessage": "Exercise More"
+    },
+    "recommendationsExerciseBody": {
+      "id": "recommendations.exercise_body",
+      "defaultMessage": "The American Heart Association and American College of Cardiology recommend 3-4 sessions per week of at least 40 minutes per session of moderate to vigorous physical activity. But even small increases in your amount of physical activity can improve your heart health."
+    },
+    "recommendationsEatingHeader": {
+      "id": "recommendations.eating_header",
+      "defaultMessage": "Eat more Heart-Healthy Food"
+    },
+    "recommendationsEatingBody": {
+      "id": "recommendations.eating_body",
+      "defaultMessage": "Try to limit your intake of sugar, including sweets and sugar sweetened drinks. Eating more vegetables, fruits, whole grains, low-fat dairy, poultry (chicken), fish, beans, olive oil and nuts can help lower your risk of heart disease. Try to avoid or reduce trans fat and saturated fat, which are high in lard, butter, red meat, and fried foods."
+    },
+    "bannerYears": {
+      "id": "banner.years",
+      "defaultMessage": "{age} yrs"
+    },
+    "bannerMale": {
+      "id": "banner.male",
+      "defaultMessage": "M"
+    },
+    "bannerFemale": {
+      "id": "banner.female",
+      "defaultMessage": "F"
+    },
+    "bannerUnknownGender": {
+      "id": "banner.unknown_gender",
+      "defaultMessage": "U"
+    },
+    "bannerDOB": {
+      "id": "banner.dob",
+      "defaultMessage": "DOB: "
+    },
+    "bannerDate": {
+      "id": "banner.date",
+      "defaultMessage": "{date}/{month}/{year}"
+    },
+    "percentValue": {
+      "id": "percent.value",
+      "defaultMessage": "{wholeVal}.{decVal}%"
+    },
+    "language": {
+      "id": "settings.language",
+      "defaultMessage": "Language"
+    },
+    "enUS": {
+      "id": "settings.en_us",
+      "defaultMessage": "US - English"
+    },
+    "enUK": {
+      "id": "settings.en_uk",
+      "defaultMessage": "UK - English"
+    },
+    "es": {
+      "id": "settings.es",
+      "defaultMessage": "Español"
+    }
+  }
+}

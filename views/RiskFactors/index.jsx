@@ -1,4 +1,5 @@
 import React from 'react';
+import { intlShape } from 'react-intl';
 import ASCVDRisk from '../../app/load_fhir_data';
 import Graph from '../../components/Results/Graph/graph';
 import SimulatedRisk from '../../components/Results/SimulatedRisk/simulated_risk';
@@ -42,6 +43,8 @@ class RiskFactors extends React.Component {
    * @returns {XML} - A Simulated Risk React component
    */
   displaySimulatedRisk() {
+    const propIntl = this.props.intl;
+    const messages = propIntl.messages;
     if (this.props.tenYearScore === null) {
       return (
         <SimulatedRisk
@@ -50,9 +53,10 @@ class RiskFactors extends React.Component {
           potentialRisk={ASCVDRisk.computePotentialRisk(this.props.options, 'lifetime')}
           addOption={this.props.addOption}
           removeOption={this.props.removeOption}
-          title={'Simulated Lifetime Risk'}
+          title={this.props.intl.formatMessage(messages.riskFactorsSimulatedLifetimeTitle)}
           options={this.props.options}
           width={this.state.width}
+          intl={propIntl}
         />
       );
     }
@@ -63,9 +67,10 @@ class RiskFactors extends React.Component {
         potentialRisk={ASCVDRisk.computePotentialRisk(this.props.options, 'ten')}
         addOption={this.props.addOption}
         removeOption={this.props.removeOption}
-        title={'Simulated 10 Year Risk'}
+        title={this.props.intl.formatMessage(messages.riskFactorsSimulatedTenYearTitle)}
         options={this.props.options}
         width={this.state.width}
+        intl={propIntl}
       />
     );
   }
@@ -79,8 +84,9 @@ class RiskFactors extends React.Component {
           tenYearScore={this.props.tenYearScore}
           lifetimeBest={this.props.lifetimeBest}
           lifetimeScore={this.props.lifetimeScore}
+          intl={this.props.intl}
         />
-        <div className={styles.divide} />
+        <div className={styles.divide} lang={this.props.currentLocale} />
         <div className={styles['page-break']} />
         {this.displaySimulatedRisk()}
       </div>
@@ -95,6 +101,8 @@ RiskFactors.propTypes = {
   lifetimeScore: React.PropTypes.number,
   options: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
   removeOption: React.PropTypes.func.isRequired,
+  intl: intlShape,
+  currentLocale: React.PropTypes.string,
 };
 
 export default RiskFactors;

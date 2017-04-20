@@ -1,6 +1,7 @@
 /* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
 
 const screenshot = require('terra-toolkit').screenshot;
+require('intl');
 
 module.exports = {
   afterEach: (browser, done) => {
@@ -108,7 +109,7 @@ module.exports = {
     browser
       .url(`http://localhost:${browser.globals.webpackDevServerPort}/results.html`)
       .assert.elementPresent('#formDiabetic .button_form__required')
-      .assert.containsText('.send_form__right', 'Diabetes status is required to compute ASCVD risk');
+      .assert.containsText('.send_form__right', 'The following are required to compute ASCVD risk: Diabetes');
   },
 
   'Handles workflow of submitting the form accordingly': (browser) => {
@@ -162,7 +163,7 @@ module.exports = {
     browser
       .url(`http://localhost:${browser.globals.webpackDevServerPort}/riskfactors.html`)
       .click('label[for="option_two"] input')
-      .click('#formSex .button_form__right input')
+      .click('#formSex .button_form__right button')
       .clearValue('#formAge .input_text_form__text-entry')
       .setValue('#formAge .input_text_form__text-entry', '75')
       .click('.send_form__active')
@@ -235,21 +236,22 @@ module.exports = {
   'Recommendations view with content': (browser) => {
     browser
       .url(`http://localhost:${browser.globals.webpackDevServerPort}/recommendations.html`)
+      .click('.send_form__active').click('.navbar__three')
       .assert.containsText('#recSmoker .detail_box__title', 'Quit Smoking')
       .assert.containsText('#recSmoker .detail_box__description', 'Besides causing cancer and lung disease, smoking ' +
         'is a leading cause of stroke and heart attack. Nicotine replacement (patches, gum, lozenges), ' +
-        'coaching programs, and medications (Chantix, Buproprion) can increase your chances of success. ' +
+        'coaching programs, and medications (Chantix®, bupropion) can increase your chances of success. ' +
         'See www.smokefree.gov for more information.')
       .assert.containsText('#recStatin .detail_box__title', 'Consider a statin')
       .assert.containsText('#recStatin .detail_box__description', 'Statins can reduce your risk of heart attack or ' +
         'stroke by 25%, even if your cholesterol level is in the “normal” range. The American Heart ' +
         'Association and American College of Cardiology recommend statins for people with diabetes, prior ' +
         'heart disease or stroke, and people at high risk of developing heart disease.')
-        .assert.containsText('#recAspirin .detail_box__title', 'Aspirin')
+      .assert.containsText('#recAspirin .detail_box__title', 'Aspirin')
       .assert.containsText('#recAspirin .detail_box__description', 'Aspirin can help lower your risk of heart attack ' +
         'or stroke by about 10%. Aspirin may increase your risk of bleeding. Talk to your doctor about ' +
         'whether you may benefit from taking aspirin daily and what dose may be the best.')
-        .assert.containsText('#recBP .detail_box__title', 'Control your blood pressure')
+      .assert.containsText('#recBP .detail_box__title', 'Control your blood pressure')
       .assert.containsText('#recBP .detail_box__description', 'Every 10 point lowering of your systolic blood pressure ' +
         'or 5 point lowering of your diastolic blood pressure can lower your risk of heart disease by 21%. High blood ' +
         'pressure can be treated with diet, weight loss, and medications. Lowering your sodium intake to 2,400 mg per ' +
@@ -259,15 +261,16 @@ module.exports = {
       .assert.containsText('#recExercise .detail_box__description', 'The American Heart Association and American College ' +
         'of Cardiology recommend 3-4 sessions per week of at least 40 minutes per session of moderate to vigorous ' +
         'physical activity. But even small increases in your amount of physical activity can improve your heart health.')
-        .assert.containsText('#recEating .detail_box__title', 'Eat more Heart-Healthy Food')
+      .assert.containsText('#recEating .detail_box__title', 'Eat more Heart-Healthy Food')
       .assert.containsText('#recEating .detail_box__description', 'Try to limit your intake of sugar, including sweets ' +
         'and sugar sweetened drinks. Eating more vegetables, fruits, whole grains, low-fat dairy, poultry (chicken), ' +
         'fish, beans, olive oil and nuts can help lower your risk of heart disease. Try to avoid or reduce trans fat and ' +
         'saturated fat, which are high in lard, butter, red meat, and fried foods.')
-        .click('#recSmoker .detail_box__header')
+      .click('#recSmoker .detail_box__header')
       .assert.hidden('#recSmoker .detail_box__description')
       .assert.visible('#recSmoker .detail_box__title');
   },
+
   'Risk Factors view responds in print request': (browser) => {
     browser
       .url(`http://localhost:${browser.globals.webpackDevServerPort}/riskfactors.html`)
@@ -275,7 +278,7 @@ module.exports = {
       .execute((function pretendToBeAPrinter() {
         //For looking up if something is in the media list
         function hasMedia(list, media) {
-          if (!list) return false;
+          if (!list) { return false; }
 
           var i = list.length;
           while (i--) {

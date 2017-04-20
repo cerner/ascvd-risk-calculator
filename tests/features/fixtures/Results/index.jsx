@@ -7,6 +7,8 @@ import Navbar from '../../../../components/Navbar/navbar';
 import Recommendations from '../../../../views/Recommendations/index';
 
 // Inject methods for mocks
+const injectEntry = require('inject!../../../../components/Entry/entry');
+const injectAppIndex = require('inject!../../../../components/App/index');
 const injectApp = require('inject!../../../../components/App/app');
 const injectForm = require('inject!../../../../views/Results/index');
 const injectButton = require('inject!../../../../components/Form/ButtonForm/button_form');
@@ -49,6 +51,13 @@ let App = injectApp({
   '../../views/RiskFactors/index': RiskFactors,
   '../../views/Recommendations/index': Recommendations
 }).default;
-const form = <App />;
+let AppIndex = injectAppIndex({
+  './app': App
+}).default;
+let Entry = injectEntry({
+  '../App/index': AppIndex
+}).default;
+
+const form = <Entry />;
 
 ReactDOM.render(form, document.getElementById('container'));

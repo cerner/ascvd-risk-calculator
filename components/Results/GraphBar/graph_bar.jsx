@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import { intlShape } from 'react-intl';
 import styles from './graph_bar.css';
 
 /**
@@ -104,12 +105,13 @@ class GraphBar extends React.Component {
   }
 
   render() {
+    const propIntl = this.props.intl;
     return (
       <div className={styles.container} style={this.getContainerHeight()}>
         <div className={styles['percent-container']} style={this.getPercentContainerHeight()}>
           <div className={styles['percent-label']}>{this.props.percentLabel}</div>
           <div className={cx(styles.percent, this.getPercentClass())}>
-            {`${this.props.percent}%`}
+            {`${propIntl.formatNumber(this.props.percent)}%`}
           </div>
         </div>
         <div className={cx(styles.bar, this.getBarClass())} style={this.getBarStyle()} />
@@ -121,6 +123,7 @@ GraphBar.propTypes = {
   barColor: React.PropTypes.string.isRequired,
   percentLabel: React.PropTypes.string,
   percent: React.PropTypes.number,
+  intl: intlShape,
 };
 
 export default GraphBar;

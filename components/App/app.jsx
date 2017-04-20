@@ -1,4 +1,5 @@
 import React from 'react';
+import { intlShape } from 'react-intl';
 import ASCVDRisk from '../../app/load_fhir_data';
 import PatientBanner from '../../components/PatientBanner/banner';
 import Header from '../../components/Header/header';
@@ -17,6 +18,7 @@ class App extends React.Component {
     this.updateRiskScores = this.updateRiskScores.bind(this);
     this.updateChangedProperty = this.updateChangedProperty.bind(this);
     this.setView = this.setView.bind(this);
+    this.getBirthDateDisplay = this.getBirthDateDisplay.bind(this);
     this.addOption = this.addOption.bind(this);
     this.removeOption = this.removeOption.bind(this);
     this.state = {
@@ -65,6 +67,8 @@ class App extends React.Component {
           updateChangedProperty={this.updateChangedProperty}
           options={this.state.options}
           removeOption={this.removeOption}
+          intl={this.props.intl}
+          currentLocale={this.props.currentLocale}
         />
       );
     } else if (this.state.view === 'Risk Factors') {
@@ -77,13 +81,34 @@ class App extends React.Component {
           lifetimeBest={ASCVDRisk.computeLowestLifetime()}
           options={this.state.options}
           removeOption={this.removeOption}
+          intl={this.props.intl}
+          currentLocale={this.props.currentLocale}
         />
       );
     }
     return (
-      <Recommendations />
+      <Recommendations intl={this.props.intl} />
     );
   }
+  /**
+   * Displays a user-friendly date of birth
+   * @returns {string} - Internationalized string representing a possible date of birth
+   */
+  getBirthDateDisplay() {
+    const propIntl = this.props.intl;
+    const messages = propIntl.messages;
+    let birthDateDisplay = '';
+    const date = ASCVDRisk.patientInfo.dateOfBirth;
+    if (Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date.getTime())) {
+      birthDateDisplay = propIntl.formatMessage(messages.bannerDate, {
+        date: (`0${date.getDate()}`).slice(-2),
+        month: (`0${date.getMonth() + 1}`).slice(-2),
+        year: date.getFullYear(),
+      });
+    }
+    return birthDateDisplay;
+  }
+
 
   /**
    * Adds a risk factor option to options property
@@ -137,16 +162,40 @@ class App extends React.Component {
   }
 
   render() {
+    const propIntl = this.props.intl;
+    const messages = propIntl.messages;
+    let gender;
+    if (ASCVDRisk.patientInfo.gender &&
+      ASCVDRisk.patientInfo.gender.toLowerCase() === 'female') {
+      gender = propIntl.formatMessage(messages.bannerFemale);
+    } else if (ASCVDRisk.patientInfo.gender &&
+      ASCVDRisk.patientInfo.gender.toLowerCase() === 'male') {
+      gender = propIntl.formatMessage(messages.bannerMale);
+    } else {
+      gender = propIntl.formatMessage(messages.bannerUnknownGender);
+    }
     return (
       <div>
         <PatientBanner
           hideBanner={ASCVDRisk.hideDemoBanner}
           name={`${ASCVDRisk.patientInfo.firstName} ${ASCVDRisk.patientInfo.lastName}`}
-          age={ASCVDRisk.patientInfo.age}
-          gender={ASCVDRisk.patientInfo.gender}
-          dob={ASCVDRisk.patientInfo.dateOfBirth}
+          age={propIntl.formatMessage(messages.bannerYears,
+            { age: propIntl.formatNumber(ASCVDRisk.patientInfo.age) })}
+          gender={gender}
+          dobPrompt={propIntl.formatMessage(messages.bannerDOB)}
+          dob={this.getBirthDateDisplay()}
         />
-        <Header header={'ASCVD Risk Calculator'} />
+        <Header
+          header={propIntl.formatMessage(messages.appHeader)}
+          languagePrompt={propIntl.formatMessage(messages.language)}
+          locales={[
+            { name: propIntl.formatMessage(messages.enUS), val: 'en' },
+            { name: propIntl.formatMessage(messages.enUK), val: 'en-GB' },
+            { name: propIntl.formatMessage(messages.es), val: 'es' },
+          ]}
+          updateLocale={this.props.updateLocale}
+          currentLocale={this.props.currentLocale}
+        />
         <Navbar
           updateView={this.updateView}
           tab_one={'Results'}
@@ -155,11 +204,18 @@ class App extends React.Component {
           tabIndex={this.state.tabIndex}
           hideNav={this.state.hideNav}
           changedProperty={this.state.changedProperty}
+          intl={propIntl}
+          currentLocale={this.props.currentLocale}
         />
         { this.setView() }
       </div>
     );
   }
 }
+App.propTypes = {
+  intl: intlShape,
+  currentLocale: React.PropTypes.string,
+  updateLocale: React.PropTypes.func.isRequired,
+};
 
 export default App;

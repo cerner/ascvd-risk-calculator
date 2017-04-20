@@ -2,6 +2,8 @@ jest.mock('../../../app/load_fhir_data');
 
 import React from 'react';
 import { shallow, render, mount } from 'enzyme';
+import { intlShape } from 'react-intl';
+import { mountWithIntl } from '../../helpers/intl-enzyme-test-helper';
 import ASCVDRisk from '../../../app/load_fhir_data';
 import App from '../../../components/App/app';
 import PatientBanner from '../../../components/PatientBanner/banner';
@@ -12,13 +14,18 @@ import RiskFactors from '../../../views/RiskFactors/index';
 import Recommendations from '../../../views/Recommendations/index';
 
 describe('<App />', () => {
+
   let wrapper;
   let updateChangedProperty = jest.fn();
   let updateRiskScores = jest.fn();
   let updateView = jest.fn();
+  let updateLocale = jest.fn();
+  let currentLocale = 'en';
 
   beforeEach(() => {
-    wrapper = shallow(<App />);
+    updateLocale = jest.fn();
+    wrapper = mountWithIntl(<App updateLocale={updateLocale}
+                                 currentLocale={currentLocale} />);
   });
 
   it('should have state', () => {
@@ -31,6 +38,11 @@ describe('<App />', () => {
     expect(wrapper.state('options')).toEqual([]);
   });
 
+  it('should have props', () => {
+    expect(wrapper.props().currentLocale).toBeDefined();
+    expect(wrapper.props().updateLocale).toBeDefined();
+  });
+
   it('should render all components for the main view', () => {
     expect(wrapper.find(PatientBanner)).toHaveLength(1);
     expect(wrapper.find(Header)).toHaveLength(1);
@@ -38,9 +50,19 @@ describe('<App />', () => {
     expect(wrapper.find(Results)).toHaveLength(1);
   });
 
+  it('should render unknown gender accordingly on the patient banner', () => {
+    ASCVDRisk.changeGender('indeterminate');
+    updateLocale = jest.fn();
+    wrapper = mountWithIntl(<App updateLocale={updateLocale}
+                                 currentLocale={currentLocale} />);
+    expect(wrapper.find('.gender').text()).toEqual('U');
+    ASCVDRisk.changeGender('male');
+  });
+
   describe('updating state', () => {
     beforeEach(() => {
-      wrapper = mount(<App />);
+      wrapper = mountWithIntl(<App updateLocale={updateLocale}
+                                   currentLocale={currentLocale} />);
     });
 
     it('should execute updateRiskScores callback function and update state', () => {

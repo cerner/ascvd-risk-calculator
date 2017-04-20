@@ -1,29 +1,38 @@
 import React from 'react';
 import { shallow, render, mount } from 'enzyme';
+import { shallowWithIntl, mountWithIntl } from '../../helpers/intl-enzyme-test-helper';
 import PatientBanner from '../../../components/PatientBanner/banner';
 
 describe('<PatientBanner />', () => {
 
   let wrapper;
   const thisDate = new Date();
+  const constructedDate = new Date(thisDate.getFullYear() - 50,
+    thisDate.getMonth(), thisDate.getDate());
+  const stringDate = `${constructedDate.getMonth() + 1}/${constructedDate.getDate()}/${constructedDate.getFullYear()}`;
 
   beforeEach(() => {
-    wrapper = shallow(<PatientBanner name={'Test Patient'} age={50} gender={'male'}
-                                     dob={new Date(thisDate.getFullYear() - 50,
-                                       thisDate.getMonth(), thisDate.getDate())}
-                                     hideBanner={false} />);
+    wrapper = shallowWithIntl(<PatientBanner name={'Test Patient'}
+                                             age={'50 yrs'}
+                                             gender={'M'}
+                                             dob={stringDate}
+                                             dobPrompt={'DOB: '}
+                                             hideBanner={false} />);
   });
 
   it('should have props', () => {
-    const wrap = mount(<PatientBanner name={'Test Patient'} age={50} gender={'male'}
-                                      dob={new Date(thisDate.getFullYear() - 50,
-                                        thisDate.getMonth(), thisDate.getDate())}
-                                      hideBanner={false} />);
+    const wrap = mountWithIntl(<PatientBanner name={'Test Patient'}
+                                              age={'50 yrs'}
+                                              gender={'M'}
+                                              dob={stringDate}
+                                              dobPrompt={'DOB: '}
+                                              hideBanner={false} />);
 
     expect(wrap.props().name).toBeDefined();
     expect(wrap.props().age).toBeDefined();
     expect(wrap.props().gender).toBeDefined();
     expect(wrap.props().dob).toBeDefined();
+    expect(wrap.props().dobPrompt).toBeDefined();
     expect(wrap.props().hideBanner).toBeDefined();
   });
 
@@ -36,10 +45,12 @@ describe('<PatientBanner />', () => {
   });
 
   it('hides patient banner if hideBanner property is set to true', () => {
-    wrapper = shallow(<PatientBanner name={'Test Patient'} age={50} gender={'male'}
-                                     dob={new Date(thisDate.getFullYear() - 50,
-                                       thisDate.getMonth(), thisDate.getDate())}
-                                     hideBanner={true} />);
+    wrapper = shallowWithIntl(<PatientBanner name={'Test Patient'}
+                                             age={'50 yrs'}
+                                             gender={'M'}
+                                             dobPrompt={'DOB: '}
+                                             dob={stringDate}
+                                             hideBanner={true} />);
 
     expect(wrapper.find('.hidden')).toHaveLength(1);
   });

@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import { intlShape } from 'react-intl';
 import ASCVDRisk from '../../../app/load_fhir_data';
 import styles from './input_text_form.css';
 
@@ -37,7 +38,7 @@ class InputTextForm extends React.Component {
   handleChange(event) {
     if (this.props.property === 'systolicBloodPressure') {
       if (!ASCVDRisk.isValidSysBP(event.target.value)) {
-        this.setState({ errorText: 'SBP must be within 90-200 mmHg' });
+        this.setState({ errorText: 'formSBPError' });
       } else {
         if (this.props.options.indexOf('sysBP') > -1
           && this.props.property === 'systolicBloodPressure'
@@ -48,19 +49,19 @@ class InputTextForm extends React.Component {
       }
     } else if (this.props.property === 'totalCholesterol') {
       if (!ASCVDRisk.isValidTotalCholesterol(event.target.value)) {
-        this.setState({ errorText: 'Total Cholesterol must be within 130-320 mg/dL' });
+        this.setState({ errorText: 'formTotalCholesterolError' });
       } else {
         this.setState({ errorText: '' });
       }
     } else if (this.props.property === 'hdl') {
       if (!ASCVDRisk.isValidHDL(event.target.value)) {
-        this.setState({ errorText: 'HDL must be within 20-100 mg/dL' });
+        this.setState({ errorText: 'formHDLError' });
       } else {
         this.setState({ errorText: '' });
       }
     } else if (this.props.property === 'age') {
       if (!ASCVDRisk.isValidAge(event.target.value)) {
-        this.setState({ errorText: 'Age must be within 20-79' });
+        this.setState({ errorText: 'formAgeError' });
       } else {
         this.setState({ errorText: '' });
         if (!ASCVDRisk.hideDemoBanner) {
@@ -118,25 +119,25 @@ class InputTextForm extends React.Component {
     }
     if (this.props.property === 'systolicBloodPressure') {
       if (!ASCVDRisk.isValidSysBP(this.state.value)) {
-        this.setState({ errorText: 'SBP must be within 90-200 mmHg' });
+        this.setState({ errorText: 'formSBPError' });
         return styles.required;
       }
     }
     if (this.props.property === 'totalCholesterol') {
       if (!ASCVDRisk.isValidTotalCholesterol(this.state.value)) {
-        this.setState({ errorText: 'Total Cholesterol must be within 130-320 mg/dL' });
+        this.setState({ errorText: 'formTotalCholesterolError' });
         return styles.required;
       }
     }
     if (this.props.property === 'hdl') {
       if (!ASCVDRisk.isValidHDL(this.state.value)) {
-        this.setState({ errorText: 'HDL must be within 20-100 mg/dL' });
+        this.setState({ errorText: 'formHDLError' });
         return styles.required;
       }
     }
     if (this.props.property === 'age') {
       if (!ASCVDRisk.isValidAge(this.state.value)) {
-        this.setState({ errorText: 'Age must be within 20-79' });
+        this.setState({ errorText: 'formAgeError' });
         return styles.required;
       }
     }
@@ -144,6 +145,8 @@ class InputTextForm extends React.Component {
   }
 
   render() {
+    const propIntl = this.props.intl;
+    const messages = propIntl.messages;
     return (
       <div className={styles.container}>
         <div className={cx(styles.prompt, this.missingField())}>{this.props.prompt}</div>
@@ -155,7 +158,9 @@ class InputTextForm extends React.Component {
         />
         <small
           className={this.state.errorText === '' ? styles.hidden : styles['form-error']}
-        > {this.state.errorText} </small>
+        >
+          {this.state.errorText !== '' ? propIntl.formatMessage(messages[this.state.errorText]) : ''}
+        </small>
       </div>
     );
   }
@@ -168,6 +173,7 @@ InputTextForm.propTypes = {
   property: React.PropTypes.string.isRequired,
   value: React.PropTypes.number,
   removeOption: React.PropTypes.func,
+  intl: intlShape,
 };
 
 export default InputTextForm;

@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import { intlShape } from 'react-intl';
 import ASCVDRisk from '../../../app/load_fhir_data';
 import styles from './button_form.css';
 
@@ -75,22 +76,28 @@ class ButtonForm extends React.Component {
 
 
   render() {
+    const propIntl = this.props.intl;
+    const messages = propIntl.messages;
     return (
       <div className={styles.container}>
         <div className={cx(styles.prompt, this.missingField())}>{this.props.prompt}</div>
         <div className={styles.left}>
-          <input
+          <button
             className={cx(styles.btn,
-            ButtonForm.isActive(this.props.option_one, this.props.property))}
-            type="button" onClick={this.handleSubmit} value={this.props.option_one}
-          />
+              ButtonForm.isActive(this.props.option_one, this.props.property))}
+            onClick={this.handleSubmit} value={this.props.option_one}
+          >
+            {propIntl.formatMessage(messages[`form${this.props.option_one}`])}
+          </button>
         </div>
         <div className={styles.right}>
-          <input
+          <button
             className={cx(styles.btn,
-            ButtonForm.isActive(this.props.option_two, this.props.property))}
-            type="button" onClick={this.handleSubmit} value={this.props.option_two}
-          />
+              ButtonForm.isActive(this.props.option_two, this.props.property))}
+            onClick={this.handleSubmit} value={this.props.option_two}
+          >
+            {propIntl.formatMessage(messages[`form${this.props.option_two}`])}
+          </button>
         </div>
       </div>
     );
@@ -105,6 +112,7 @@ ButtonForm.propTypes = {
   prompt: React.PropTypes.string.isRequired,
   property: React.PropTypes.string.isRequired,
   removeOption: React.PropTypes.func,
+  intl: intlShape,
 };
 
 export default ButtonForm;

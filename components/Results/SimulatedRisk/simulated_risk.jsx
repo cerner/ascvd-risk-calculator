@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import { intlShape } from 'react-intl';
 import RiskAction from '../RiskAction/risk_action';
 import ASCVDRisk from '../../../app/load_fhir_data';
 import styles from './simulated_risk.css';
@@ -419,6 +420,8 @@ class SimulatedRisk extends React.Component {
   }
 
   render() {
+    const propIntl = this.props.intl;
+    const messages = propIntl.messages;
     return (
       <div className={styles.container}>
         <div className={styles.title}>{this.props.title}</div>
@@ -426,25 +429,26 @@ class SimulatedRisk extends React.Component {
           <div className={styles['float-right']}>
             <div className={styles['bar-labels']}>
               <div style={this.calculateLabelPlace('potential')}>
-                Current Risk
+                {propIntl.formatMessage(messages.graphCurrentRiskLabel)}
                 <br />
-                {this.props.scoreCurrent}%
+                {propIntl.formatNumber(this.props.scoreCurrent)}%
               </div>
               <div
                 className={this.hideLabel('potential')}
                 style={this.calculateLabelPlace('current')}
               >
-                Potential Risk
+                {propIntl.formatMessage(messages.graphPotentialRiskLabel)}
                 <br />
-                {Math.round((this.props.scoreCurrent - this.props.potentialRisk) * 10) / 10}%
+                {propIntl.formatNumber(Math.round((this.props.scoreCurrent -
+                    this.props.potentialRisk) * 10) / 10)}%
               </div>
               <div
                 className={this.hideLabel('lowest')}
                 style={this.calculateLabelPlace('lowest')}
               >
-                Lowest Possible Risk
+                {propIntl.formatMessage(messages.graphLowestPossibleRiskLabel)}
                 <br />
-                {this.props.scoreBest}%
+                {propIntl.formatNumber(this.props.scoreBest)}%
               </div>
               <div
                 className={cx(styles['last-increment'], this.hideLabel('0'))}
@@ -473,14 +477,13 @@ class SimulatedRisk extends React.Component {
         <div className={styles['page-break']} />
         <div className={styles.right}>
           <RiskAction
-            prompt={'Explore how different actions ' +
-          'could reduce your risk of heart attack or stroke'}
+            prompt={propIntl.formatMessage(messages.simulatedRiskPrompt)}
             isSmoker={ASCVDRisk.patientInfo.relatedFactors.smoker}
             controlSysBP={ASCVDRisk.patientInfo.systolicBloodPressure > 140}
-            riskActionLabel1={'Take a statin'}
-            riskActionLabel2={'Control your blood pressure'}
-            riskActionLabel3={'Take aspirin every day'}
-            riskActionLabel4={'Quit smoking'}
+            riskActionLabel1={propIntl.formatMessage(messages.simulatedStatin)}
+            riskActionLabel2={propIntl.formatMessage(messages.simulatedSysBP)}
+            riskActionLabel3={propIntl.formatMessage(messages.simulatedAspirin)}
+            riskActionLabel4={propIntl.formatMessage(messages.simulatedSmoking)}
             addOption={this.props.addOption}
             removeOption={this.props.removeOption}
             options={this.props.options}
@@ -499,6 +502,7 @@ SimulatedRisk.propTypes = {
   title: React.PropTypes.string.isRequired,
   options: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
   width: React.PropTypes.number,
+  intl: intlShape,
 };
 
 export default SimulatedRisk;

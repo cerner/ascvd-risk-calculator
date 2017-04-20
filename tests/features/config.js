@@ -12,7 +12,8 @@ module.exports = {
   entry: {
     'results': path.join(__dirname, 'fixtures', 'Results', 'index'),
     'risk_factors': path.join(__dirname, 'fixtures', 'RiskFactors', 'index'),
-    'recommendations': path.join(__dirname, 'fixtures', 'Recommendations', 'index')
+    'recommendations': path.join(__dirname, 'fixtures', 'Recommendations', 'index'),
+    'translations': path.join(__dirname, 'fixtures', 'Translations', 'index')
   },
   externals: {
     'cheerio': 'window',
@@ -21,6 +22,9 @@ module.exports = {
   },
   module: {
     loaders: [
+      {
+        test: /\.json$/, loader: 'json'
+      },
       {
         test: /.(jsx|js)$/,
         loader: 'babel-loader',
@@ -42,6 +46,10 @@ module.exports = {
           }])
         )
       },
+      {
+        test: /\.(jpg|png|svg)$/,
+        loader: 'file-loader?name=../../build/images/[name].[ext]'
+      }
     ],
   },
   output: { path: path.join(__dirname, 'fixtures'), filename: '[name].js' },
@@ -62,8 +70,13 @@ module.exports = {
       chunks: ['recommendations'],
       filename: 'recommendations.html',
     }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'fixtures', 'index.html'),
+      chunks: ['translations'],
+      filename: 'translations.html',
+    }),
   ],
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.js', '.jsx', 'json'],
   },
 };

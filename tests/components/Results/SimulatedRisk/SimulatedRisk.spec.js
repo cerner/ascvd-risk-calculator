@@ -3,7 +3,7 @@ jest.mock('../../../../app/load_fhir_data');
 import React from 'react';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import { shallow, render, mount } from 'enzyme';
+import { shallowWithIntl, mountWithIntl } from '../../../helpers/intl-enzyme-test-helper';
 import SimulatedRisk from '../../../../components/Results/SimulatedRisk/simulated_risk';
 import RiskAction from '../../../../components/Results/RiskAction/risk_action';
 
@@ -26,7 +26,7 @@ describe('<SimulatedRisk />', () => {
     width = 1000;
     addOption = jest.fn();
     removeOption = jest.fn();
-    wrapper = shallow(<SimulatedRisk scoreBest={scoreBest}
+    wrapper = shallowWithIntl(<SimulatedRisk scoreBest={scoreBest}
                                      scoreCurrent={scoreCurrent}
                                      potentialRisk={potentialRisk}
                                      addOption={addOption}
@@ -37,7 +37,7 @@ describe('<SimulatedRisk />', () => {
   });
 
   it('should have props', () => {
-    const wrap = mount(<SimulatedRisk scoreBest={scoreBest}
+    const wrap = mountWithIntl(<SimulatedRisk scoreBest={scoreBest}
                                       scoreCurrent={scoreCurrent}
                                       potentialRisk={potentialRisk}
                                       addOption={addOption}
@@ -77,7 +77,7 @@ describe('<SimulatedRisk />', () => {
     describe('Current risk label', () => {
       it('hides current risk label if the current risk is equal to lowest possible risk', () => {
         scoreBest = 80;
-        wrapper = shallow(<SimulatedRisk scoreBest={scoreBest}
+        wrapper = shallowWithIntl(<SimulatedRisk scoreBest={scoreBest}
                                          scoreCurrent={scoreCurrent}
                                          potentialRisk={potentialRisk}
                                          addOption={addOption}
@@ -92,7 +92,7 @@ describe('<SimulatedRisk />', () => {
     describe('Potential risk label', () => {
       it('hides potential risk label if no risk reduction factor was checked', () => {
         potentialRisk = 0;
-        wrapper = shallow(<SimulatedRisk scoreBest={scoreBest}
+        wrapper = shallowWithIntl(<SimulatedRisk scoreBest={scoreBest}
                                          scoreCurrent={scoreCurrent}
                                          potentialRisk={potentialRisk}
                                          addOption={addOption}
@@ -106,7 +106,7 @@ describe('<SimulatedRisk />', () => {
 
       it('hides potential risk label if potential risk reaches lowest risk threshold', () => {
         potentialRisk = 60;
-        wrapper = shallow(<SimulatedRisk scoreBest={scoreBest}
+        wrapper = shallowWithIntl(<SimulatedRisk scoreBest={scoreBest}
                                          scoreCurrent={scoreCurrent}
                                          potentialRisk={potentialRisk}
                                          addOption={addOption}
@@ -121,7 +121,7 @@ describe('<SimulatedRisk />', () => {
       it('shifts potential risk up if it gets close to the lowest possible risk', () => {
         scoreCurrent = 80;
         potentialRisk = 58;
-        wrapper = shallow(<SimulatedRisk scoreBest={scoreBest}
+        wrapper = shallowWithIntl(<SimulatedRisk scoreBest={scoreBest}
                                          scoreCurrent={scoreCurrent}
                                          potentialRisk={potentialRisk}
                                          addOption={addOption}
@@ -136,7 +136,7 @@ describe('<SimulatedRisk />', () => {
     describe('Lowest possible risk label', () => {
       it('shifts lowest risk down if it gets close to the potential risk label', () => {
         potentialRisk = 58;
-        wrapper = shallow(<SimulatedRisk scoreBest={scoreBest}
+        wrapper = shallowWithIntl(<SimulatedRisk scoreBest={scoreBest}
                                          scoreCurrent={scoreCurrent}
                                          potentialRisk={potentialRisk}
                                          addOption={addOption}
@@ -151,7 +151,7 @@ describe('<SimulatedRisk />', () => {
     describe('0% label', () => {
       it('hides the 0% label if the lowest possible risk is 0%', () => {
         scoreBest = 0;
-        wrapper = shallow(<SimulatedRisk scoreBest={scoreBest}
+        wrapper = shallowWithIntl(<SimulatedRisk scoreBest={scoreBest}
                                          scoreCurrent={scoreCurrent}
                                          potentialRisk={potentialRisk}
                                          addOption={addOption}
@@ -166,7 +166,7 @@ describe('<SimulatedRisk />', () => {
       it('hides the 0% label if there are 3 label collisions', () => {
         potentialRisk = 76;
         scoreBest = 2;
-        wrapper = shallow(<SimulatedRisk scoreBest={scoreBest}
+        wrapper = shallowWithIntl(<SimulatedRisk scoreBest={scoreBest}
                                          scoreCurrent={scoreCurrent}
                                          potentialRisk={potentialRisk}
                                          addOption={addOption}
@@ -185,7 +185,7 @@ describe('<SimulatedRisk />', () => {
       it('shifts potential risk up if it gets close to the lowest possible risk', () => {
         potentialRisk = 58;
         width = 600;
-        wrapper = shallow(<SimulatedRisk scoreBest={scoreBest}
+        wrapper = shallowWithIntl(<SimulatedRisk scoreBest={scoreBest}
                                          scoreCurrent={scoreCurrent}
                                          potentialRisk={potentialRisk}
                                          addOption={addOption}
@@ -201,7 +201,7 @@ describe('<SimulatedRisk />', () => {
       it('shifts lowest risk down if it gets close to the potential risk label', () => {
         potentialRisk = 58;
         width = 600;
-        wrapper = shallow(<SimulatedRisk scoreBest={scoreBest}
+        wrapper = shallowWithIntl(<SimulatedRisk scoreBest={scoreBest}
                                          scoreCurrent={scoreCurrent}
                                          potentialRisk={potentialRisk}
                                          addOption={addOption}
@@ -217,7 +217,7 @@ describe('<SimulatedRisk />', () => {
       it('hides the 0% label if lowest possible risk label is equal to or higher than 48 px', () => {
         scoreBest = 3;
         width = 600;
-        wrapper = shallow(<SimulatedRisk scoreBest={scoreBest}
+        wrapper = shallowWithIntl(<SimulatedRisk scoreBest={scoreBest}
                                          scoreCurrent={scoreCurrent}
                                          potentialRisk={potentialRisk}
                                          addOption={addOption}
