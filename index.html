@@ -8,6 +8,7 @@
     <link rel='stylesheet' type='text/css' href='styles.css'>
     -->
     <link rel='stylesheet' type='text/css' href='build/css/styles.css'>
+    <link rel='stylesheet' type='text/css' href='app/loading-indicator.css'>
     <style>
       body {
         margin: 0;
@@ -16,6 +17,11 @@
     <title>SMART ASCVD Risk App</title>
   </head>
   <body>
+    <div id='loadingIndicator' class='loading-indicator'>
+      <div class='bounce1'></div>
+      <div class='bounce2'></div>
+      <div class='bounce3'></div>
+    </div>
     <div id='container'></div>
     <script src='lib/fhir-client.min.js'></script>
     <script src='lib/jquery.min.js'></script>
