@@ -51,3 +51,10 @@
   content: '*';
   padding-right: 3px;
 }
+
+
+@media print {
+  .btn {
+    -webkit-print-color-adjust: exact;
+  }
+}

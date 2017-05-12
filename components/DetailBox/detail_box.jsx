@@ -28,15 +28,17 @@ class DetailBox extends React.Component {
   render() {
     return (
       <div className={styles.container}>
-        <div className={styles.header} onClick={this.handleClick}>
-          <div className={this.state.isExpanded ? styles['arrow-down'] : styles['arrow-right']} />
-          <div className={styles.title}>
-            {this.props.boxHeader}
+        <div className={styles['page-break']}>
+          <div className={styles.header} onClick={this.handleClick}>
+            <div className={this.state.isExpanded ? styles['arrow-down'] : styles['arrow-right']} />
+            <div className={styles.title}>
+              {this.props.boxHeader}
+            </div>
           </div>
-        </div>
-        <div className={this.state.isExpanded ? styles.body : styles.collapsed}>
-          <div className={styles.description}>
-            {this.props.boxBody}
+          <div className={this.state.isExpanded ? styles.body : styles.collapsed}>
+            <div className={styles.description}>
+              {this.props.boxBody}
+            </div>
           </div>
         </div>
       </div>

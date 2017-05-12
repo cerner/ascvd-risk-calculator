@@ -17,3 +17,18 @@
   margin: auto;
   background-clip: content-box;
 }
+
+.page-break {
+  display: none;
+}
+
+@media print {
+  .page-break	{
+    display: block;
+    page-break-before: always;
+  }
+
+  .divide {
+    -webkit-print-color-adjust: exact;
+  }
+}

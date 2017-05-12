@@ -20,7 +20,7 @@ describe('<DetailBox />', () => {
   it('can be collapsed', () => {
     wrapper.find('.header').simulate('click');
     expect(wrapper.state('isExpanded')).toEqual(false);
-    expect(wrapper.find('.container').childAt(1).html())
+    expect(wrapper.find('.page-break').childAt(1).html())
       .toEqual(`<div class="collapsed"><div class="description">${body}</div></div>`);
     expect(wrapper.find('.arrow-right').html()).toEqual('<div class="arrow-right"></div>');
   });
@@ -28,7 +28,7 @@ describe('<DetailBox />', () => {
   it('can be expanded', () => {
     wrapper.find('.header').simulate('click');
     expect(wrapper.state('isExpanded')).toEqual(true);
-    expect(wrapper.find('.container').childAt(1).html())
+    expect(wrapper.find('.page-break').childAt(1).html())
       .toEqual(`<div class="body"><div class="description">${body}</div></div>`);
     expect(wrapper.find('.arrow-down').html()).toEqual('<div class="arrow-down"></div>');
   });

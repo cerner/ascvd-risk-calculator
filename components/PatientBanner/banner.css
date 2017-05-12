@@ -3,6 +3,7 @@
   background-color: #0065a3;
   height: 30px;
   display: table;
+  color: #FFF;
 }
 
 .name {
@@ -10,7 +11,6 @@
   display: table-row;
   font-family: "Helvetica";
   font-weight: 700;
-  color: #FFF;
 }
 
 .details {
@@ -19,7 +19,6 @@
   font-size: 16px;
   font-family: "Helvetica";
   font-weight: 700;
-  color: #FFF;
 }
 
 .age {
@@ -30,7 +29,6 @@
   padding-left: 10px;
   vertical-align: text-bottom;
   font-size: 16px;
-  color: #FFF;
   font-weight: 400;
 }
 
@@ -40,4 +38,10 @@
 
 .patient-container {
   padding: 5px 10px;
+}
+
+@media print {
+  .container {
+    -webkit-print-color-adjust: exact;
+  }
 }
