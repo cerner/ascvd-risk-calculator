@@ -14,7 +14,7 @@ import DetailBox from '../../../components/DetailBox/detail_box';
 describe('<Recommendations />', () => {
   it('should render at least 4 recommendations', () => {
     let wrapper = shallow(<Recommendations />);
-    expect(wrapper.find(DetailBox)).toHaveLength(5);
+    expect(wrapper.find(DetailBox).length).toBeGreaterThanOrEqual(4);
   });
 
   it('should not render a recommendation to quit smoking if patient is not currently a smoker', () => {
@@ -27,6 +27,6 @@ describe('<Recommendations />', () => {
     ASCVDRisk.patientInfo.relatedFactors.smoker = true;
     let wrapper = shallow(<Recommendations />);
     expect(wrapper.find('.hidden')).toHaveLength(0);
-    expect(wrapper.find(DetailBox)).toHaveLength(5);
+    expect(wrapper.find(DetailBox).length).toBeGreaterThan(4);
   });
 });

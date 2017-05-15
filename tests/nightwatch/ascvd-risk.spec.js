@@ -235,31 +235,36 @@ module.exports = {
   'Recommendations view with content': (browser) => {
     browser
       .url(`http://localhost:${browser.globals.webpackDevServerPort}/recommendations.html`)
-      .assert.containsText('#recSmoker .detail_box__title', 'Quit smoking')
-      .assert.containsText('#recSmoker .detail_box__description', 'Your risk of heart attack or stroke decreases ' +
-      'soon after you quit smoking. Blood flow to the heart and brain is vital, and increases ' +
-      'almost immediately after your last cigarette. Additionally, the rate of plaque build-up ' +
-      'in your blood vessels decreases. Ask your doctor about smoking cessation aids proven ' +
-      'to be effective.')
+      .assert.containsText('#recSmoker .detail_box__title', 'Quit Smoking')
+      .assert.containsText('#recSmoker .detail_box__description', 'Besides causing cancer and lung disease, smoking ' +
+        'is a leading cause of stroke and heart attack. Nicotine replacement (patches, gum, lozenges), ' +
+        'coaching programs, and medications (Chantix, Buproprion) can increase your chances of success. ' +
+        'See www.smokefree.gov for more information.')
       .assert.containsText('#recStatin .detail_box__title', 'Consider a statin')
-      .assert.containsText('#recStatin .detail_box__description', 'Statins lower LDL (bad) cholesterol ' +
-      'and raise HDL (good) cholesterol in your blood. Improved cholesterol levels decrease your ' +
-      'risk for a heart attack or a stroke. Discuss the benefits and risks of statins with ' +
-      'your doctor.')
-      .assert.containsText('#recAspirin .detail_box__title', 'Take an aspirin every day')
-      .assert.containsText('#recAspirin .detail_box__description', 'Taking an aspirin daily can ' +
-      'reduce your risk of heart attacks and strokes, or reduce the severity of such an event. ' +
-      'Your doctor can provide guidance on the recommended daily dose that’s right for you.')
-      .assert.containsText('#recBP .detail_box__title', 'Control your blood pressure')
-      .assert.containsText('#recBP .detail_box__description', 'High blood pressure stresses your ' +
-      'body’s blood vessels, weakening them and greatly increasing your risk for heart attack or stroke.' +
-      ' Blood pressure medications, weight control, exercise, and managing your sodium intake can ' +
-      'all have positive impact on your blood pressure.')
-      .assert.containsText('#recExercise .detail_box__title', 'Exercise')
-      .assert.containsText('#recExercise .detail_box__description', 'Regular physical activity helps ' +
-      'you control your weight, blood pressure, and cholesterol. Be sure to consult your doctor ' +
-      'before starting an exercise program.')
-      .click('#recSmoker .detail_box__header')
+      .assert.containsText('#recStatin .detail_box__description', 'Statins can reduce your risk of heart attack or ' +
+        'stroke by 25%, even if your cholesterol level is in the “normal” range. The American Heart ' +
+        'Association and American College of Cardiology recommend statins for people with diabetes, prior ' +
+        'heart disease or stroke, and people at high risk of developing heart disease.')
+        .assert.containsText('#recAspirin .detail_box__title', 'Aspirin')
+      .assert.containsText('#recAspirin .detail_box__description', 'Aspirin can help lower your risk of heart attack ' +
+        'or stroke by about 10%. Aspirin may increase your risk of bleeding. Talk to your doctor about ' +
+        'whether you may benefit from taking aspirin daily and what dose may be the best.')
+        .assert.containsText('#recBP .detail_box__title', 'Control your blood pressure')
+      .assert.containsText('#recBP .detail_box__description', 'Every 10 point lowering of your systolic blood pressure ' +
+        'or 5 point lowering of your diastolic blood pressure can lower your risk of heart disease by 21%. High blood ' +
+        'pressure can be treated with diet, weight loss, and medications. Lowering your sodium intake to 2,400 mg per ' +
+        'day or even as low as 1,000 mg per day can help lower your blood pressure. Different people benefit from ' +
+        'different goal blood pressures. Ask your doctor what your goal should be.')
+      .assert.containsText('#recExercise .detail_box__title', 'Exercise More')
+      .assert.containsText('#recExercise .detail_box__description', 'The American Heart Association and American College ' +
+        'of Cardiology recommend 3-4 sessions per week of at least 40 minutes per session of moderate to vigorous ' +
+        'physical activity. But even small increases in your amount of physical activity can improve your heart health.')
+        .assert.containsText('#recEating .detail_box__title', 'Eat more Heart-Healthy Food')
+      .assert.containsText('#recEating .detail_box__description', 'Try to limit your intake of sugar, including sweets ' +
+        'and sugar sweetened drinks. Eating more vegetables, fruits, whole grains, low-fat dairy, poultry (chicken), ' +
+        'fish, beans, olive oil and nuts can help lower your risk of heart disease. Try to avoid or reduce trans fat and ' +
+        'saturated fat, which are high in lard, butter, red meat, and fried foods.')
+        .click('#recSmoker .detail_box__header')
       .assert.hidden('#recSmoker .detail_box__description')
       .assert.visible('#recSmoker .detail_box__title');
   }
