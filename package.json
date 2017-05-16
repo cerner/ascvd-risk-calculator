@@ -1,6 +1,6 @@
 {
   "name": "ascvd-risk-app",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Cerner Corporation, SMART on FHIR",
   "description": "SMART ASCVD Risk App",
   "license": "Apache-2.0",

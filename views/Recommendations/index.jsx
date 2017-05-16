@@ -28,44 +28,58 @@ class Recommendations extends React.Component {
   render() {
     return (
       <div className={styles.container}>
-        <div id={'recSmoker'} className={Recommendations.shouldHide('smoker')}>
-          <DetailBox
-            boxHeader={'Quit smoking'}
-            boxBody={`Your risk of heart attack or stroke decreases soon after you quit smoking.
-              Blood flow to the heart and brain is vital, and increases almost immediately after your last
-              cigarette. Additionally, the rate of plaque build-up in your blood vessels decreases. Ask your
-              doctor about smoking cessation aids proven to be effective.`}
-          />
-        </div>
         <div id={'recStatin'}>
           <DetailBox
             boxHeader={'Consider a statin'}
-            boxBody={`Statins lower LDL (bad) cholesterol and raise HDL (good) cholesterol in your blood.
-              Improved cholesterol levels decrease your risk for a heart attack or a stroke. Discuss the benefits
-              and risks of statins with your doctor.`}
-          />
-        </div>
-        <div id={'recAspirin'}>
-          <DetailBox
-            boxHeader={'Take an aspirin every day'}
-            boxBody={`Taking an aspirin daily can reduce your risk of heart attacks and strokes, or reduce
-              the severity of such an event. Your doctor can provide guidance on the recommended daily dose that’s
-              right for you.`}
+            boxBody={`Statins can reduce your risk of heart attack or stroke by 25%, even if your
+              cholesterol level is in the “normal” range. The American Heart Association and American College
+              of Cardiology recommend statins for people with diabetes, prior heart disease or stroke, and
+              people at high risk of developing heart disease.`}
           />
         </div>
         <div id={'recBP'}>
           <DetailBox
             boxHeader={'Control your blood pressure'}
-            boxBody={`High blood pressure stresses your body’s blood vessels, weakening them and greatly
-              increasing your risk for heart attack or stroke. Blood pressure medications, weight control,
-              exercise, and managing your sodium intake can all have positive impact on your blood pressure.`}
+            boxBody={`Every 10 point lowering of your systolic blood pressure or 5 point lowering of
+              your diastolic blood pressure can lower your risk of heart disease by 21%. High blood pressure
+              can be treated with diet, weight loss, and medications. Lowering your sodium intake to 2,400 mg
+              per day or even as low as 1,000 mg per day can help lower your blood pressure.\n\n Different people
+              benefit from different goal blood pressures. Ask your doctor what your goal should be.`}
           />
         </div>
         <div id={'recExercise'}>
           <DetailBox
-            boxHeader={'Exercise'}
-            boxBody={`Regular physical activity helps you control your weight, blood pressure, and cholesterol.
-              Be sure to consult your doctor before starting an exercise program.`}
+            boxHeader={'Exercise More'}
+            boxBody={`The American Heart Association and American College of Cardiology recommend
+              3-4 sessions per week of at least 40 minutes per session of moderate to vigorous
+              physical activity. But even small increases in your amount of physical activity
+              can improve your heart health.`}
+          />
+        </div>
+        <div id={'recEating'}>
+          <DetailBox
+            boxHeader={'Eat more Heart-Healthy Food'}
+            boxBody={`Try to limit your intake of sugar, including sweets and sugar sweetened drinks.
+              Eating more vegetables, fruits, whole grains, low-fat dairy, poultry (chicken), fish, beans,
+              olive oil and nuts can help lower your risk of heart disease. Try to avoid or reduce trans
+              fat and saturated fat, which are high in lard, butter, red meat, and fried foods.`}
+          />
+        </div>
+        <div id={'recSmoker'} className={Recommendations.shouldHide('smoker')}>
+          <DetailBox
+            boxHeader={'Quit Smoking'}
+            boxBody={`Besides causing cancer and lung disease, smoking is a leading cause of stroke and
+              heart attack. Nicotine replacement (patches, gum, lozenges), coaching programs, and
+              medications (Chantix, Buproprion) can increase your chances of success. See
+              www.smokefree.gov for more information.`}
+          />
+        </div>
+        <div id={'recAspirin'}>
+          <DetailBox
+            boxHeader={'Aspirin'}
+            boxBody={`Aspirin can help lower your risk of heart attack or stroke by about 10%. Aspirin may
+              increase your risk of bleeding. Talk to your doctor about whether you may benefit from taking
+              aspirin daily and what dose may be the best.`}
           />
         </div>
       </div>
