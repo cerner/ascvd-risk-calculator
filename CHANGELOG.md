@@ -1,5 +1,7 @@
 # CHANGELOG
 
+* 1.2.0
+    - Implemented a loading indicator while app loads and data is fetched
 * 1.1.0
     - Update recommendation text to have more clinical value 
 * 1.0.0
