@@ -1,5 +1,7 @@
 # CHANGELOG
 
+* 1.3.0
+    - Update UI for the risk factors view to be print-friendly
 * 1.2.0
     - Implemented a loading indicator while app loads and data is fetched
 * 1.1.0
