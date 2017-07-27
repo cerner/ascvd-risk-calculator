@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import styles from './graph_bar.css';
 
 /**
@@ -9,8 +10,29 @@ class GraphBar extends React.Component {
   constructor(props) {
     super(props);
     this.getBarStyle = this.getBarStyle.bind(this);
-    this.getPercentStyle = this.getPercentStyle.bind(this);
+    this.getPercentClass = this.getPercentClass.bind(this);
     this.getContainerHeight = this.getContainerHeight.bind(this);
+    this.getBarClass = this.getBarClass.bind(this);
+    this.getPercentContainerHeight = this.getPercentContainerHeight.bind(this);
+  }
+
+  /**
+   * Returns the color/pattern of the bar graph to be displayed based on the
+   * barColor prop being passed in
+   * @returns {string} - A CSS class containing the background color/pattern
+   *                     to be displayed on the bar if possible
+   */
+  getBarClass() {
+    if (this.props.barColor === '') {
+      if (this.props.percent === 0) {
+        return '';
+      }
+      return styles['current-risk'];
+    }
+    if (this.props.percent === 0) {
+      return '';
+    }
+    return styles['lowest-possible-risk'];
   }
 
   /**
@@ -25,38 +47,27 @@ class GraphBar extends React.Component {
     const height = `${Math.round((250 * (0.01 * this.props.percent)) * 10) / 10}px`;
     if (this.props.barColor === '') {
       return {
-        background: 'repeating-linear-gradient(135deg, #FFB166 0, #ffffff 1px, #ffffff 1px, #FFB166 2px, #FFB166 13px)',
         float: 'left',
         height,
       };
     }
     return {
-      backgroundColor: this.props.barColor,
       float: 'left',
       height,
     };
   }
 
   /**
-   * Checks width of the screen to specify how to center the percentage displays
-   * on top of the bar graph
-   * @returns {*} - CSS styles to align the percentages
+   * Checks if the percentage to display pertains to the current or lowest possible
+   * risk and returns the correct css class to display the positioning of the percent
+   * display
+   * @returns {*} - A CSS class that displays the percentage accordingly on the bar
    */
-  getPercentStyle() {
-    if (this.props.width <= 685 && this.props.barColor === '') {
-      return ({
-        textAlign: 'left',
-        marginLeft: '-13px',
-      });
-    } else if (this.props.width <= 685 && this.props.barColor !== '') {
-      return ({
-        textAlign: 'right',
-        marginLeft: '5px',
-      });
+  getPercentClass() {
+    if (this.props.barColor === '') {
+      return styles['percent-left'];
     }
-    return ({
-      textAlign: 'center',
-    });
+    return styles['percent-right'];
   }
 
   /**
@@ -65,26 +76,51 @@ class GraphBar extends React.Component {
    * @returns {{height: string}} - A CSS style that defines the height of this container
    */
   getContainerHeight() {
+    if (this.props.barColor === '') {
+      return {
+        height: `${Math.round(((250 * (0.01 * this.props.percent)) + 34) * 10) / 10}px`,
+      };
+    }
     return {
-      height: `${Math.round(((250 * (0.01 * this.props.percent)) + 16) * 10) / 10}px`,
+      height: `${Math.round(((250 * (0.01 * this.props.percent)) + 60) * 10) / 10}px`,
+    };
+  }
+
+  /**
+   * Sets a height for this percent text container that includes the percent
+   * and the percent label display on top. Primarily used in the context
+   * of a print session.
+   * @returns {{height: string}} - A CSS style that defines the height of this container
+   */
+  getPercentContainerHeight() {
+    if (this.props.barColor === '') {
+      return {
+        height: '34px',
+      };
+    }
+    return {
+      height: '60px',
     };
   }
 
   render() {
     return (
       <div className={styles.container} style={this.getContainerHeight()}>
-        <div className={styles.percent} style={this.getPercentStyle()}>
-          {`${this.props.percent}%`}
+        <div className={styles['percent-container']} style={this.getPercentContainerHeight()}>
+          <div className={styles['percent-label']}>{this.props.percentLabel}</div>
+          <div className={cx(styles.percent, this.getPercentClass())}>
+            {`${this.props.percent}%`}
+          </div>
         </div>
-        <div className={styles.bar} style={this.getBarStyle()} />
+        <div className={cx(styles.bar, this.getBarClass())} style={this.getBarStyle()} />
       </div>
     );
   }
 }
 GraphBar.propTypes = {
   barColor: React.PropTypes.string.isRequired,
+  percentLabel: React.PropTypes.string,
   percent: React.PropTypes.number,
-  width: React.PropTypes.number,
 };
 
 export default GraphBar;

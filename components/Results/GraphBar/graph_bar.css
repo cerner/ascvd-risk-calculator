@@ -4,22 +4,51 @@
   height: 100px;
 }
 
+.percent-label {
+  display: none;
+}
+
 .percent {
   color: #2D3539;
   font-size: 16px;
   font-family: Helvetica;
   text-align: center;
-  padding-bottom: 6px;
   height: 16px;
   width: 100px;
+  vertical-align: bottom;
   position: absolute;
+  bottom: 0;
+}
+
+.percent-container {
+  vertical-align: bottom;
+  width: 100px;
+  position: absolute;
+  text-align: center;
 }
 
 .bar {
   width: 100px;
-  position: absolute;
   bottom: 0;
   border: none;
+  position: absolute;
+  vertical-align: bottom;
+}
+
+.current-risk {
+  background: repeating-linear-gradient(135deg, #FFB166 0, #ffffff 1px, #ffffff 1px, #FFB166 2px, #FFB166 13px);
+}
+
+.lowest-possible-risk {
+  background-color: #FF9733;
+}
+
+.percent-left {
+  text-align: center;
+}
+
+.percent-right {
+  text-align: center;
 }
 
 @media only screen and (max-width: 860px) {
@@ -45,5 +74,60 @@
 
   .bar {
     width: 20px;
+  }
+
+  .percent-left {
+    text-align: left;
+    margin-left: -13px;
+  }
+
+  .percent-right {
+    text-align: right;
+    margin-left: 5px;
+  }
+}
+
+@media print and (max-width: 700px) {
+  .percent-left {
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .percent-right {
+    text-align: center;
+    margin-left: 0;
+  }
+}
+
+@media print {
+  .lowest-possible-risk {
+    background: none;
+    width: 100px;
+    border: solid #2d3539;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .current-risk {
+    background: none;
+    width: 97px;
+    border: solid #6F7477;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .percent-label {
+    position: relative;
+    display: block;
+    text-align: center;
+    width: 70px;
+    font-size: 12px;
+    margin: 0 auto;
+    font-family: Helvetica;
+    vertical-align: bottom;
+  }
+
+  .percent {
+    position: relative;
+    padding-bottom: 5px;
+    margin: 0 auto;
   }
 }

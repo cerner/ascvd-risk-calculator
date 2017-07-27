@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import GraphBar from '../GraphBar/graph_bar';
 import styles from './graph.css';
 
@@ -98,13 +99,13 @@ class Graph extends React.Component {
               >
                 <GraphBar
                   barColor={''}
+                  percentLabel={'Current Risk'}
                   percent={this.props.tenYearScore}
-                  width={this.props.width}
                 />
                 <GraphBar
                   barColor={'#FF9733'}
+                  percentLabel={'Lowest Possible Risk'}
                   percent={this.props.tenYearBest}
-                  width={this.props.width}
                 />
                 <div className={styles['bar-label']}>10 Year Risk</div>
               </div>
@@ -115,22 +116,22 @@ class Graph extends React.Component {
               >
                 <GraphBar
                   barColor={''}
+                  percentLabel={'Current Risk'}
                   percent={this.props.lifetimeScore}
-                  width={this.props.width}
                 />
                 <GraphBar
                   barColor={'#FF9733'}
+                  percentLabel={'Lowest Possible Risk'}
                   percent={this.props.lifetimeBest}
-                  width={this.props.width}
                 />
                 <div className={styles['bar-label']}>Lifetime Risk</div>
               </div>
             </div>
           </div>
           <div className={styles['legend-container']}>
-            <div className={styles['legend-bar']} style={Graph.setColor('')} />
+            <div className={cx(styles['legend-bar'], styles['current-risk'])} />
             <div className={styles['legend-label']}>Current Risk</div>
-            <div className={styles['legend-bar']} style={Graph.setColor('#FF9733')} />
+            <div className={cx(styles['legend-bar'], styles['lowest-risk'])} />
             <div className={styles['legend-label']}>Lowest Possible Risk</div>
           </div>
         </div>

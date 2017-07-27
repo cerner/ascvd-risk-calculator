@@ -470,6 +470,7 @@ class SimulatedRisk extends React.Component {
             </div>
           </div>
         </div>
+        <div className={styles['page-break']} />
         <div className={styles.right}>
           <RiskAction
             prompt={'Explore how different actions ' +

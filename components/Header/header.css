@@ -13,3 +13,9 @@
   -webkit-box-shadow: inset 0 -1px #DEDFE0;
   box-shadow:         inset 0 -1px #DEDFE0;
 }
+
+@media print {
+  .header {
+    -webkit-print-color-adjust: exact;
+  }
+}

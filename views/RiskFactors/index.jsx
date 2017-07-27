@@ -81,6 +81,7 @@ class RiskFactors extends React.Component {
           lifetimeScore={this.props.lifetimeScore}
         />
         <div className={styles.divide} />
+        <div className={styles['page-break']} />
         {this.displaySimulatedRisk()}
       </div>
     );

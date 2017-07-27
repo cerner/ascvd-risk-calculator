@@ -136,6 +136,14 @@
   height: 0;
 }
 
+.current-risk {
+  background: repeating-linear-gradient(135deg, #FFB166 0, #ffffff 1px, #ffffff 1px, #FFB166 2px, #FFB166 13px)
+}
+
+.lowest-risk {
+  background-color: #FF9733;
+}
+
 @media only screen and (max-width: 860px) {
   .graph-border {
     height: 250px;
@@ -195,5 +203,23 @@
   }
   .bar-container {
     width: 100%;
+  }
+}
+
+@media print {
+  .graph-title {
+    margin-left: 0;
+  }
+
+  .inner {
+    margin-right: 0;
+  }
+
+  .legend-label {
+    display: none;
+  }
+
+  .legend-bar {
+    display: none;
   }
 }

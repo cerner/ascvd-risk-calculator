@@ -62,3 +62,9 @@
 input[name="dropdown"] {
   cursor: pointer;
 }
+
+@media print {
+  .page-break {
+    page-break-inside: avoid;
+  }
+}

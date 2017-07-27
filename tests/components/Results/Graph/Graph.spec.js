@@ -41,13 +41,10 @@ describe('<Graph />', () => {
   });
 
   it('should have a legend showing two patterns of two types of scores', () => {
-    const background =
-      "repeating-linear-gradient(135deg, #FFB166 0, #ffffff 1px, #ffffff 1px, #FFB166 2px, #FFB166 13px)";
-
     expect(wrapper.find('.legend-container')).toHaveLength(1);
-    chai.expect(wrapper.find('.legend-bar').first()).to.have.style("background", background);
+    chai.expect(wrapper.find('.legend-bar').first()).to.have.className('current-risk');
     expect(wrapper.find('.legend-label').first().text()).toEqual('Current Risk');
-    chai.expect(wrapper.find('.legend-bar').last()).to.have.style("background-color", '#FF9733');
+    chai.expect(wrapper.find('.legend-bar').last()).to.have.className('lowest-risk');
     expect(wrapper.find('.legend-label').last().text()).toEqual('Lowest Possible Risk');
   });
 

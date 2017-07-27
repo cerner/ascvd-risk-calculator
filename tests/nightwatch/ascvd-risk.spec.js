@@ -267,5 +267,83 @@ module.exports = {
         .click('#recSmoker .detail_box__header')
       .assert.hidden('#recSmoker .detail_box__description')
       .assert.visible('#recSmoker .detail_box__title');
+  },
+  'Risk Factors view responds in print request': (browser) => {
+    browser
+      .url(`http://localhost:${browser.globals.webpackDevServerPort}/riskfactors.html`)
+      .click('.send_form__active')
+      .execute((function pretendToBeAPrinter() {
+        //For looking up if something is in the media list
+        function hasMedia(list, media) {
+          if (!list) return false;
+
+          var i = list.length;
+          while (i--) {
+            if (list[i] === media) {
+              return true;
+            }
+          }
+          return false;
+        }
+
+        //Loop though all stylesheets
+        for (var styleSheetNo = 0; styleSheetNo < document.styleSheets.length; styleSheetNo++) {
+          //Current stylesheet
+          var styleSheet = document.styleSheets[styleSheetNo];
+
+          //First, check if any media queries have been defined on the <style> / <link> tag
+
+          //Disable screen-only sheets
+          if (hasMedia(styleSheet.media, "screen") && !hasMedia(styleSheet.media, "print")) {
+            styleSheet.disabled = true;
+          }
+
+          //Display "print" stylesheets
+          if (!hasMedia(styleSheet.media, "screen") && hasMedia(styleSheet.media, "print")) {
+            //Add "screen" media to show on screen
+            styleSheet.media.appendMedium("screen");
+          }
+
+          //Get the CSS rules in a cross-browser compatible way
+          var rules = styleSheet.rules || styleSheet.cssRules;
+
+          //Handle cases where styleSheet.rules is null
+          if (!rules) {
+            continue;
+          }
+
+          //Second, loop through all the rules in a stylesheet
+          for (var ruleNo = 0; ruleNo < rules.length; ruleNo++) {
+            //Current rule
+            var rule = rules[ruleNo];
+
+            //Hide screen-only rules
+            if (hasMedia(rule.media, "screen") && !hasMedia(rule.media, "print")) {
+              //Rule.disabled doesn't work here, so we remove the "screen" rule and add the "print" rule so it isn't shown
+              rule.media.appendMedium(':not(screen)');
+              rule.media.deleteMedium('screen');
+            }
+
+            //Display "print" rules
+            if (!hasMedia(rule.media, "screen") && hasMedia(rule.media, "print")) {
+              //Add "screen" media to show on screen
+              rule.media.appendMedium("screen");
+            }
+          }
+        }
+      }))
+      .assert.cssProperty('.graph__legend-label', 'display', 'none')
+      .assert.cssProperty('.graph__legend-bar', 'display', 'none')
+      .assert.cssProperty('.graph_bar__lowest-possible-risk', 'background-color', 'rgba(0, 0, 0, 0)')
+      .assert.cssProperty('.graph_bar__lowest-possible-risk', 'border', '3px solid rgb(45, 53, 57)')
+      .assert.cssProperty('.graph_bar__current-risk', 'background-color', 'rgba(0, 0, 0, 0)')
+      .assert.cssProperty('.graph_bar__current-risk', 'border', '3px solid rgb(111, 116, 119)')
+      .assert.containsText('.graph__ten-year-group', 'Current Risk')
+      .assert.containsText('.graph__ten-year-group', 'Lowest Possible Risk')
+      .assert.cssProperty('.simulated_risk__bar-lowest-risk', 'background-color', 'rgba(0, 0, 0, 0)')
+      .assert.cssProperty('.simulated_risk__bar-current-risk', 'background-color', 'rgba(0, 0, 0, 0)')
+      .assert.cssProperty('.simulated_risk__bar-potential-risk', 'background-color', 'rgba(0, 0, 0, 0)')
+      .assert.cssProperty('.simulated_risk__bar-current-risk', 'width', '50px')
+      .assert.cssProperty('.simulated_risk__bar-potential-risk', 'width', '25px');
   }
 };

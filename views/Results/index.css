@@ -63,3 +63,21 @@
     width: 230px;
   }
 }
+
+@media print {
+  .grouped-column {
+    width: 180px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .column {
+    padding-right: 0;
+  }
+
+  .row {
+    display: block;
+    margin: 0 auto;
+    width: 230px;
+  }
+}

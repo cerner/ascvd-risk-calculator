@@ -91,18 +91,74 @@
   display: none;
 }
 
+.page-break {
+  display: none;
+}
+
 @media only screen and (max-width: 860px) {
+  .page-break	{
+    display: none;
+  }
+
   .bar-total {
     width: 80px;
   }
 }
 
 @media only screen and (max-width: 700px) {
+  .page-break	{
+    display: none;
+  }
+
   .bar-total {
     width: 40px;
   }
 
   .bar-labels {
     width: 50px;
+  }
+}
+
+@media print {
+  .container {
+    padding-top: 0px;
+  }
+
+  .page-break {
+    page-break-before: avoid;
+  }
+
+  .bar-total {
+    -webkit-print-color-adjust: exact;
+  }
+
+  .bar-lowest-risk {
+    background: none;
+    border: solid #2d3539;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .bar-current-risk {
+    background: none;
+    border: solid #6F7477;
+    border-bottom: none;
+    width: 50px;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .bar-potential-risk {
+    background: none;
+    border: solid #B2B5B6;
+    border-bottom: none;
+    width: 25px;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .full-border {
+    border: none;
+  }
+
+  .partial-border {
+    border: none;
   }
 }
