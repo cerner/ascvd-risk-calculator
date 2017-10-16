@@ -24,10 +24,10 @@
   "dependencies": {
     "canadarm": "^1.0.2",
     "classnames": "^2.2.5",
-    "fhirclient": "^0.1.10",
     "jquery": "^3.1.1",
     "react": "^15.4.1",
-    "react-dom": "^15.4.1"
+    "react-dom": "^15.4.1",
+    "react-intl": "^2.2.3"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
@@ -48,11 +48,14 @@
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.7.1",
     "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.11.1",
     "html-webpack-plugin": "^2.28.0",
     "identity-obj-proxy": "^3.0.0",
     "inject-loader": "^3.0.0-beta2",
+    "intl": "^1.2.5",
     "jest": "^17.0.3",
     "jsdom": "^9.8.3",
+    "json-loader": "^0.5.4",
     "mocha": "^3.2.0",
     "nightwatch": "^0.9.12",
     "react-addons-test-utils": "^15.4.1",
@@ -61,8 +64,9 @@
     "selenium-server-standalone-jar": "^3.2.0",
     "sinon": "^1.17.6",
     "style-loader": "^0.13.1",
-    "terra-toolkit": "^0.1.0",
+    "terra-toolkit": "^0.1.1",
     "uglify-js": "^2.8.11",
+    "url-loader": "^0.5.8",
     "webpack": "^1.13.3",
     "webpack-combine-loaders": "^2.0.3",
     "webpack-dev-server": "^1.16.2"
@@ -77,6 +81,7 @@
       "jsx"
     ],
     "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|svg)$": "<rootDir>/app/__mocks__/fileMock.js",
       "\\.(css)$": "identity-obj-proxy"
     },
     "testPathIgnorePatterns": [

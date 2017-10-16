@@ -1,7 +1,7 @@
 jest.mock('../../../app/load_fhir_data');
 
 import React from 'react';
-import { shallow, render, mount } from 'enzyme';
+import { mountWithIntl, shallowWithIntl } from '../../helpers/intl-enzyme-test-helper';
 import ASCVDRisk from '../../../app/load_fhir_data';
 import Results from '../../../views/Results/index';
 import ButtonForm from '../../../components/Form/ButtonForm/button_form';
@@ -14,24 +14,27 @@ describe('<Results />', () => {
   let updateRiskScores = jest.fn();
   let updateView = jest.fn();
   let updateChangedProperty = jest.fn();
-  let wrapper = shallow(<Results updateRiskScores={updateRiskScores}
+  const currentLocale = 'en';
+  let wrapper = shallowWithIntl(<Results updateRiskScores={updateRiskScores}
                                  updateView={updateView}
                                  updateChangedProperty={updateChangedProperty}
-                                 hideNav={true} options={[]} removeOption={jest.fn()} />);
+                                 hideNav={true} options={[]} removeOption={jest.fn()} currentLocale={currentLocale} />);
 
   it('should have props', () => {
-    let wrap = mount(<Results updateRiskScores={updateRiskScores}
+    let wrap = mountWithIntl(<Results updateRiskScores={updateRiskScores}
                               updateView={updateView}
                               updateChangedProperty={updateChangedProperty}
                               hideNav={true}
                               options={[]}
-                              removeOption={jest.fn()} />);
+                              removeOption={jest.fn()}
+                              currentLocale={currentLocale} />);
     expect(wrap.props().updateRiskScores).toBeDefined();
     expect(wrap.props().updateView).toBeDefined();
     expect(wrap.props().updateChangedProperty).toBeDefined();
     expect(wrap.props().hideNav).toBeDefined();
     expect(wrap.props().options).toBeDefined();
     expect(wrap.props().removeOption).toBeDefined();
+    expect(wrap.props().currentLocale).toBeDefined();
   });
 
   it('should have state for checking if risk can be computed', () => {
@@ -46,13 +49,13 @@ describe('<Results />', () => {
   });
 
   it('should change state to compute a score if patient model is valid', () => {
-    wrapper = mount(<Results updateRiskScores={updateRiskScores}
+    wrapper = mountWithIntl(<Results updateRiskScores={updateRiskScores}
                              updateView={updateView}
                              updateChangedProperty={updateChangedProperty}
                              hideNav={true}
                              options={[]}
-                             removeOption={jest.fn()} />);
-
+                             removeOption={jest.fn()}
+                             currentLocale={currentLocale} />);
     wrapper.find('input[name="user_input"]').at(1).simulate('change', {'target': {'value': 59}});
     expect(ASCVDRisk.canCalculateScore).toHaveBeenCalled();
     expect(wrapper.state('canCompute')).toEqual(true);

@@ -3,7 +3,7 @@ jest.mock('../../../app/load_fhir_data');
 import React from 'react';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import { shallow, render, mount } from 'enzyme';
+import { mountWithIntl, shallowWithIntl } from '../../helpers/intl-enzyme-test-helper';
 import ASCVDRisk from '../../../app/load_fhir_data';
 import RiskFactors from '../../../views/RiskFactors/index';
 import SimulatedRisk from '../../../components/Results/SimulatedRisk/simulated_risk';
@@ -16,6 +16,7 @@ describe('<RiskFactors />', () => {
   let tenYearScore;
   let width;
   let wrapper;
+  const currentLocale = 'en';
   chai.use(chaiEnzyme());
 
   beforeEach(() => {
@@ -24,13 +25,14 @@ describe('<RiskFactors />', () => {
     tenYearBest = 10;
     tenYearScore = 40;
     width = 1000;
-    wrapper = shallow(<RiskFactors addOption={jest.fn()}
+    wrapper = shallowWithIntl(<RiskFactors addOption={jest.fn()}
                                    lifetimeBest={lifetimeBest}
                                    lifetimeScore={lifetimeScore}
                                    options={[]}
                                    removeOption={jest.fn()}
                                    tenYearBest={tenYearBest}
-                                   tenYearScore={tenYearScore} />);
+                                   tenYearScore={tenYearScore}
+                                   currentLocale={currentLocale} />);
   });
 
   it('should have state', () => {
@@ -38,13 +40,14 @@ describe('<RiskFactors />', () => {
   });
 
   it('should have props', () => {
-    const wrap = mount(<RiskFactors addOption={jest.fn()}
+    const wrap = mountWithIntl(<RiskFactors addOption={jest.fn()}
                                     lifetimeBest={lifetimeBest}
                                     lifetimeScore={lifetimeScore}
                                     options={[]}
                                     removeOption={jest.fn()}
                                     tenYearBest={tenYearBest}
-                                    tenYearScore={tenYearScore} />);
+                                    tenYearScore={tenYearScore}
+                                    currentLocale={currentLocale} />);
 
     expect(wrap.props().addOption).toBeDefined();
     expect(wrap.props().lifetimeBest).toBeDefined();
@@ -53,6 +56,8 @@ describe('<RiskFactors />', () => {
     expect(wrap.props().removeOption).toBeDefined();
     expect(wrap.props().tenYearBest).toBeDefined();
     expect(wrap.props().tenYearScore).toBeDefined();
+    expect(wrap.props().currentLocale).toBeDefined();
+    expect(wrap.props().intl).toBeDefined();
   });
 
   it('should have a graph section and a simulation of risk', () => {
@@ -62,36 +67,39 @@ describe('<RiskFactors />', () => {
 
   it('should display a simulation of risk based on the lifetime risk if 10 year risk is null', () => {
     tenYearScore = null;
-    wrapper = shallow(<RiskFactors addOption={jest.fn()}
+    wrapper = shallowWithIntl(<RiskFactors addOption={jest.fn()}
                                    lifetimeBest={lifetimeBest}
                                    lifetimeScore={lifetimeScore}
                                    options={[]}
                                    removeOption={jest.fn()}
                                    tenYearBest={tenYearBest}
-                                   tenYearScore={tenYearScore} />);
+                                   tenYearScore={tenYearScore}
+                                   currentLocale={currentLocale} />);
     expect(ASCVDRisk.computePotentialRisk).toHaveBeenCalledWith([], 'lifetime');
   });
 
   it('should display a simulation of risk based on the 10 year risk if both risks are supplied', () => {
-    wrapper = shallow(<RiskFactors addOption={jest.fn()}
+    wrapper = shallowWithIntl(<RiskFactors addOption={jest.fn()}
                                    lifetimeBest={lifetimeBest}
                                    lifetimeScore={lifetimeScore}
                                    options={[]}
                                    removeOption={jest.fn()}
                                    tenYearBest={tenYearBest}
-                                   tenYearScore={tenYearScore} />);
+                                   tenYearScore={tenYearScore}
+                                   currentLocale={currentLocale} />);
     expect(ASCVDRisk.computePotentialRisk).toHaveBeenCalledWith([], 'ten');
   });
 
   it('should display a simulation of risk based on the 10 year risk if lifetime risk is null', () => {
     lifetimeScore = null;
-    wrapper = shallow(<RiskFactors addOption={jest.fn()}
+    wrapper = shallowWithIntl(<RiskFactors addOption={jest.fn()}
                                    lifetimeBest={lifetimeBest}
                                    lifetimeScore={lifetimeScore}
                                    options={[]}
                                    removeOption={jest.fn()}
                                    tenYearBest={tenYearBest}
-                                   tenYearScore={tenYearScore} />);
+                                   tenYearScore={tenYearScore}
+                                   currentLocale={currentLocale} />);
     expect(ASCVDRisk.computePotentialRisk).toHaveBeenCalledWith([], 'ten');
   });
 });

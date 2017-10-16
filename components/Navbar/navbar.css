@@ -38,9 +38,17 @@
   margin-left: 7px;
 }
 
+.tab.one:lang(es) {
+  width: 80px;
+}
+
 .tab.two {
   width: 98px;
   display: inline-block;
+}
+
+.tab.two:lang(es) {
+  width: 128px;
 }
 
 .tab.three {
@@ -68,5 +76,24 @@ input[name="nav_tabs"]:hover {
     display: block;
     margin: auto;
     text-align: center;
+  }
+
+  .container:lang(es) {
+    text-align: left;
+  }
+
+  .tab.one:lang(es) {
+    width: 67px;
+    font-size: 12px;
+  }
+
+  .tab.two:lang(es) {
+    width: 110px;
+    font-size: 12px;
+  }
+
+  .tab.three:lang(es) {
+    width: 110px;
+    font-size: 12px;
   }
 }

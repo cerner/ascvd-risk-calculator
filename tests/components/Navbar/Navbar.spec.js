@@ -1,7 +1,7 @@
 import React from 'react';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import { shallow, render, mount } from 'enzyme';
+import { shallowWithIntl, mountWithIntl } from '../../helpers/intl-enzyme-test-helper';
 import Navbar from '../../../components/Navbar/navbar';
 
 describe('<Navbar />', () => {
@@ -10,20 +10,21 @@ describe('<Navbar />', () => {
   const tab_one = 'one';
   const tab_two = 'two';
   const tab_three = 'three';
+  const currentLocale = 'en';
   let updateView = jest.fn();
   chai.use(chaiEnzyme());
 
   beforeEach(() => {
     updateView = jest.fn();
-    wrapper = shallow(<Navbar hideNav={false} tabIndex={2} changedProperty={false}
+    wrapper = shallowWithIntl(<Navbar hideNav={false} tabIndex={2} changedProperty={false}
                               updateView={updateView} tab_one={tab_one} tab_two={tab_two}
-                              tab_three={tab_three} />);
+                              tab_three={tab_three} currentLocale={currentLocale} />);
   });
 
   it('should have props', () => {
-    const wrap = mount(<Navbar hideNav={false} tabIndex={2} changedProperty={false}
+    const wrap = mountWithIntl(<Navbar hideNav={false} tabIndex={2} changedProperty={false}
                                updateView={updateView} tab_one={tab_one} tab_two={tab_two}
-                               tab_three={tab_three} />);
+                               tab_three={tab_three} currentLocale={currentLocale} />);
     expect(wrap.props().hideNav).toBeDefined();
     expect(wrap.props().tabIndex).toBeDefined();
     expect(wrap.props().changedProperty).toBeDefined();
@@ -38,9 +39,9 @@ describe('<Navbar />', () => {
   });
 
   it('should hide the navbar if user is on the form tab for the first time', () => {
-    wrapper = shallow(<Navbar hideNav={true} tabIndex={0} changedProperty={false}
+    wrapper = shallowWithIntl(<Navbar hideNav={true} tabIndex={0} changedProperty={false}
                               updateView={updateView} tab_one={tab_one} tab_two={tab_two}
-                              tab_three={tab_three} />);
+                              tab_three={tab_three} currentLocale={currentLocale} />);
     expect(wrapper.find('.hidden')).toHaveLength(1);
   });
 
@@ -60,9 +61,9 @@ describe('<Navbar />', () => {
   });
 
   describe('disabled tabs', () => {
-    const wraps = shallow(<Navbar hideNav={false} tabIndex={0} changedProperty={true}
+    const wraps = shallowWithIntl(<Navbar hideNav={false} tabIndex={0} changedProperty={true}
                                   updateView={updateView} tab_one={tab_one} tab_two={tab_two}
-                                  tab_three={tab_three} />);
+                                  tab_three={tab_three} currentLocale={currentLocale} />);
 
     it('should have one tab active and the others disabled', () => {
       expect(wraps.find('.active')).toHaveLength(1);

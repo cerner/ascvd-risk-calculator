@@ -1,7 +1,7 @@
 jest.mock('../../../app/load_fhir_data');
 
 import React from 'react';
-import { shallow, render, mount } from 'enzyme';
+import { shallowWithIntl, mountWithIntl } from '../../helpers/intl-enzyme-test-helper';
 import RadioButtonForm from '../../../components/Form/RadioButtonForm/radio_button_form';
 import ASCVDRisk from '../../../app/load_fhir_data';
 
@@ -11,15 +11,15 @@ describe('<RadioButtonForm />', () => {
   let updateProp = jest.fn();
 
   beforeEach(() => {
-    wrapper = shallow(<RadioButtonForm prompt={'Race'} option_one={'White'} option_two={'African American'}
+    wrapper = shallowWithIntl(<RadioButtonForm prompt={'Race'} option_one={'White'} option_two={'African American'}
                                        option_three={'Other'} property={'race'}
                                        compute={comp} changedProperty={updateProp}  />);
   });
 
   it('should have props', () => {
-    let wrap = mount(<RadioButtonForm prompt={'Race'} option_one={'White'} option_two={'African American'}
-                                      option_three={'Other'} property={'race'}
-                                      compute={comp} changedProperty={updateProp} />);
+    let wrap = mountWithIntl(<RadioButtonForm prompt={'Race'} option_one={'White'} option_two={'African American'}
+                                              option_three={'Other'} property={'race'}
+                                              compute={comp} changedProperty={updateProp}  />);
     expect(wrap.props().prompt).toBeDefined();
     expect(wrap.props().option_one).toBeDefined();
     expect(wrap.props().option_two).toBeDefined();

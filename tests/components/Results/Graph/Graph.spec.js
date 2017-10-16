@@ -1,7 +1,7 @@
 import React from 'react';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import { shallow, render, mount } from 'enzyme';
+import { shallowWithIntl, mountWithIntl } from '../../../helpers/intl-enzyme-test-helper';
 import Graph from '../../../../components/Results/Graph/graph';
 import GraphBar from '../../../../components/Results/GraphBar/graph_bar';
 
@@ -15,13 +15,13 @@ describe('<Graph />', () => {
   chai.use(chaiEnzyme());
 
   beforeEach(() => {
-    wrapper = shallow(<Graph tenYearBest={tenYearBest} tenYearScore={tenYearScore}
+    wrapper = shallowWithIntl(<Graph tenYearBest={tenYearBest} tenYearScore={tenYearScore}
                              lifetimeBest={lifetimeBest} lifetimeScore={lifetimeScore}
                              width={width} />);
   });
 
   it('should have props', () => {
-    const wrap = mount(<Graph tenYearBest={tenYearBest} tenYearScore={tenYearScore}
+    const wrap = mountWithIntl(<Graph tenYearBest={tenYearBest} tenYearScore={tenYearScore}
                               lifetimeBest={lifetimeBest} lifetimeScore={lifetimeScore}
                               width={width} />);
     expect(wrap.props().tenYearBest).toBeDefined();
@@ -55,7 +55,7 @@ describe('<Graph />', () => {
   });
 
   it('should have 2 graph bars and 1 label if only 10 year risk is passed in', () => {
-    wrapper = shallow(<Graph tenYearBest={tenYearBest} tenYearScore={tenYearScore}
+    wrapper = shallowWithIntl(<Graph tenYearBest={tenYearBest} tenYearScore={tenYearScore}
                              lifetimeBest={null} lifetimeScore={null}
                              width={width} />);
     chai.expect(wrapper.find('.bar-container').children().last()).to.have.className('hidden');
@@ -66,7 +66,7 @@ describe('<Graph />', () => {
   });
 
   it('should have 2 graph bars and 1 label if only lifetime risk is passed in', () => {
-    wrapper = shallow(<Graph tenYearBest={null} tenYearScore={null}
+    wrapper = shallowWithIntl(<Graph tenYearBest={null} tenYearScore={null}
                              lifetimeBest={lifetimeBest} lifetimeScore={lifetimeScore}
                              width={width} />);
     chai.expect(wrapper.find('.bar-container').children().first()).to.have.className('hidden');

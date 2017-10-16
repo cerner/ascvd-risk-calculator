@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import { intlShape } from 'react-intl';
 import ASCVDRisk from '../../../app/load_fhir_data';
 import styles from './send_form.css';
 
@@ -13,6 +14,7 @@ class SendForm extends React.Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.missingField = this.missingField.bind(this);
+    this.missingFieldMessage = this.missingFieldMessage.bind(this);
   }
 
   /**
@@ -33,10 +35,30 @@ class SendForm extends React.Component {
    * @returns {*} - A CSS class denoting a missing field or an empty string
    */
   missingField() {
-    if (this.props.message !== '') {
+    if (this.props.missingFields.length > 0) {
       return styles.required;
     }
     return '';
+  }
+
+  missingFieldMessage() {
+    const propIntl = this.props.intl;
+    const messages = propIntl.messages;
+    const missingFields = this.props.missingFields;
+    let errorMessage = propIntl.formatMessage(messages.formRequireSpecifiedFields);
+    if (missingFields.length === 0) {
+      return '';
+    } else if (missingFields.length === 9) {
+      return propIntl.formatMessage(messages.formRequireAllFields);
+    }
+    for (let i = 0; i < missingFields.length; i += 1) {
+      if (i === missingFields.length - 1) {
+        errorMessage += propIntl.formatMessage(messages[missingFields[i]]);
+      } else {
+        errorMessage += `${propIntl.formatMessage(messages[missingFields[i]])}, `;
+      }
+    }
+    return errorMessage;
   }
 
   render() {
@@ -52,7 +74,7 @@ class SendForm extends React.Component {
         </div>
         <div className={styles['right-container']}>
           <div className={cx(styles['left-asterisk'], this.missingField())} />
-          <div className={styles.right}>{this.props.message}</div>
+          <div className={styles.right}>{this.missingFieldMessage()}</div>
         </div>
       </div>
     );
@@ -60,11 +82,12 @@ class SendForm extends React.Component {
 }
 SendForm.propTypes = {
   isEnabled: React.PropTypes.bool.isRequired,
-  message: React.PropTypes.string,
+  missingFields: React.PropTypes.arrayOf(React.PropTypes.string),
   prompt: React.PropTypes.string.isRequired,
   updateChangedProperty: React.PropTypes.func.isRequired,
   updateRiskScores: React.PropTypes.func.isRequired,
   updateView: React.PropTypes.func.isRequired,
+  intl: intlShape,
 };
 
 export default SendForm;

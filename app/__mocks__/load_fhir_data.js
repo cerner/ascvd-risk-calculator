@@ -21,11 +21,16 @@ ASCVDRisk.computeLifetimeRisk = jest.fn(() => 35);
 ASCVDRisk.computeLowestLifetime = jest.fn(() => 5);
 ASCVDRisk.computePotentialRisk = jest.fn(() => 20);
 ASCVDRisk.canCalculateScore = jest.fn(() => true);
-ASCVDRisk.missingFields = jest.fn();
+ASCVDRisk.missingFields = jest.fn(() => []);
 ASCVDRisk.isValidAge = jest.fn(() => true);
 ASCVDRisk.isValidTotalCholesterol = jest.fn(() => false);
 ASCVDRisk.isValidSysBP = jest.fn(() => true);
 ASCVDRisk.isValidHDL = jest.fn(() => true);
 ASCVDRisk.computeBirthDateFromAge = jest.fn();
+
+// Test function to change gender in Jest component tests.
+ASCVDRisk.changeGender = (gender) => {
+  ASCVDRisk.patientInfo.gender = gender;
+};
 
 module.exports = ASCVDRisk;

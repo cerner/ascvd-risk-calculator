@@ -1,7 +1,7 @@
 import React from 'react';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import { shallow, render, mount } from 'enzyme';
+import { shallowWithIntl, mountWithIntl } from '../../../helpers/intl-enzyme-test-helper';
 import GraphBar from '../../../../components/Results/GraphBar/graph_bar';
 
 describe('<GraphBar />', () => {
@@ -9,11 +9,12 @@ describe('<GraphBar />', () => {
   const percentLabel = 'Current Risk';
   const barColor = "blue";
   const width = 1000;
-  let wrapper = shallow(<GraphBar barColor={barColor} percentLabel={percentLabel} percent={percent} />);
+
+  let wrapper = shallowWithIntl(<GraphBar barColor={barColor} percent={percent} percentLabel={percentLabel} />);
   chai.use(chaiEnzyme());
 
   it('should have props', () => {
-    const wrap = mount(<GraphBar barColor={"blue"} percentLabel={percentLabel} percent={50} />);
+    const wrap = mountWithIntl(<GraphBar barColor={"blue"} percent={50} percentLabel={percentLabel} />);
     expect(wrap.props().barColor).toBeDefined();
     expect(wrap.props().percentLabel).toBeDefined();
     expect(wrap.props().percent).toBeDefined();
@@ -31,7 +32,7 @@ describe('<GraphBar />', () => {
   });
 
   it('should display a striped bar if no color is passed in', () => {
-    wrapper = shallow(<GraphBar barColor={''} percentLabel={percentLabel} percent={percent} />);
+    wrapper = shallowWithIntl(<GraphBar barColor={''} percent={percent} percentLabel={percentLabel} />);
     chai.expect(wrapper.find('.bar')).to.have.className('current-risk');
   });
 
@@ -41,7 +42,7 @@ describe('<GraphBar />', () => {
   });
 
   it('should shift the percent display on a bar if the width display is collapsed', () => {
-    wrapper = shallow(<GraphBar barColor={''} percentLabel={percentLabel} percent={percent} />);
+    wrapper = shallowWithIntl(<GraphBar barColor={''} percent={percent} percentLabel={percentLabel} />);
     chai.expect(wrapper.find('.percent')).to.have.className('percent-left');
   });
 });

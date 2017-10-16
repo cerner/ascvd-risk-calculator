@@ -23,12 +23,19 @@
 }
 
 @media print {
-  .page-break	{
+  .page-break {
     display: block;
     page-break-before: always;
   }
 
   .divide {
     -webkit-print-color-adjust: exact;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .divide:lang(es) {
+    padding-top: 65px;
+    padding-bottom: 65px;
   }
 }

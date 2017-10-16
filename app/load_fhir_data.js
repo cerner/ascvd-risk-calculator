@@ -673,50 +673,33 @@ window.ASCVDRisk = window.ASCVDRisk || {};
   const missingFields = () => {
     const needInput = [];
     if (!ASCVDRisk.isValidTotalCholesterol(ASCVDRisk.patientInfo.totalCholesterol)) {
-      needInput.push('Total cholesterol');
+      needInput.push('formTotalCholesterol');
     }
     if (ASCVDRisk.patientInfo.relatedFactors.diabetic === undefined) {
-      needInput.push('Diabetes status');
+      needInput.push('formDiabetic');
     }
     if (!ASCVDRisk.isValidAge(ASCVDRisk.patientInfo.age)) {
-      needInput.push('Age');
+      needInput.push('formAge');
     }
     if (!ASCVDRisk.isValidHDL(ASCVDRisk.patientInfo.hdl)) {
-      needInput.push('HDL - cholesterol');
+      needInput.push('formHdl');
     }
     if (ASCVDRisk.patientInfo.relatedFactors.smoker === undefined) {
-      needInput.push('Current smoking status');
+      needInput.push('formSmoker');
     }
     if (ASCVDRisk.patientInfo.relatedFactors.race === undefined) {
-      needInput.push('Race');
+      needInput.push('formRace');
     }
     if (!ASCVDRisk.isValidSysBP(ASCVDRisk.patientInfo.systolicBloodPressure)) {
-      needInput.push('Systolic blood pressure');
+      needInput.push('formSysBP');
     }
     if (ASCVDRisk.patientInfo.relatedFactors.hypertensive === undefined) {
-      needInput.push('Hypertension status');
+      needInput.push('formHypertensive');
     }
     if (ASCVDRisk.patientInfo.gender === undefined) {
-      needInput.push('Gender');
+      needInput.push('formSex');
     }
-    if (needInput.length === 9) {
-      return 'All fields required to compute ASCVD risk';
-    } else if (needInput.length > 2) {
-      let retStatement = '';
-      for (let i = 0; i < needInput.length; i += 1) {
-        if (i === needInput.length - 1) {
-          retStatement += `and ${needInput[i]} are all required to compute ASCVD risk`;
-        } else {
-          retStatement += `${needInput[i]}, `;
-        }
-      }
-      return retStatement;
-    } else if (needInput.length === 2) {
-      return `${needInput[0]} and ${needInput[1]} are both required to compute ASCVD risk`;
-    } else if (needInput.length === 1) {
-      return `${needInput[0]} is required to compute ASCVD risk`;
-    } else if (needInput.length === 0) { return ''; }
-    return '';
+    return needInput;
   };
   ASCVDRisk.missingFields = missingFields;
   ASCVDRisk.patientInfo = PatientInfo;

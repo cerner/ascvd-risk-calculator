@@ -1,7 +1,7 @@
 jest.mock('../../../app/load_fhir_data');
 
 import React from 'react';
-import { shallow, render, mount } from 'enzyme';
+import { shallowWithIntl } from '../../helpers/intl-enzyme-test-helper';
 import ASCVDRisk from '../../../app/load_fhir_data';
 import Recommendations from '../../../views/Recommendations/index';
 import DetailBox from '../../../components/DetailBox/detail_box';
@@ -13,19 +13,19 @@ import DetailBox from '../../../components/DetailBox/detail_box';
  */
 describe('<Recommendations />', () => {
   it('should render at least 4 recommendations', () => {
-    let wrapper = shallow(<Recommendations />);
+    let wrapper = shallowWithIntl(<Recommendations />);
     expect(wrapper.find(DetailBox).length).toBeGreaterThanOrEqual(4);
   });
 
   it('should not render a recommendation to quit smoking if patient is not currently a smoker', () => {
     ASCVDRisk.patientInfo.relatedFactors.smoker = false;
-    let wrapper = shallow(<Recommendations />);
+    let wrapper = shallowWithIntl(<Recommendations />);
     expect(wrapper.find('.hidden')).toHaveLength(1);
   });
 
   it('should render a recommendation to quit smoking if patient is currently a smoker', () => {
     ASCVDRisk.patientInfo.relatedFactors.smoker = true;
-    let wrapper = shallow(<Recommendations />);
+    let wrapper = shallowWithIntl(<Recommendations />);
     expect(wrapper.find('.hidden')).toHaveLength(0);
     expect(wrapper.find(DetailBox).length).toBeGreaterThan(4);
   });
