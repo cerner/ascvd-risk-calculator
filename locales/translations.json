@@ -4,6 +4,14 @@
       "id": "app.header",
       "defaultMessage": "ASCVD Risk Calculator"
     },
+    "errorAuthName": {
+      "id": "error.auth_name",
+      "defaultMessage": "Authorization failure"
+    },
+    "errorAuthMessage": {
+      "id": "error.auth_message",
+      "defaultMessage": "Please re-launch the application"
+    },
     "tabOne": {
       "id": "app.tab_one",
       "defaultMessage": "Results"
@@ -266,6 +274,14 @@
       "id": "app.header",
       "defaultMessage": "Calculadora de riesgo de ECVA"
     },
+    "errorAuthName": {
+      "id": "error.auth_name",
+      "defaultMessage": "Authorization failure"
+    },
+    "errorAuthMessage": {
+      "id": "error.auth_message",
+      "defaultMessage": "Please re-launch the application"
+    },
     "tabOne": {
       "id": "app.tab_one",
       "defaultMessage": "Resultados"
@@ -527,6 +543,14 @@
     "appHeader": {
       "id": "app.header",
       "defaultMessage": "ASCVD Risk Calculator"
+    },
+    "errorAuthName": {
+      "id": "error.auth_name",
+      "defaultMessage": "Authorization failure"
+    },
+    "errorAuthMessage": {
+      "id": "error.auth_message",
+      "defaultMessage": "Please re-launch the application"
     },
     "tabOne": {
       "id": "app.tab_one",

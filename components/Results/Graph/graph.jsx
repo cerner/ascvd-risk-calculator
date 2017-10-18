@@ -40,18 +40,18 @@ class Graph extends React.Component {
   adjustForOneScore() {
     if (this.props.width <= 700) {
       return ({
-        paddingRight: '57.5px',
-        paddingLeft: '57.5px',
+        marginRight: '57.5px',
+        marginLeft: '57.5px',
       });
     } else if (this.props.width <= 860) {
       return ({
-        paddingRight: '180px',
-        paddingLeft: '180px',
+        marginRight: '180px',
+        marginLeft: '180px',
       });
     }
     return ({
-      paddingRight: '200px',
-      paddingLeft: '200px',
+      marginRight: '200px',
+      marginLeft: '200px',
     });
   }
 

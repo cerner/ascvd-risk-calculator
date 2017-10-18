@@ -4,7 +4,6 @@
 
 const path = require('path');
 var webpack = require('webpack');
-var combineLoaders = require('webpack-combine-loaders');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -13,7 +12,8 @@ module.exports = {
     'results': path.join(__dirname, 'fixtures', 'Results', 'index'),
     'risk_factors': path.join(__dirname, 'fixtures', 'RiskFactors', 'index'),
     'recommendations': path.join(__dirname, 'fixtures', 'Recommendations', 'index'),
-    'translations': path.join(__dirname, 'fixtures', 'Translations', 'index')
+    'translations': path.join(__dirname, 'fixtures', 'Translations', 'index'),
+    'error_view': path.join(__dirname, 'fixtures', 'ErrorView', 'index')
   },
   externals: {
     'cheerio': 'window',
@@ -23,10 +23,11 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.json$/, loader: 'json'
+        test: /\.json$/,
+        loader: 'json-loader'
       },
       {
-        test: /.(jsx|js)$/,
+        test: /.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
@@ -34,21 +35,26 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract(
-          'style-loader',
-          combineLoaders([{
+        test: /\.(scss|css)$/,
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
             loader: 'css-loader',
-            query: {
-              modules: true,
-              localIdentName: '[name]__[local]'
+              query: {
+                modules: true,
+                localIdentName: '[name]__[local]'
+              }
+            },
+            {
+              loader: 'sass-loader'
             }
-          }])
-        )
+          ]
+        })
       },
       {
         test: /\.(jpg|png|svg)$/,
-        loader: 'file-loader?name=../../build/images/[name].[ext]'
+        loader: 'file-loader?name=../../build/[name].[ext]'
       }
     ],
   },
@@ -75,8 +81,13 @@ module.exports = {
       chunks: ['translations'],
       filename: 'translations.html',
     }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'fixtures', 'index.html'),
+      chunks: ['error_view'],
+      filename: 'errorview.html',
+    })
   ],
   resolve: {
-    extensions: ['', '.js', '.jsx', 'json'],
+    extensions: ['.js', '.jsx', '.json'],
   },
 };
