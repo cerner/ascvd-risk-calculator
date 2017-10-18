@@ -1,6 +1,6 @@
 # ASCVD Risk App #
 
-ASCVD Risk App is a web application built using React, ES6, SMART, and FHIR technologies.
+ASCVD Risk App is a web application built using React, ES2015, SMART, and FHIR technologies.
 
 The ASCVD Risk Calculator is a tool intended to help users find an estimate for their cardiovascular risk according to
 the [2013 ACC/AHA Guideline on the Assessment of Cardiovascular Risk][1] and the [2013 ACC/AHA Guideline on the Treatment
@@ -59,30 +59,8 @@ or ```views``` folders, there are a few steps to configure the project:
 
 1. Install [NPM][4] and install/update [Node][5]
 2. Run ```npm install``` to install all dependencies onto the project
-3. In ```webpack.config.js```, under the ```output``` property, replace
-   the ```path``` value with a ```__dirname```. Under the ```plugins```
-   property, replace the ExtractTextPlugin parameter with ```'styles.css'```.
-4. In ```index.html```:
-    - Uncomment the commented css file and comment/remove the line below it
-    
-      ```
-      <!-- Uncomment this line to do localhost testing and comment the line below it
-      <link rel='stylesheet' type='text/css' href='styles.css'>
-      -->
-      <link rel='stylesheet' type='text/css' href='build/css/styles.css'>
-      ```
-      
-    - Uncomment the commented js file and comment/remove the line below it
-    
-      ```
-      <!-- Uncomment this line to do localhost testing and comment the line below it
-      <script src='bundle.js'></script>
-      -->
-      <script src='build/js/bundle.js'></script>
-      ```
-      
-5. Run ```npm start``` to start the server on port 8080 of localhost
-6. Using a patient from the smarthealthit open FHIR DSTU2 endpoint, 
+3. Run ```npm start``` to start the server on port 8080 of localhost
+4. Using a patient from the smarthealthit open FHIR DSTU2 endpoint, 
 launch with this link: ```localhost:8080/launch.html?fhirServiceUrl=https%3A%2F%2Ffhir-open-api-dstu2.smarthealthit.org&patientId=1768562```
  
 # Build #
@@ -98,22 +76,24 @@ project acts as the final version of these files to be used in production.
 
 The following tree closely aligns with Hierarchy of the React Components.
 ```
-App
-|--Header
-|--Navbar
-|--PatientBanner
-|--Recommendations
-|  `--DetailBox
-|--Results
-|  |--ButtonForm
-|  |--InputTextForm
-|  |--RadioButtonForm
-|  `--SendForm
-`--RiskFactors
-   |--Graph
-   |  `--GraphBar
-   `--SimulatedRisk
-      `--RiskAction
+Entry
+|--ErrorContainer
+`--App
+   |--Header
+   |--Navbar
+   |--PatientBanner
+   |--Recommendations
+   |  `--DetailBox
+   |--Form
+   |  |--ButtonForm
+   |  |--InputTextForm
+   |  |--RadioButtonForm
+   |  `--SendForm
+   `--Results
+      |--Graph
+      |  `--GraphBar
+      `--SimulatedRisk
+         `--RiskAction
 ```
 When making changes locally, first make changes at the component level located in ```components/``` and ```views/``` 
 or the ASCVDRisk model located at ```app/load_fhir_data.js```. The three main views of this project are:

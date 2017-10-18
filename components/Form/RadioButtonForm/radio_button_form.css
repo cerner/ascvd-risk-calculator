@@ -2,8 +2,8 @@
   width: 180px;
   height: 100%;
   display: inline-block;
-  padding-right: 110px;
-  padding-top: 40px;
+  margin-right: 110px;
+  margin-top: 40px;
   text-align: left;
   vertical-align: top;
 }
@@ -48,6 +48,6 @@ input[type=radio]::-ms-check {
 
 @media only screen and (max-width: 860px) {
   .container {
-    padding-right: 0;
+    margin-right: 0;
   }
 }

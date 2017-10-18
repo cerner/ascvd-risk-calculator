@@ -16,7 +16,7 @@
   width: 180px;
   display: inline-block;
   position: relative;
-  padding-right: 110px;
+  margin-right: 110px;
   text-align: left;
   vertical-align: top;
 }
@@ -26,7 +26,7 @@
 }
 
 .no-right-padding {
-  padding-right: 0;
+  margin-right: 0;
 }
 
 .row {
@@ -43,7 +43,7 @@
 }
 
 .row.padding {
-  padding-top: 40px;
+  margin-top: 40px;
 }
 
 @media screen and (max-width: 860px) {
@@ -54,7 +54,7 @@
   }
 
   .column {
-    padding-right: 0;
+    margin-right: 0;
   }
 
   .row {
@@ -72,7 +72,7 @@
   }
 
   .column {
-    padding-right: 0;
+    margin-right: 0;
   }
 
   .row {

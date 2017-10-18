@@ -1,11 +1,12 @@
 /* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
 
-const screenshot = require('terra-toolkit').screenshot;
 require('intl');
 
 module.exports = {
-  afterEach: (browser, done) => {
-    screenshot(browser, done);
+  'Displays an ErrorView component from failed Authorization': (browser) => {
+    browser
+      .url(`http://localhost:${browser.globals.webpackDevServerPort}/errorview.html`)
+      .assert.visible('.ErrorView__error-view');
   },
 
   'Receives demographic information through the FHIR API': (browser) => {

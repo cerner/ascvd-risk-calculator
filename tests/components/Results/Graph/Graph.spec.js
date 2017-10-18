@@ -61,8 +61,8 @@ describe('<Graph />', () => {
     chai.expect(wrapper.find('.bar-container').children().last()).to.have.className('hidden');
 
     // 10 Year scores take up center of the graph
-    chai.expect(wrapper.find('.ten-year-group')).to.have.style('padding-right', '200px');
-    chai.expect(wrapper.find('.ten-year-group')).to.have.style('padding-left', '200px');
+    chai.expect(wrapper.find('.ten-year-group')).to.have.style('margin-right', '200px');
+    chai.expect(wrapper.find('.ten-year-group')).to.have.style('margin-left', '200px');
   });
 
   it('should have 2 graph bars and 1 label if only lifetime risk is passed in', () => {
@@ -72,7 +72,7 @@ describe('<Graph />', () => {
     chai.expect(wrapper.find('.bar-container').children().first()).to.have.className('hidden');
 
     // Lifetime scores take up center of the graph
-    chai.expect(wrapper.find('.lifetime-group')).to.have.style('padding-right', '200px');
-    chai.expect(wrapper.find('.lifetime-group')).to.have.style('padding-left', '200px');
+    chai.expect(wrapper.find('.lifetime-group')).to.have.style('margin-right', '200px');
+    chai.expect(wrapper.find('.lifetime-group')).to.have.style('margin-left', '200px');
   });
 });
