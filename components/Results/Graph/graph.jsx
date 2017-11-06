@@ -8,7 +8,6 @@ import styles from './graph.css';
  * Purpose: A container that generates the Graph on the Risk Factors view
  */
 class Graph extends React.Component {
-
   /**
    * Check for if the bar on this bar graph should be hidden due to an undefined score
    * @param score - A score for a particular bar on the Graph

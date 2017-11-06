@@ -145,7 +145,7 @@
   background-color: #FF9733;
 }
 
-.center-spacing {
+.centerSpacing {
   margin-right: 200px;
   margin-left: 200px;
 }
@@ -178,7 +178,7 @@
   .bar-container {
     width: 100%;
   }
-  .center-spacing {
+  .centerSpacing {
     margin-right: 180px;
     margin-left: 180px;
   }
@@ -214,7 +214,7 @@
   .bar-container {
     width: 100%;
   }
-  .center-spacing {
+  .centerSpacing {
     margin-right: 57.5px;
     margin-left: 57.5px;
   }
