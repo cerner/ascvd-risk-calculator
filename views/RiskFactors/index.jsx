@@ -79,7 +79,6 @@ class RiskFactors extends React.Component {
     return (
       <div className={styles.container}>
         <Graph
-          width={this.state.width}
           tenYearBest={this.props.tenYearBest}
           tenYearScore={this.props.tenYearScore}
           lifetimeBest={this.props.lifetimeBest}

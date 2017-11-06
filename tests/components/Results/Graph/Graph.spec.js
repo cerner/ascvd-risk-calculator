@@ -10,25 +10,21 @@ describe('<Graph />', () => {
   const tenYearScore = 50;
   const lifetimeBest = 5;
   const lifetimeScore = 30;
-  const width = 1000;
   let wrapper;
   chai.use(chaiEnzyme());
 
   beforeEach(() => {
     wrapper = shallowWithIntl(<Graph tenYearBest={tenYearBest} tenYearScore={tenYearScore}
-                             lifetimeBest={lifetimeBest} lifetimeScore={lifetimeScore}
-                             width={width} />);
+                             lifetimeBest={lifetimeBest} lifetimeScore={lifetimeScore} />);
   });
 
   it('should have props', () => {
     const wrap = mountWithIntl(<Graph tenYearBest={tenYearBest} tenYearScore={tenYearScore}
-                              lifetimeBest={lifetimeBest} lifetimeScore={lifetimeScore}
-                              width={width} />);
+                              lifetimeBest={lifetimeBest} lifetimeScore={lifetimeScore} />);
     expect(wrap.props().tenYearBest).toBeDefined();
     expect(wrap.props().tenYearScore).toBeDefined();
     expect(wrap.props().lifetimeBest).toBeDefined();
     expect(wrap.props().lifetimeScore).toBeDefined();
-    expect(wrap.props().width).toBeDefined();
   });
 
   it('should have an x-axis and y-axis label for the graph', () => {
@@ -56,23 +52,19 @@ describe('<Graph />', () => {
 
   it('should have 2 graph bars and 1 label if only 10 year risk is passed in', () => {
     wrapper = shallowWithIntl(<Graph tenYearBest={tenYearBest} tenYearScore={tenYearScore}
-                             lifetimeBest={null} lifetimeScore={null}
-                             width={width} />);
+                             lifetimeBest={null} lifetimeScore={null} />);
     chai.expect(wrapper.find('.bar-container').children().last()).to.have.className('hidden');
 
     // 10 Year scores take up center of the graph
-    chai.expect(wrapper.find('.ten-year-group')).to.have.style('margin-right', '200px');
-    chai.expect(wrapper.find('.ten-year-group')).to.have.style('margin-left', '200px');
+    chai.expect(wrapper.find('.ten-year-group')).to.have.className('centerSpacing');
   });
 
   it('should have 2 graph bars and 1 label if only lifetime risk is passed in', () => {
     wrapper = shallowWithIntl(<Graph tenYearBest={null} tenYearScore={null}
-                             lifetimeBest={lifetimeBest} lifetimeScore={lifetimeScore}
-                             width={width} />);
+                             lifetimeBest={lifetimeBest} lifetimeScore={lifetimeScore} />);
     chai.expect(wrapper.find('.bar-container').children().first()).to.have.className('hidden');
 
     // Lifetime scores take up center of the graph
-    chai.expect(wrapper.find('.lifetime-group')).to.have.style('margin-right', '200px');
-    chai.expect(wrapper.find('.lifetime-group')).to.have.style('margin-left', '200px');
+    chai.expect(wrapper.find('.lifetime-group')).to.have.className('centerSpacing');
   });
 });

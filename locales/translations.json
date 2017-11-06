@@ -276,11 +276,11 @@
     },
     "errorAuthName": {
       "id": "error.auth_name",
-      "defaultMessage": "Authorization failure"
+      "defaultMessage": "Error de autorización"
     },
     "errorAuthMessage": {
       "id": "error.auth_message",
-      "defaultMessage": "Please re-launch the application"
+      "defaultMessage": "Inicie de nuevo la aplicación."
     },
     "tabOne": {
       "id": "app.tab_one",
@@ -546,7 +546,7 @@
     },
     "errorAuthName": {
       "id": "error.auth_name",
-      "defaultMessage": "Authorization failure"
+      "defaultMessage": "Authorisation failure"
     },
     "errorAuthMessage": {
       "id": "error.auth_message",

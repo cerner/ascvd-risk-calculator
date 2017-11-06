@@ -699,6 +699,10 @@ input[type=radio]::-ms-check {
 .graph__lowest-risk___1UFN4 {
   background-color: #FF9733; }
 
+.graph__center-spacing___pbcp0 {
+  margin-right: 200px;
+  margin-left: 200px; }
+
 @media only screen and (max-width: 860px) {
   .graph__graph-border___1O4eV {
     height: 250px;
@@ -718,7 +722,10 @@ input[type=radio]::-ms-check {
   .graph__legend-label___am4lX {
     width: 50px; }
   .graph__bar-container___1T6_3 {
-    width: 100%; } }
+    width: 100%; }
+  .graph__center-spacing___pbcp0 {
+    margin-right: 180px;
+    margin-left: 180px; } }
 
 @media only screen and (max-width: 700px) {
   .graph__graph-border___1O4eV {
@@ -741,7 +748,10 @@ input[type=radio]::-ms-check {
   .graph__legend-label___am4lX {
     width: 45px; }
   .graph__bar-container___1T6_3 {
-    width: 100%; } }
+    width: 100%; }
+  .graph__center-spacing___pbcp0 {
+    margin-right: 57.5px;
+    margin-left: 57.5px; } }
 
 @media print {
   .graph__graph-title___1fbCT {

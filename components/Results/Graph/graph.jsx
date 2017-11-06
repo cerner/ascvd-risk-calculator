@@ -21,7 +21,6 @@ class Graph extends React.Component {
   constructor(props) {
     super(props);
     this.isOnlyOneScore = this.isOnlyOneScore.bind(this);
-    this.adjustForOneScore = this.adjustForOneScore.bind(this);
   }
 
   /**
@@ -32,32 +31,17 @@ class Graph extends React.Component {
     return this.props.tenYearScore === null || this.props.lifetimeScore === null;
   }
 
-  /**
-   * Adjusts bars on the graph if only one score is available to display.
-   * Adjusts padding accordingly at different widths of the screen.
-   * @returns {*} - CSS styles that specify centering of a bar on the bar graph
-   */
-  adjustForOneScore() {
-    if (this.props.width <= 700) {
-      return ({
-        marginRight: '57.5px',
-        marginLeft: '57.5px',
-      });
-    } else if (this.props.width <= 860) {
-      return ({
-        marginRight: '180px',
-        marginLeft: '180px',
-      });
-    }
-    return ({
-      marginRight: '200px',
-      marginLeft: '200px',
-    });
-  }
-
   render() {
     const propIntl = this.props.intl;
     const messages = propIntl.messages;
+
+    let tenYearSpacing = styles['ten-year-group'];
+    let lifetimeSpacing = styles['lifetime-group'];
+    if (this.isOnlyOneScore()) {
+      tenYearSpacing = cx(styles.centerSpacing, styles['ten-year-group']);
+      lifetimeSpacing = cx(styles.centerSpacing, styles['lifetime-group']);
+    }
+
     return (
       <div className={styles.container}>
         <div className={styles.inner}>
@@ -75,8 +59,7 @@ class Graph extends React.Component {
             <div className={styles['bar-container']}>
               <div
                 className={Graph.shouldHide(this.props.tenYearScore) ?
-                  styles.hidden : styles['ten-year-group']}
-                style={this.isOnlyOneScore() ? this.adjustForOneScore() : {}}
+                  styles.hidden : tenYearSpacing}
               >
                 <GraphBar
                   barColor={''}
@@ -94,8 +77,7 @@ class Graph extends React.Component {
               </div>
               <div
                 className={Graph.shouldHide(this.props.lifetimeScore) ?
-                  styles.hidden : styles['lifetime-group']}
-                style={this.isOnlyOneScore() ? this.adjustForOneScore() : {}}
+                  styles.hidden : lifetimeSpacing}
               >
                 <GraphBar
                   barColor={''}
@@ -125,7 +107,6 @@ class Graph extends React.Component {
   }
 }
 Graph.propTypes = {
-  width: React.PropTypes.number,
   tenYearBest: React.PropTypes.number,
   tenYearScore: React.PropTypes.number,
   lifetimeBest: React.PropTypes.number,

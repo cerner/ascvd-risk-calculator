@@ -145,6 +145,11 @@
   background-color: #FF9733;
 }
 
+.center-spacing {
+  margin-right: 200px;
+  margin-left: 200px;
+}
+
 @media only screen and (max-width: 860px) {
   .graph-border {
     height: 250px;
@@ -172,6 +177,10 @@
   }
   .bar-container {
     width: 100%;
+  }
+  .center-spacing {
+    margin-right: 180px;
+    margin-left: 180px;
   }
 }
 
@@ -204,6 +213,10 @@
   }
   .bar-container {
     width: 100%;
+  }
+  .center-spacing {
+    margin-right: 57.5px;
+    margin-left: 57.5px;
   }
 }
 
