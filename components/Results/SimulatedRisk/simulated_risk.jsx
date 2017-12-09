@@ -88,12 +88,12 @@ class SimulatedRisk extends React.Component {
         if ((currentRisk <= 36 && currentRisk > 0) || lowestRisk >= 448) {
           if (lowestRisk >= 448) {
             return ({
-              height: `${currentRisk}px`,
+              height: `${currentRisk + 12}px`,
               paddingBottom: '12px',
             });
           }
           return ({
-            height: `${currentRisk}px`,
+            height: `${currentRisk + 36}px`,
             paddingBottom: '36px',
           });
         }
@@ -110,7 +110,7 @@ class SimulatedRisk extends React.Component {
       // Move potential risk label up, lowest risk down
       if ((currentRisk <= 24 && currentRisk > 0) || lowestRisk >= 448) {
         return ({
-          height: `${currentRisk}px`,
+          height: `${currentRisk + 12}px`,
           paddingBottom: '12px',
         });
       }
@@ -122,7 +122,7 @@ class SimulatedRisk extends React.Component {
         // Remove the 0% label
         if (currentRisk < 36) {
           return ({
-            height: `${currentRisk}px`,
+            height: `${currentRisk + 12}px`,
             paddingBottom: '12px',
           });
         }
@@ -169,7 +169,7 @@ class SimulatedRisk extends React.Component {
       if (potentialRisk < 24 && potentialRisk !== 0) {
         if (lowestRisk > 448) {
           return ({
-            height: `${potentialRisk}px`,
+            height: `${potentialRisk + 12}px`,
             paddingBottom: '12px',
           });
         }
@@ -221,13 +221,13 @@ class SimulatedRisk extends React.Component {
           // Hide current risk label
           if (lowestRisk > 448) {
             return ({
-              height: `${lowestRisk - 36}px`,
+              height: `${(lowestRisk - 36) + 24}px`,
               paddingTop: '24px',
             });
           }
           if (currentRisk < 36) {
             return ({
-              height: `${lowestRisk - 12}px`,
+              height: `${lowestRisk}px`,
               paddingTop: '12px',
             });
           }
@@ -238,7 +238,7 @@ class SimulatedRisk extends React.Component {
         if (currentRisk <= 36 && currentRisk > 0) {
           if (lowestRisk > 448) {
             return ({
-              height: `${lowestRisk - 36}px`,
+              height: `${lowestRisk - 12}px`,
               paddingTop: '24px',
             });
           }
@@ -255,13 +255,13 @@ class SimulatedRisk extends React.Component {
         // Hide current risk label
         if (lowestRisk > 448) {
           return ({
-            height: `${lowestRisk - 36}px`,
+            height: `${lowestRisk - 12}px`,
             paddingTop: '24px',
           });
         }
         if (currentRisk < 36) {
           return ({
-            height: `${lowestRisk - 24}px`,
+            height: `${lowestRisk - 12}px`,
             paddingTop: '12px',
           });
         }
@@ -272,13 +272,13 @@ class SimulatedRisk extends React.Component {
       if (currentRisk <= 24 && currentRisk > 0) {
         if (lowestRisk > 448) {
           return ({
-            height: `${lowestRisk - 36}px`,
+            height: `${lowestRisk - 12}px`,
             paddingTop: '24px',
           });
         }
         return ({
           paddingTop: '12px',
-          height: `${lowestRisk - 12}px`,
+          height: `${lowestRisk}px`,
         });
       }
 
@@ -286,7 +286,7 @@ class SimulatedRisk extends React.Component {
       // Move lowest risk label up, 0% label down
       if (lowestRisk < 18) {
         return ({
-          paddingBottom: '6px',
+          marginBottom: '6px',
         });
       }
       return ({

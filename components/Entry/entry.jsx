@@ -3,6 +3,7 @@ import { IntlProvider, addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
 import App from '../App/index';
+import ErrorContainer from '../Error/index';
 import localeData from '../../locales/translations.json';
 
 addLocaleData([...en, ...es]);
@@ -38,6 +39,18 @@ class Entry extends React.Component {
       || localeData[languageWithoutRegionCode]
       || localeData.en;
 
+    if (this.props.displayErrorScreen) {
+      return (
+        <IntlProvider
+          locale={this.state.locale}
+          defaultLocale={this.state.locale}
+          messages={messages}
+        >
+          <ErrorContainer authError />
+        </IntlProvider>
+      );
+    }
+
     return (
       <IntlProvider
         locale={this.state.locale}
@@ -49,5 +62,8 @@ class Entry extends React.Component {
     );
   }
 }
+Entry.propTypes = {
+  displayErrorScreen: React.PropTypes.bool,
+};
 
 export default Entry;

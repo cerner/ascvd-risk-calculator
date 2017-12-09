@@ -34,14 +34,14 @@ describe ('ASCVDRisk', () => {
   });
 
   describe('onError', () => {
-    it('sets a default patient to allow the application to run', () => {
-      const spyASCVDRisk = sinon.spy(ASCVDRisk, 'setDefaultPatient');
+    it('rejects the Deferred object for failed authorization', () => {
       const mockCanadarm = sinonSandbox.mock(Canadarm);
       mockCanadarm.expects('error').once().returns('');
+      const mockDeferred = sinonSandbox.mock(ASCVDRisk.ret);
+      mockDeferred.expects('reject').once().returns('');
       ASCVDRisk.onError();
 
-      spyASCVDRisk.restore();
-      sinon.assert.calledOnce(spyASCVDRisk);
+      mockDeferred.verify();
       mockCanadarm.verify();
     });
   });

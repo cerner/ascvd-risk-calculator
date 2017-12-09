@@ -11,6 +11,14 @@ ASCVDRisk.fetchPatientData().then(
       loadingNode.removeChild(loadingNode.firstChild);
     }
     loadingNode.parentNode.removeChild(loadingNode);
-    ReactDOM.render(<Entry />, document.getElementById('container'));
+    ReactDOM.render(<Entry displayErrorScreen={false} />, document.getElementById('container'));
   },
+  () => {
+    const loadingNode = document.getElementById('loadingIndicator');
+    while (loadingNode.firstChild) {
+      loadingNode.removeChild(loadingNode.firstChild);
+    }
+    loadingNode.parentNode.removeChild(loadingNode);
+    ReactDOM.render(<Entry displayErrorScreen={true} />, document.getElementById('container'));
+  }
 );

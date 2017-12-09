@@ -56,12 +56,11 @@ window.ASCVDRisk = window.ASCVDRisk || {};
   ASCVDRisk.initializeLogger = initializeLogger;
 
   /**
-   * Makes a call to create a default Patient model if authorization is not successful in the
-   * application.
+   * Rejects the Deferred object if Authorization fails
    */
   const onError = () => {
     Canadarm.error('Authorization error while loading the application.');
-    ASCVDRisk.setDefaultPatient();
+    ASCVDRisk.ret.reject();
   };
   ASCVDRisk.onError = onError;
 
@@ -174,7 +173,7 @@ window.ASCVDRisk = window.ASCVDRisk || {};
 
   /**
    * Handles the FHIR oauth2 sequence and accordingly returns whatever information was stored
-   * in the patient model.
+   * in the patient model or a rejected Deferred object from failed Authorization.
    * @returns {*} - A jQuery Deferred promise for the PatientInfo model
    */
   const fetchPatientData = () => {

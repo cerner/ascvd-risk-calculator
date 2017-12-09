@@ -20,6 +20,8 @@
   color: #0065A3;
   border-bottom: solid #007CC3 2px;
   cursor: pointer;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .tab.default {
@@ -40,6 +42,7 @@
 
 .tab.one:lang(es) {
   width: 80px;
+  padding: 0;
 }
 
 .tab.two {

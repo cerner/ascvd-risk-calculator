@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ErrorView from 'terra-clinical-error-view';
 import ASCVDRisk from '../sampledata';
-import DetailBox from '../../../../components/DetailBox/detail_box';
 import PatientBanner from '../../../../components/PatientBanner/banner';
 import Header from '../../../../components/Header/header';
 import Navbar from '../../../../components/Navbar/navbar';
+import Recommendations from '../../../../views/Recommendations/index';
 
 // Inject methods for mocks
 const injectEntry = require('inject-loader!../../../../components/Entry/entry');
@@ -19,9 +19,6 @@ const injectRadioButton = require('inject-loader!../../../../components/Form/Rad
 const injectSendForm = require('inject-loader!../../../../components/Form/SendForm/send_form');
 const injectRiskFactors = require('inject-loader!../../../../views/RiskFactors/index');
 const injectSimulatedRisk = require('inject-loader!../../../../components/Results/SimulatedRisk/simulated_risk');
-const inject = require('inject-loader!../../../../views/Recommendations');
-
-ASCVDRisk.patientInfo.relatedFactors['diabetic'] = true;
 
 // Mocked imports for Graph
 let SimulatedRisk = injectSimulatedRisk({
@@ -48,10 +45,6 @@ let Results = injectForm({
   '../../components/Form/RadioButtonForm/radio_button_form': RadioButtonForm,
   '../../components/Form/SendForm/send_form': SendForm
 }).default;
-let Recommendations = inject({
-  '../../app/load_fhir_data': ASCVDRisk,
-  '../../components/DetailBox/detail_box': DetailBox
-}).default;
 let App = injectApp({
   '../../app/load_fhir_data': ASCVDRisk,
   '../../components/PatientBanner/banner': PatientBanner,
@@ -75,6 +68,6 @@ let Entry = injectEntry({
   '../Error/index': ErrorIndex
 }).default;
 
-const form = <Entry displayErrorScreen={false} />;
+const form = <Entry displayErrorScreen={true} />;
 
 ReactDOM.render(form, document.getElementById('container'));
