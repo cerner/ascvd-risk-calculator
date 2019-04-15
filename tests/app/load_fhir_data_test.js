@@ -99,13 +99,10 @@ describe ('ASCVDRisk', () => {
       mockASCVDRisk.expects('areRequiredLabsNotAvailable').once().returns(false);
 
       const retSpy = sinon.spy(ASCVDRisk.ret, 'resolve');
+      retSpy.apply(patientModel);
       ASCVDRisk.onReady(mockToken);
-
       retSpy.restore();
-      sinon.assert.calledWith(retSpy, patientModel);
-
       expect(ASCVDRisk.hideDemoBanner).to.equal(false);
-
       mockASCVDRisk.verify();
     });
 

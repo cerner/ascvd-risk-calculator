@@ -1,18 +1,17 @@
-var path = require('path');
-var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: './index.jsx',
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'bundle.js',
-    publicPath: '/build/'
+    publicPath: '/build/',
   },
   externals: {
-    'cheerio': 'window',
+    cheerio: 'window',
     'react/lib/ExecutionEnvironment': true,
-    'react/lib/ReactContext': true
+    'react/lib/ReactContext': true,
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
@@ -27,7 +26,7 @@ module.exports = {
     loaders: [
       {
         test: /\.json$/,
-        loader: 'json-loader'
+        loader: 'json-loader',
       },
       {
         test: /.jsx?$/,
@@ -43,26 +42,26 @@ module.exports = {
               loader: 'css-loader',
               query: {
                 modules: true,
-                localIdentName: '[name]__[local]___[hash:base64:5]'
-              }
+                localIdentName: '[name]__[local]___[hash:base64:5]',
+              },
             },
             {
-              loader: 'sass-loader'
-            }
-          ]
-        })
+              loader: 'sass-loader',
+            },
+          ],
+        }),
       },
       {
         test: /\.(jpg|png|svg)$/,
-        loader: 'file-loader?name=./[name].[ext]'
+        loader: 'file-loader?name=./[name].[ext]',
       },
       {
         test: /\.html$/,
-        loader: "file-loader?name=[path][name].[ext]"
-      }
-    ]
+        loader: 'file-loader?name=[path][name].[ext]',
+      },
+    ],
   },
   resolveLoader: {
     modules: [path.resolve(path.join(__dirname, 'node_modules'))],
-  }
+  },
 };

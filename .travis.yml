@@ -4,7 +4,7 @@ jdk: oraclejdk8
 addons:
   apt:
     packages:
-      - oracle-java8-set-default
+      - oracle-java9-set-default
 branches:
   only:
     - master
