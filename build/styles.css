@@ -1048,10 +1048,7 @@ body {
 *::before,
 *::after {
   box-sizing: inherit; }
-button.Button__button____lxdg,
-html input[type='button'].Button__button____lxdg,
-input[type='reset'].Button__button____lxdg,
-input[type='submit'].Button__button____lxdg {
+button.Button__button____lxdg, html input[type='button'].Button__button____lxdg, input[type='reset'].Button__button____lxdg, input[type='submit'].Button__button____lxdg {
   appearance: button; }
 
 .Button__button____lxdg {

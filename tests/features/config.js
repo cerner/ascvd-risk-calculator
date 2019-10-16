@@ -42,8 +42,9 @@ module.exports = {
             {
             loader: 'css-loader',
               query: {
-                modules: true,
-                localIdentName: '[name]__[local]'
+                modules: {
+                  localIdentName: '[name]__[local]',
+                },
               }
             },
             {
