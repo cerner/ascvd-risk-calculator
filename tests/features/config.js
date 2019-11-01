@@ -4,7 +4,7 @@
 
 const path = require('path');
 var webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -23,10 +23,6 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.json$/,
-        loader: 'json-loader'
-      },
-      {
         test: /.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
@@ -36,32 +32,29 @@ module.exports = {
       },
       {
         test: /\.(scss|css)$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-            loader: 'css-loader',
-              query: {
-                modules: {
-                  localIdentName: '[name]__[local]',
-                },
-              }
-            },
-            {
-              loader: 'sass-loader'
-            }
-          ]
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          'css-loader',
+          'sass-loader'
+        ]
         })
       },
       {
         test: /\.(jpg|png|svg)$/,
-        loader: 'file-loader?name=../../build/[name].[ext]'
+        loader: 'file-loader'
+        options: {
+          name: '../../build/[name].[ext]',
+        },
       }
     ],
   },
   output: { path: path.join(__dirname, 'fixtures'), filename: '[name].js' },
   plugins: [
-    new ExtractTextPlugin('[name].css'),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'fixtures', 'index.html'),
       chunks: ['results'],

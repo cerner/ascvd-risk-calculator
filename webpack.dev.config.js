@@ -1,7 +1,8 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+  mode: 'development',
   entry: './index.jsx',
   output: {
     path: path.join(__dirname, 'build'),
@@ -20,10 +21,8 @@ module.exports = {
     },
   },
   plugins: [
-    new ExtractTextPlugin({
+    new MiniCssExtractPlugin({
       filename: 'styles.css',
-      disable: false,
-      allChunks: true,
     }),
   ],
   module: {
@@ -35,30 +34,36 @@ module.exports = {
       },
       {
         test: /\.(scss|css)$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              query: {
-                modules: {
-                  localIdentName: '[name]__[local]___[hash:base64:5]',
-                },
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[name]__[local]___[hash:base64:5]',
               },
             },
-            {
-              loader: 'sass-loader',
-            },
-          ],
-        }),
+          },
+          {
+            loader: 'sass-loader',
+          },
+        ],
       },
       {
         test: /\.(jpg|png|svg)$/,
-        loader: 'file-loader?name=./[name].[ext]',
+        loader: 'file-loader',
+        options: {
+          name: './[name].[ext]',
+        },
       },
       {
         test: /\.html$/,
-        loader: 'file-loader?name=[path][name].[ext]',
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]',
+        },
       },
     ],
   },

@@ -12,9 +12,6 @@ module.exports = {
     publicPath: '/build/',
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      include: /\.min\.js$/,
-    }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
     }),
