@@ -11,12 +11,12 @@
     "SMART ASCVD risk app"
   ],
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.config.js --inline",
+    "build": "npm run clean && webpack --config webpack.prod.config.js --progress --colors --display-error-details",
     "clean": "rimraf build",
-    "test": "jest; mocha --require tests/helpers/browser.js tests/app/*.js",
-    "test:nightwatch": "WEBPACK_CONFIG_PATH=../../../tests/features/config.js node ./node_modules/terra-toolkit/lib/scripts/nightwatch-process.js --config tests/nightwatch.conf.js --env default-tiny,default-small,default-medium,default-large,default-huge,default-enormous",
     "lint": "eslint app/*.js components/**/**/*.jsx views/**/index.jsx components/**/*.jsx --config .eslintrc --fix",
-    "build": "npm run clean && webpack --config webpack.prod.config.js --progress --colors --display-error-details"
+    "start": "webpack-dev-server --config webpack.dev.config.js --inline",
+    "test": "jest; mocha --require tests/helpers/browser.js tests/app/*.js",
+    "test:wdio": "wdio tests/wdio.conf.js"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
@@ -54,6 +54,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.6.2",
+    "@babel/runtime": "^7.6.3",
     "ajv": "^5.5.2",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^25.0.0",
@@ -77,7 +78,6 @@
     "jsdom": "^9.8.3",
     "json-loader": "^0.5.4",
     "mocha": "^6.2.1",
-    "nightwatch": "^1.2.4",
     "node-sass": "^4.5.3",
     "raf": "^3.4.1",
     "react-addons-test-utils": "^15.4.1",
@@ -88,9 +88,11 @@
     "selenium-server-standalone-jar": "^3.2.0",
     "sinon": "^1.17.6",
     "style-loader": "^0.13.1",
-    "terra-toolkit": "^5.10.0",
+    "terra-toolkit": "^5.12.0",
     "uglify-js": "^2.8.11",
     "url-loader": "^2.2.0",
+    "wdio-mocha-framework": "^0.6.4",
+    "wdio-spec-reporter": "^0.1.5",
     "webpack": "2.7.0",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^2.11.5"
