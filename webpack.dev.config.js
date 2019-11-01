@@ -20,14 +20,14 @@ module.exports = {
     },
   },
   plugins: [
-    new ExtractTextPlugin('styles.css'),
+    new ExtractTextPlugin({
+      filename: 'styles.css',
+      disable: false,
+      allChunks: true,
+    }),
   ],
   module: {
-    loaders: [
-      {
-        test: /\.json$/,
-        loader: 'json-loader',
-      },
+    rules: [
       {
         test: /.jsx?$/,
         loader: 'babel-loader',
@@ -35,7 +35,7 @@ module.exports = {
       },
       {
         test: /\.(scss|css)$/,
-        loader: ExtractTextPlugin.extract({
+        use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
             {
