@@ -71,7 +71,7 @@
     "uglify-js": "^2.8.11",
     "url-loader": "^0.5.8",
     "webpack": "2.7.0",
-    "webpack-dev-server": "^2.9.2"
+    "webpack-dev-server": "^3.1.11"
   },
   "repository": {
     "type": "git",
