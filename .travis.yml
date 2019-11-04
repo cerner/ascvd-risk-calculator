@@ -1,10 +1,6 @@
 language: node_js
 sudo: required
 jdk: oraclejdk8
-addons:
-  apt:
-    packages:
-      - oracle-java9-set-default
 branches:
   only:
     - master
