@@ -11,10 +11,10 @@ const path = require('path');
 const config = {
   ...wdioConfig.config,
   webpackConfig,
+  baseUrl: `http://${localIP.address()}:8080`,
   specs: [path.join('tests', 'wdio', '*.js')],
 //  services: [SeleniumDockerService, ServeStaticService],
 //  serveStatic: { port: '8080' },
-  onPrepare: () => console.log('asdf'),
 };
 
 if (config.seleniumDocker) {
