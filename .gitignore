@@ -1,2 +1,6 @@
+*.DS_Store
+
 .idea/
+
+errorScreenshots
 node_modules

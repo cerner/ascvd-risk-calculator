@@ -8,6 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  mode: 'development',
   entry: {
     'results': path.join(__dirname, 'fixtures', 'Results', 'index'),
     'risk_factors': path.join(__dirname, 'fixtures', 'RiskFactors', 'index'),
@@ -21,14 +22,11 @@ module.exports = {
     'react/lib/ReactContext': true
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react', 'stage-0']
-        }
       },
       {
         test: /\.(scss|css)$/,
@@ -36,14 +34,22 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader
           },
-          'css-loader',
-          'sass-loader'
-        ]
-        })
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[name]__[local]',
+              },
+            },
+          },
+          {
+            loader: 'sass-loader',
+          },
+        ],
       },
       {
         test: /\.(jpg|png|svg)$/,
-        loader: 'file-loader'
+        loader: 'file-loader',
         options: {
           name: '../../build/[name].[ext]',
         },
