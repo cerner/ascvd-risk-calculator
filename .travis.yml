@@ -14,3 +14,7 @@ script:
   - npm run lint
   - npm test
   - npm run test:wdio
+addons:
+  chrome: stable
+before_install:
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
