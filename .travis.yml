@@ -13,4 +13,4 @@ cache:
 script:
   - npm run lint
   - npm test
-  - npm run test:nightwatch
+  - npm run test:wdio
