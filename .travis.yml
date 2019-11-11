@@ -1,6 +1,10 @@
 language: node_js
 sudo: required
 jdk: oraclejdk8
+env:
+  global:
+    - DOCKER_IMAGE='cerner/ascvd-risk-calculator'
+    - TAG="${TRAVIS_PULL_REQUEST_SHA:=latest}"
 branches:
   only:
     - master
