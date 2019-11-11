@@ -14,9 +14,13 @@ node_js:
 cache:
   directories:
     - node_modules
-script:
-  - npm run lint
-  - npm test
-  - npm run test:wdio
 services:
   - docker
+jobs:
+  include:
+    - stage: lint jest
+      script:
+        - "travis_wait docker-compose run test-ci bash -c 'npm run lint && npm run test"
+    - stage: wdio
+      script:
+        - "travis_wait docker-compose run test-ci npm run test:wdio"

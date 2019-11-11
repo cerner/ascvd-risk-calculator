@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  dev: &dev
+    image: "ascvd-risk-calculator:dev"
+    build:
+      context: ./
+      args:
+        - npm_install=false
+    ports:
+      - 8080:8080
+    environment:
+      - CI=true
+    depends_on:
+      - standalone-chrome
+    volumes:
+      - .:/opt/terra-dev-site
+
+  standalone-chrome:
+    image: 'selenium/standalone-chrome:3.14.0-helium'
+    ports:
+      - '4444'
+    # Necessary due to some issues with chrome in docker.  See https://github.com/SeleniumHQ/docker-selenium#running-the-images
+    volumes:
+      - '/dev/shm:/dev/shm'
+    # Necessary to lock down screen sizes for our screen shot comparisons.
+    environment:
+      TZ: 'America/Chicago'
+
+  term:
+    <<: *dev
+    command: "/bin/zsh"
+
+  test-ci:
+    build: ./
+    image: "${DOCKER_IMAGE}-test:${TAG:-latest}"
+    environment:
+      - CI=true
+    depends_on:
+      - standalone-chrome
