@@ -20,7 +20,7 @@ jobs:
   include:
     - stage: docker-compose version
       script:
-        - "docker-compose --version"
+        - "docker-compose run test-ci"
     - stage: lint jest
       script:
         - "docker-compose run test-ci bash -c 'npm run lint && npm run test"
