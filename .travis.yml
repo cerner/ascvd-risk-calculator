@@ -15,12 +15,9 @@ services:
   - docker
 jobs:
   include:
-    - stage: docker-compose version
-      script:
-        - "travis_wait docker-compose run test-ci"
     - stage: lint jest
       script:
-        - "docker-compose run test-ci bash -c 'npm run lint && npm run test"
+        - "docker-compose run test-ci bash -c 'npm run lint && npm run test'"
     - stage: wdio
       script:
         - "docker-compose run test-ci npm run test:wdio"
