@@ -8,8 +8,4 @@ const config = {
   specs: [path.join('tests', 'wdio', '*.js')],
 };
 
-if (config.seleniumDocker) {
-  config.seleniumDocker.cleanup = true;
-}
-
 exports.config = config;
