@@ -16,7 +16,20 @@ cache:
     - node_modules
 services:
   - docker
-script:
-  - npm run lint
-  - npm test
-  - npm run test:wdio
+jobs:
+  include:
+    - stage: build
+      before_install: true
+      script:
+        - travis_wait docker-compose build test-ci
+        - travis_wait docker-compose --verbose pull standalone-chrome
+    - stage: lint test
+      script:
+        - "travis_wait docker-compose run test-ci bash -c 'npm run lint && npm run test'"
+    - stage: wdio
+      script:
+        - "travis_wait docker-compose run test-ci npm run wdio"
+stages:
+  - build
+  - lint test
+  - wdio
