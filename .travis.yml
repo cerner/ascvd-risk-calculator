@@ -5,6 +5,9 @@ env:
   global:
     - DOCKER_IMAGE='cerner/ascvd-risk-calculator'
     - TAG="${TRAVIS_PULL_REQUEST_SHA:=latest}"
+node_js:
+  - '9'
+  - '9.11'
 branches:
   only:
     - master
