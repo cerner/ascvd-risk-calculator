@@ -1,0 +1,1 @@
+FROM cerner/terra-node

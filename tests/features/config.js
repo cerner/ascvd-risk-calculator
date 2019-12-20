@@ -4,10 +4,11 @@
 
 const path = require('path');
 var webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  mode: 'development',
   entry: {
     'results': path.join(__dirname, 'fixtures', 'Results', 'index'),
     'risk_factors': path.join(__dirname, 'fixtures', 'RiskFactors', 'index'),
@@ -21,46 +22,45 @@ module.exports = {
     'react/lib/ReactContext': true
   },
   module: {
-    loaders: [
-      {
-        test: /\.json$/,
-        loader: 'json-loader'
-      },
+    rules: [
       {
         test: /.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react', 'stage-0']
-        }
       },
       {
         test: /\.(scss|css)$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          {
             loader: 'css-loader',
-              query: {
-                modules: true,
-                localIdentName: '[name]__[local]'
-              }
+            options: {
+              modules: {
+                localIdentName: '[name]__[local]',
+              },
             },
-            {
-              loader: 'sass-loader'
-            }
-          ]
-        })
+          },
+          {
+            loader: 'sass-loader',
+          },
+        ],
       },
       {
         test: /\.(jpg|png|svg)$/,
-        loader: 'file-loader?name=../../build/[name].[ext]'
+        loader: 'file-loader',
+        options: {
+          name: '../../build/[name].[ext]',
+        },
       }
     ],
   },
   output: { path: path.join(__dirname, 'fixtures'), filename: '[name].js' },
   plugins: [
-    new ExtractTextPlugin('[name].css'),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'fixtures', 'index.html'),
       chunks: ['results'],

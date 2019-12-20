@@ -37,6 +37,7 @@
 @media print {
   .banner__container___ZHs7S {
     -webkit-print-color-adjust: exact; } }
+
 .header__header___CGBNf {
   height: 55px;
   width: 100%;
@@ -135,6 +136,7 @@
 @media print {
   .header__header___CGBNf {
     -webkit-print-color-adjust: exact; } }
+
 .navbar__hidden___ec8v_ {
   display: none; }
 
@@ -213,6 +215,7 @@ input[name="nav_tabs"]:hover {
   .navbar__tab___3MI4X.navbar__three___13cuC:lang(es) {
     width: 110px;
     font-size: 12px; } }
+
 .button_form__container___38I26 {
   width: 180px;
   height: 100%;
@@ -262,6 +265,7 @@ input[name="nav_tabs"]:hover {
 @media print {
   .button_form__btn___2G-Ff {
     -webkit-print-color-adjust: exact; } }
+
 .input_text_form__container___1CeRx {
   width: 180px;
   height: 100%;
@@ -309,6 +313,7 @@ input[name="nav_tabs"]:hover {
 @media only screen and (max-width: 860px) {
   .input_text_form__container___1CeRx {
     margin-right: 0; } }
+
 .radio_button_form__container___3vUW_ {
   width: 180px;
   height: 100%;
@@ -353,6 +358,7 @@ input[type=radio]::-ms-check {
 @media only screen and (max-width: 860px) {
   .radio_button_form__container___3vUW_ {
     margin-right: 0; } }
+
 .send_form__container___2zxLJ {
   display: inline-block;
   text-align: left;
@@ -411,6 +417,7 @@ input[type=radio]::-ms-check {
 @media print {
   .send_form__btn___1sdL2 {
     -webkit-print-color-adjust: exact; } }
+
 .index__container___RgiEz {
   display: block;
   margin: auto;
@@ -475,6 +482,7 @@ input[type=radio]::-ms-check {
     display: block;
     margin: 0 auto;
     width: 230px; } }
+
 .graph_bar__container___3CbYj {
   width: 100px;
   display: inline-block;
@@ -573,6 +581,7 @@ input[type=radio]::-ms-check {
     position: relative;
     padding-bottom: 5px;
     margin: 0 auto; } }
+
 .graph__container___25mSN {
   padding-top: 45px;
   width: 100%;
@@ -762,6 +771,7 @@ input[type=radio]::-ms-check {
     display: none; }
   .graph__legend-bar___CIvxn {
     display: none; } }
+
 .risk_action__container___10q5l {
   width: 350px;
   text-align: left; }
@@ -802,6 +812,7 @@ input[type=checkbox]::-ms-check {
     width: 160px; }
   .risk_action__input-area___1hijg {
     padding-left: 5px; } }
+
 .simulated_risk__container___hwplB {
   padding-top: 101px;
   padding-bottom: 45px;
@@ -923,6 +934,7 @@ input[type=checkbox]::-ms-check {
     border: none; }
   .simulated_risk__partial-border___3wy36 {
     border: none; } }
+
 .index__container___2dddc {
   width: 100%;
   display: block;
@@ -953,6 +965,7 @@ input[type=checkbox]::-ms-check {
   .index__divide___1QgKu:lang(es) {
     margin-top: 65px;
     margin-bottom: 65px; } }
+
 .detail_box__container___3zdQ5 {
   width: 100%;
   background-color: #FFFFFF;
@@ -1010,6 +1023,7 @@ input[name="dropdown"] {
 @media print {
   .detail_box__page-break___NlAXK {
     page-break-inside: avoid; } }
+
 .index__container___3yKbS {
   width: 90%;
   display: block;
@@ -1020,6 +1034,7 @@ input[name="dropdown"] {
 
 .index__show___2EZc5 {
   display: block; }
+
 /* stylelint-disable scss/at-mixin-pattern  */
 /* stylelint-enable scss/at-mixin-pattern  */
 /* stylelint-disable scss/at-mixin-pattern  */
@@ -1048,10 +1063,8 @@ body {
 *::before,
 *::after {
   box-sizing: inherit; }
-button.Button__button____lxdg,
-html input[type='button'].Button__button____lxdg,
-input[type='reset'].Button__button____lxdg,
-input[type='submit'].Button__button____lxdg {
+
+button.Button__button____lxdg, html input[type='button'].Button__button____lxdg, input[type='reset'].Button__button____lxdg, input[type='submit'].Button__button____lxdg {
   appearance: button; }
 
 .Button__button____lxdg {
@@ -1060,7 +1073,6 @@ input[type='submit'].Button__button____lxdg {
   border-width: var(--terra-button-border-width, 1px);
   cursor: pointer;
   display: inline-block;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: var(--terra-button-font-size-medium, 1rem);
   font-weight: var(--terra-button-font-weight, 400);
   line-height: 1.429;
@@ -1167,6 +1179,13 @@ input[type='submit'].Button__button____lxdg {
 .Button__compact___3hcm2 {
   padding-bottom: var(--terra-button-padding-bottom-compact, 0);
   padding-top: var(--terra-button-padding-top-compact, 0); }
+
+.Button__text___11QA5:first-child:not(:last-child) {
+  margin-right: 0.714em; }
+
+.Button__text___11QA5:nth-child(2) {
+  margin-left: 0.714em; }
+
 .ErrorView__error-view___NVuGa {
   align-items: center;
   display: flex;
@@ -1191,3 +1210,4 @@ input[type='submit'].Button__button____lxdg {
 .ErrorView__button___v6RnG {
   flex: 0 0 auto;
   padding-top: 0.2857rem; }
+
