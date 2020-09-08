@@ -1,6 +1,5 @@
 {
   "extends": "airbnb",
-  "installedESLint": true,
   "globals": {
     "window": true,
     "$": true,
