@@ -59,6 +59,7 @@ window.ASCVDRisk = window.ASCVDRisk || {};
    * Rejects the Deferred object if Authorization fails
    */
   const onError = () => {
+    debugger;
     Canadarm.error('Authorization error while loading the application.');
     ASCVDRisk.ret.reject();
   };
@@ -81,7 +82,8 @@ window.ASCVDRisk = window.ASCVDRisk || {};
    */
 
   const onReady = (smart) => {
-    ASCVDRisk.hideDemoBanner = (smart.tokenResponse.need_patient_banner === false);
+    debugger;
+    ASCVDRisk.hideDemoBanner = (smart.state.tokenResponse.need_patient_banner === false);
 
     // Fetch labs within the last 12 months
     const currentDate = new Date();
@@ -94,9 +96,13 @@ window.ASCVDRisk = window.ASCVDRisk || {};
         type: 'Observation',
         query: {
           code: {
-            $or: ['http://loinc.org|14647-2', 'http://loinc.org|2093-3',
-              'http://loinc.org|2085-9', 'http://loinc.org|8480-6',
-              'http://loinc.org|55284-4', 'http://loinc.org|72166-2',
+            $or: [
+              'http://loinc.org|14647-2',
+              'http://loinc.org|2093-3',
+              'http://loinc.org|2085-9',
+              'http://loinc.org|8480-6',
+              'http://loinc.org|55284-4',
+              'http://loinc.org|72166-2',
               'http://snomed.info/sct|229819007',
             ],
           },
@@ -177,6 +183,7 @@ window.ASCVDRisk = window.ASCVDRisk || {};
    * @returns {*} - A jQuery Deferred promise for the PatientInfo model
    */
   const fetchPatientData = () => {
+    debugger;
     ASCVDRisk.initializeLogger();
     FHIR.oauth2.ready(ASCVDRisk.onReady, ASCVDRisk.onError);
     return ASCVDRisk.ret.promise();

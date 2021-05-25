@@ -6,6 +6,7 @@ import './app/polyfill';
 
 ASCVDRisk.fetchPatientData().then(
   () => {
+    debugger;
     const loadingNode = document.getElementById('loadingIndicator');
     while (loadingNode.firstChild) {
       loadingNode.removeChild(loadingNode.firstChild);
@@ -14,6 +15,7 @@ ASCVDRisk.fetchPatientData().then(
     ReactDOM.render(<Entry displayErrorScreen={false} />, document.getElementById('container'));
   },
   () => {
+    debugger;
     const loadingNode = document.getElementById('loadingIndicator');
     while (loadingNode.firstChild) {
       loadingNode.removeChild(loadingNode.firstChild);

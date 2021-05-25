@@ -7,7 +7,7 @@
     <title>SMART ASCVD Risk App</title>
     <link rel='stylesheet' type='text/css' href='app/reset.css'>
     <link rel='stylesheet' type='text/css' href='app/loading-indicator.css'>
-    <script src='lib/fhir-client.min.js'></script>
+    <script src="./node_modules/fhirclient/build/fhir-client.js"></script>
   </head>
   <body>
     <div id='loadingIndicator' class='loading-indicator'>
@@ -17,8 +17,9 @@
     </div>
     <script>
       FHIR.oauth2.authorize({
-        'client_id': 'my_web_app',
-        'scope': 'patient/Patient.read patient/Observation.read launch online_access openid profile'
+        'client_id': '610bf39e-e89f-4a6b-b675-1015516d6f7d',
+        'scope': 'patient/Patient.read patient/Observation.read launch online_access openid profile',
+        'redirectUri': 'http://localhost:8080/'
       });
     </script>
   </body>
