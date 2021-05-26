@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import cx from 'classnames';
 import styles from './header.css';
 
@@ -79,12 +80,12 @@ class Header extends React.Component {
   }
 }
 Header.propTypes = {
-  header: React.PropTypes.string.isRequired,
-  locales: React.PropTypes.arrayOf(
-    React.PropTypes.objectOf(React.PropTypes.string)),
-  currentLocale: React.PropTypes.string,
-  updateLocale: React.PropTypes.func.isRequired,
-  languagePrompt: React.PropTypes.string.isRequired,
+  header: PropTypes.string.isRequired,
+  locales: PropTypes.arrayOf(
+    PropTypes.objectOf(PropTypes.string)),
+  currentLocale: PropTypes.string,
+  updateLocale: PropTypes.func.isRequired,
+  languagePrompt: PropTypes.string.isRequired,
 };
 
 export default Header;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import styles from './risk_action.css';
 
 /**
@@ -85,16 +86,16 @@ class RiskAction extends React.Component {
   }
 }
 RiskAction.propTypes = {
-  prompt: React.PropTypes.string.isRequired,
-  isSmoker: React.PropTypes.bool.isRequired,
-  controlSysBP: React.PropTypes.bool.isRequired,
-  riskActionLabel1: React.PropTypes.string.isRequired,
-  riskActionLabel2: React.PropTypes.string.isRequired,
-  riskActionLabel3: React.PropTypes.string.isRequired,
-  riskActionLabel4: React.PropTypes.string.isRequired,
-  addOption: React.PropTypes.func.isRequired,
-  removeOption: React.PropTypes.func.isRequired,
-  options: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
+  prompt: PropTypes.string.isRequired,
+  isSmoker: PropTypes.bool.isRequired,
+  controlSysBP: PropTypes.bool.isRequired,
+  riskActionLabel1: PropTypes.string.isRequired,
+  riskActionLabel2: PropTypes.string.isRequired,
+  riskActionLabel3: PropTypes.string.isRequired,
+  riskActionLabel4: PropTypes.string.isRequired,
+  addOption: PropTypes.func.isRequired,
+  removeOption: PropTypes.func.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default RiskAction;

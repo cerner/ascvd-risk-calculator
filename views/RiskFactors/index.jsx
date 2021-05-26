@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { intlShape } from 'react-intl';
 import ASCVDRisk from '../../app/load_fhir_data';
 import Graph from '../../components/Results/Graph/graph';
@@ -93,15 +94,15 @@ class RiskFactors extends React.Component {
   }
 }
 RiskFactors.propTypes = {
-  addOption: React.PropTypes.func.isRequired,
-  tenYearBest: React.PropTypes.number,
-  tenYearScore: React.PropTypes.number,
-  lifetimeBest: React.PropTypes.number,
-  lifetimeScore: React.PropTypes.number,
-  options: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
-  removeOption: React.PropTypes.func.isRequired,
+  addOption: PropTypes.func.isRequired,
+  tenYearBest: PropTypes.number,
+  tenYearScore: PropTypes.number,
+  lifetimeBest: PropTypes.number,
+  lifetimeScore: PropTypes.number,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  removeOption: PropTypes.func.isRequired,
   intl: intlShape,
-  currentLocale: React.PropTypes.string,
+  currentLocale: PropTypes.string,
 };
 
 export default RiskFactors;

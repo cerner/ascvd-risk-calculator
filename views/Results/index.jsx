@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import cx from 'classnames';
 import { intlShape } from 'react-intl';
 import ASCVDRisk from '../../app/load_fhir_data';
@@ -168,12 +169,12 @@ class Results extends React.Component {
   }
 }
 Results.propTypes = {
-  hideNav: React.PropTypes.bool.isRequired,
-  options: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
-  removeOption: React.PropTypes.func.isRequired,
-  updateChangedProperty: React.PropTypes.func.isRequired,
-  updateRiskScores: React.PropTypes.func.isRequired,
-  updateView: React.PropTypes.func.isRequired,
+  hideNav: PropTypes.bool.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  removeOption: PropTypes.func.isRequired,
+  updateChangedProperty: PropTypes.func.isRequired,
+  updateRiskScores: PropTypes.func.isRequired,
+  updateView: PropTypes.func.isRequired,
   intl: intlShape,
 };
 

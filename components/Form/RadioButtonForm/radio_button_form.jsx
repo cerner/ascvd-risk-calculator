@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { intlShape } from 'react-intl';
 import ASCVDRisk from '../../../app/load_fhir_data';
@@ -105,13 +106,13 @@ class RadioButtonForm extends React.Component {
   }
 }
 RadioButtonForm.propTypes = {
-  changedProperty: React.PropTypes.func.isRequired,
-  compute: React.PropTypes.func.isRequired,
-  option_one: React.PropTypes.string.isRequired,
-  option_two: React.PropTypes.string.isRequired,
-  option_three: React.PropTypes.string.isRequired,
-  prompt: React.PropTypes.string.isRequired,
-  property: React.PropTypes.string.isRequired,
+  changedProperty: PropTypes.func.isRequired,
+  compute: PropTypes.func.isRequired,
+  option_one: PropTypes.string.isRequired,
+  option_two: PropTypes.string.isRequired,
+  option_three: PropTypes.string.isRequired,
+  prompt: PropTypes.string.isRequired,
+  property: PropTypes.string.isRequired,
   intl: intlShape,
 };
 

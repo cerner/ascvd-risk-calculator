@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import styles from './detail_box.css';
 
 /**
@@ -46,8 +47,8 @@ class DetailBox extends React.Component {
   }
 }
 DetailBox.propTypes = {
-  boxBody: React.PropTypes.string.isRequired,
-  boxHeader: React.PropTypes.string.isRequired,
+  boxBody: PropTypes.string.isRequired,
+  boxHeader: PropTypes.string.isRequired,
 };
 
 export default DetailBox;

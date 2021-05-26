@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import cx from 'classnames';
 import { intlShape } from 'react-intl';
 import ASCVDRisk from '../../../app/load_fhir_data';
@@ -81,12 +82,12 @@ class SendForm extends React.Component {
   }
 }
 SendForm.propTypes = {
-  isEnabled: React.PropTypes.bool.isRequired,
-  missingFields: React.PropTypes.arrayOf(React.PropTypes.string),
-  prompt: React.PropTypes.string.isRequired,
-  updateChangedProperty: React.PropTypes.func.isRequired,
-  updateRiskScores: React.PropTypes.func.isRequired,
-  updateView: React.PropTypes.func.isRequired,
+  isEnabled: PropTypes.bool.isRequired,
+  missingFields: PropTypes.arrayOf(PropTypes.string),
+  prompt: PropTypes.string.isRequired,
+  updateChangedProperty: PropTypes.func.isRequired,
+  updateRiskScores: PropTypes.func.isRequired,
+  updateView: PropTypes.func.isRequired,
   intl: intlShape,
 };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import cx from 'classnames';
 import { intlShape } from 'react-intl';
 import ASCVDRisk from '../../../app/load_fhir_data';
@@ -104,14 +105,14 @@ class ButtonForm extends React.Component {
   }
 }
 ButtonForm.propTypes = {
-  changedProperty: React.PropTypes.func.isRequired,
-  compute: React.PropTypes.func.isRequired,
-  options: React.PropTypes.arrayOf(React.PropTypes.string),
-  option_one: React.PropTypes.string.isRequired,
-  option_two: React.PropTypes.string.isRequired,
-  prompt: React.PropTypes.string.isRequired,
-  property: React.PropTypes.string.isRequired,
-  removeOption: React.PropTypes.func,
+  changedProperty: PropTypes.func.isRequired,
+  compute: PropTypes.func.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string),
+  option_one: PropTypes.string.isRequired,
+  option_two: PropTypes.string.isRequired,
+  prompt: PropTypes.string.isRequired,
+  property: PropTypes.string.isRequired,
+  removeOption: PropTypes.func,
   intl: intlShape,
 };
 

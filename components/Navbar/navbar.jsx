@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import cx from 'classnames';
 import { intlShape } from 'react-intl';
 import styles from './navbar.css';
@@ -88,15 +89,15 @@ class Navbar extends React.Component {
   }
 }
 Navbar.propTypes = {
-  changedProperty: React.PropTypes.bool.isRequired,
-  hideNav: React.PropTypes.bool.isRequired,
-  tab_one: React.PropTypes.string.isRequired,
-  tab_two: React.PropTypes.string.isRequired,
-  tab_three: React.PropTypes.string.isRequired,
-  tabIndex: React.PropTypes.number.isRequired,
-  updateView: React.PropTypes.func.isRequired,
+  changedProperty: PropTypes.bool.isRequired,
+  hideNav: PropTypes.bool.isRequired,
+  tab_one: PropTypes.string.isRequired,
+  tab_two: PropTypes.string.isRequired,
+  tab_three: PropTypes.string.isRequired,
+  tabIndex: PropTypes.number.isRequired,
+  updateView: PropTypes.func.isRequired,
   intl: intlShape,
-  currentLocale: React.PropTypes.string,
+  currentLocale: PropTypes.string,
 };
 
 export default Navbar;

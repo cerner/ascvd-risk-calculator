@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import cx from 'classnames';
 import { intlShape } from 'react-intl';
 import GraphBar from '../GraphBar/graph_bar';
@@ -106,10 +107,10 @@ class Graph extends React.Component {
   }
 }
 Graph.propTypes = {
-  tenYearBest: React.PropTypes.number,
-  tenYearScore: React.PropTypes.number,
-  lifetimeBest: React.PropTypes.number,
-  lifetimeScore: React.PropTypes.number,
+  tenYearBest: PropTypes.number,
+  tenYearScore: PropTypes.number,
+  lifetimeBest: PropTypes.number,
+  lifetimeScore: PropTypes.number,
   intl: intlShape,
 };
 

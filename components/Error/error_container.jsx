@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { intlShape } from 'react-intl';
 import ErrorView from 'terra-clinical-error-view';
 
@@ -24,7 +25,7 @@ class ErrorContainer extends React.Component {
   }
 }
 ErrorContainer.propTypes = {
-  authError: React.PropTypes.bool,
+  authError: PropTypes.bool,
   intl: intlShape,
 };
 

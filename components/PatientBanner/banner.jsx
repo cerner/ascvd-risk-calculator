@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './banner.css';
 
 /**
@@ -23,12 +24,12 @@ class PatientBanner extends React.PureComponent {
   }
 }
 PatientBanner.propTypes = {
-  age: React.PropTypes.string,
-  dobPrompt: React.PropTypes.string,
-  dob: React.PropTypes.string,
-  gender: React.PropTypes.string,
-  hideBanner: React.PropTypes.bool.isRequired,
-  name: React.PropTypes.string,
+  age: PropTypes.string,
+  dobPrompt: PropTypes.string,
+  dob: PropTypes.string,
+  gender: PropTypes.string,
+  hideBanner: PropTypes.bool.isRequired,
+  name: PropTypes.string,
 };
 
 export default PatientBanner;

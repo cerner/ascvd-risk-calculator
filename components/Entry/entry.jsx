@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { IntlProvider, addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
@@ -63,7 +64,7 @@ class Entry extends React.Component {
   }
 }
 Entry.propTypes = {
-  displayErrorScreen: React.PropTypes.bool,
+  displayErrorScreen: PropTypes.bool,
 };
 
 export default Entry;

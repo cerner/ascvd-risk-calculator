@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { intlShape } from 'react-intl';
 import RiskAction from '../RiskAction/risk_action';
@@ -494,14 +495,14 @@ class SimulatedRisk extends React.Component {
   }
 }
 SimulatedRisk.propTypes = {
-  scoreBest: React.PropTypes.number.isRequired,
-  scoreCurrent: React.PropTypes.number.isRequired,
-  potentialRisk: React.PropTypes.number.isRequired,
-  addOption: React.PropTypes.func.isRequired,
-  removeOption: React.PropTypes.func.isRequired,
-  title: React.PropTypes.string.isRequired,
-  options: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
-  width: React.PropTypes.number,
+  scoreBest: PropTypes.number.isRequired,
+  scoreCurrent: PropTypes.number.isRequired,
+  potentialRisk: PropTypes.number.isRequired,
+  addOption: PropTypes.func.isRequired,
+  removeOption: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  width: PropTypes.number,
   intl: intlShape,
 };
 

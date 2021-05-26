@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import cx from 'classnames';
 import { intlShape } from 'react-intl';
 import styles from './graph_bar.css';
@@ -120,9 +121,9 @@ class GraphBar extends React.Component {
   }
 }
 GraphBar.propTypes = {
-  barColor: React.PropTypes.string.isRequired,
-  percentLabel: React.PropTypes.string,
-  percent: React.PropTypes.number,
+  barColor: PropTypes.string.isRequired,
+  percentLabel: PropTypes.string,
+  percent: PropTypes.number,
   intl: intlShape,
 };
 

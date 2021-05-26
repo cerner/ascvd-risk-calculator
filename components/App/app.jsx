@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { intlShape } from 'react-intl';
 import ASCVDRisk from '../../app/load_fhir_data';
 import PatientBanner from '../../components/PatientBanner/banner';
@@ -214,8 +215,8 @@ class App extends React.Component {
 }
 App.propTypes = {
   intl: intlShape,
-  currentLocale: React.PropTypes.string,
-  updateLocale: React.PropTypes.func.isRequired,
+  currentLocale: PropTypes.string,
+  updateLocale: PropTypes.func.isRequired,
 };
 
 export default App;
