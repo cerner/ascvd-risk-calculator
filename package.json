@@ -91,7 +91,7 @@
     "selenium-server-standalone-jar": "^3.2.0",
     "sinon": "^1.17.6",
     "style-loader": "^0.13.1",
-    "terra-toolkit": "^5.25.0",
+    "terra-toolkit": "^6.15.0",
     "uglify-js": "^2.8.11",
     "url-loader": "^2.3.0",
     "wdio-mocha-framework": "^0.6.4",
