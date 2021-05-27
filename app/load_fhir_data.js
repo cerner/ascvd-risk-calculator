@@ -92,22 +92,23 @@ window.ASCVDRisk = window.ASCVDRisk || {};
 
     if ({}.hasOwnProperty.call(smart, 'patient')) {
       const patientQuery = smart.patient.read();
-      const labsQuery = smart.patient.api.fetchAll({
-        type: 'Observation',
-        query: {
-          code: {
-            $or: [
-              'http://loinc.org|14647-2',
-              'http://loinc.org|2093-3',
-              'http://loinc.org|2085-9',
-              'http://loinc.org|8480-6',
-              'http://loinc.org|55284-4',
-              'http://loinc.org|72166-2',
-              'http://snomed.info/sct|229819007',
-            ],
-          },
-          date: `gt${dateInPast.toJSON()}`,
-        },
+
+      const query = new URLSearchParams();
+      query.set('patient', smart.patient.id);
+      query.set('_count', 100); // fetch fewer pages if the server supports it
+      query.set('code', [
+        'http://loinc.org|14647-2',
+        'http://loinc.org|2093-3',
+        'http://loinc.org|2085-9',
+        'http://loinc.org|8480-6',
+        'http://loinc.org|55284-4',
+        'http://loinc.org|72166-2',
+        'http://snomed.info/sct|229819007',
+      ].join(','));
+
+      const labsQuery = smart.request(`Observation?${query}`, {
+        pageLimit: 0,
+        flat: true,
       });
       $.when(patientQuery, labsQuery)
         .done((patientData, labResults) => {

@@ -39,12 +39,12 @@ class Entry extends React.Component {
     const messages = localeData[this.state.locale]
       || localeData[languageWithoutRegionCode]
       || localeData.en;
+    const intlLocale = localeData[this.state.locale] ? this.state.locale : 'en';
 
     if (this.props.displayErrorScreen) {
       return (
         <IntlProvider
-          locale={this.state.locale}
-          defaultLocale={this.state.locale}
+          locale={intlLocale}
           messages={messages}
         >
           <ErrorContainer authError />
@@ -54,8 +54,7 @@ class Entry extends React.Component {
 
     return (
       <IntlProvider
-        locale={this.state.locale}
-        defaultLocale={this.state.locale}
+        locale={intlLocale}
         messages={messages}
       >
         <App updateLocale={this.updateLocale} currentLocale={this.state.locale} />
